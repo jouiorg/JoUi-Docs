@@ -1,0 +1,18 @@
+---
+import './avatar.css';
+
+interface Props {
+  src?: string;
+  alt?: string;
+  initials?: string;
+  size?: 'small' | 'medium' | 'large';
+  class?: string;
+}
+
+const { src, alt = '', initials, size = 'medium', class: className, ...attrs } = Astro.props;
+const classes = [size !== 'medium' ? size : '', className].filter(Boolean).join(' ') || undefined;
+---
+
+<figure data-variant="avatar" class={classes} {...attrs}>
+  {src ? <img src={src} alt={alt} /> : initials}
+</figure>

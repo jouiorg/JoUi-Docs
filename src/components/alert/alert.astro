@@ -1,0 +1,15 @@
+---
+import './alert.css';
+
+interface Props {
+  variant?: 'default' | 'success' | 'warning' | 'danger' | 'error';
+  class?: string;
+}
+
+const { variant = 'default', class: className, ...attrs } = Astro.props;
+const dataVariant = variant !== 'default' ? variant : undefined;
+---
+
+<div role="alert" class={className} data-variant={dataVariant} {...attrs}>
+  <slot />
+</div>

@@ -1,0 +1,18 @@
+---
+import './badge.css';
+
+interface Props {
+  variant?: 'default' | 'secondary' | 'outline' | 'success' | 'warning' | 'danger';
+  class?: string;
+}
+
+const { variant = 'default', class: className, ...attrs } = Astro.props;
+
+const isOutline   = variant === 'outline';
+const dataVariant = variant !== 'default' && variant !== 'outline' ? variant : undefined;
+const classes     = ['badge', isOutline ? 'outline' : '', className].filter(Boolean).join(' ');
+---
+
+<span class={classes} data-variant={dataVariant} {...attrs}>
+  <slot />
+</span>

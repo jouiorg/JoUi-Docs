@@ -1,0 +1,13 @@
+---
+import './skeleton.css';
+
+interface Props {
+  type?: 'line' | 'box';
+  class?: string;
+}
+
+const { type = 'line', class: className, ...attrs } = Astro.props;
+const classes = ['skeleton', type, className].filter(Boolean).join(' ');
+---
+
+<div role="status" class={classes} aria-label="Loading…" {...attrs} />

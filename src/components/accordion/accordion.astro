@@ -1,0 +1,17 @@
+---
+import './accordion.css';
+
+interface Props {
+  summary: string;
+  name?: string;
+  open?: boolean;
+  class?: string;
+}
+
+const { summary, name, open = false, class: className, ...attrs } = Astro.props;
+---
+
+<details name={name} open={open} class={className} {...attrs}>
+  <summary>{summary}</summary>
+  <slot />
+</details>

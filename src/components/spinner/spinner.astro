@@ -1,0 +1,24 @@
+---
+import './spinner.css';
+
+interface Props {
+  size?: 'small' | 'medium' | 'large';
+  overlay?: boolean;
+  label?: string;
+  class?: string;
+}
+
+const { size = 'medium', overlay = false, label = 'Loading…', class: className, ...attrs } = Astro.props;
+
+const spinnerParts = [size !== 'medium' ? size : '', overlay ? 'overlay' : ''].filter(Boolean).join(' ') || undefined;
+---
+
+<div
+  aria-busy="true"
+  aria-label={label}
+  data-spinner={spinnerParts}
+  class={className}
+  {...attrs}
+>
+  <slot />
+</div>

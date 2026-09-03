@@ -1,0 +1,14 @@
+---
+import './card.css';
+
+interface Props {
+  class?: string;
+}
+
+const { class: className, ...attrs } = Astro.props;
+const classes = ['card', className].filter(Boolean).join(' ');
+---
+
+<article class={classes} {...attrs}>
+  <slot />
+</article>
