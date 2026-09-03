@@ -66,6 +66,30 @@ Rules for both:
 - Variants are expressed as modifier classes (`btn--primary`) or `data-variant` attributes
 - JS is used only when HTML-native APIs (`<dialog>`, `<details>`) are not sufficient
 
+## Props convention — `p` prefix
+
+All props in every `.astro` component use a `p` prefix. This avoids conflicts with native HTML attributes (`name`, `size`, `type`, `href`…) and with Drupal template variables that may be passed into SDC components.
+
+```ts
+interface Props {
+  pVariant?: 'primary' | 'secondary';
+  pSize?: 'sm' | 'md' | 'lg';
+  pDisabled?: boolean;
+  pHref?: string;
+  pClass?: string;
+}
+```
+
+The `p` prefix applies to **all** props without exception — including those that mirror native HTML attributes. Native HTML attributes are then set explicitly on the rendered element from the prefixed props:
+
+```astro
+const { pHref, pDisabled, pVariant } = Astro.props;
+// ↓ rendered as native HTML attributes:
+<a href={pHref} disabled={pDisabled}>…</a>
+```
+
+Non-joui HTML attributes (id, aria-*, data-*, style…) are passed through via `...attrs` and are NOT prefixed.
+
 ## Stack
 
 - **Astro 7** — static site, no framework integrations (no React/Vue/Svelte)

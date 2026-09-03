@@ -2,17 +2,17 @@
 import './avatar.css';
 
 interface Props {
-  src?: string;
-  alt?: string;
-  initials?: string;
-  size?: 'small' | 'medium' | 'large';
-  class?: string;
+  pSrc?: string;
+  pAlt?: string;
+  pInitials?: string;
+  pSize?: 'small' | 'medium' | 'large';
+  pClass?: string;
 }
 
-const { src, alt = '', initials, size = 'medium', class: className, ...attrs } = Astro.props;
-const classes = [size !== 'medium' ? size : '', className].filter(Boolean).join(' ') || undefined;
+const { pSrc, pAlt = '', pInitials, pSize = 'medium', pClass, ...attrs } = Astro.props;
+const classes = [pSize !== 'medium' ? pSize : '', pClass].filter(Boolean).join(' ') || undefined;
 ---
 
 <figure data-variant="avatar" class={classes} {...attrs}>
-  {src ? <img src={src} alt={alt} /> : initials}
+  {pSrc ? <img src={pSrc} alt={pAlt} /> : pInitials}
 </figure>

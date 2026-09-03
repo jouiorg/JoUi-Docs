@@ -2,11 +2,11 @@
 import './card.css';
 
 interface Props {
-  class?: string;
+  pClass?: string;
 }
 
-const { class: className, ...attrs } = Astro.props;
-const classes = ['card', className].filter(Boolean).join(' ');
+const { pClass, ...attrs } = Astro.props;
+const classes = ['card', pClass].filter(Boolean).join(' ');
 ---
 
 <article class={classes} {...attrs}>

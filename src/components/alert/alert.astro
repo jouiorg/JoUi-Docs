@@ -2,14 +2,14 @@
 import './alert.css';
 
 interface Props {
-  variant?: 'default' | 'success' | 'warning' | 'danger' | 'error';
-  class?: string;
+  pVariant?: 'default' | 'success' | 'warning' | 'danger' | 'error';
+  pClass?: string;
 }
 
-const { variant = 'default', class: className, ...attrs } = Astro.props;
-const dataVariant = variant !== 'default' ? variant : undefined;
+const { pVariant = 'default', pClass, ...attrs } = Astro.props;
+const dataVariant = pVariant !== 'default' ? pVariant : undefined;
 ---
 
-<div role="alert" class={className} data-variant={dataVariant} {...attrs}>
+<div role="alert" class={pClass} data-variant={dataVariant} {...attrs}>
   <slot />
 </div>

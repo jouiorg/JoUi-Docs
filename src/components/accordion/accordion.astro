@@ -2,16 +2,16 @@
 import './accordion.css';
 
 interface Props {
-  summary: string;
-  name?: string;
-  open?: boolean;
-  class?: string;
+  pSummary: string;
+  pName?: string;
+  pOpen?: boolean;
+  pClass?: string;
 }
 
-const { summary, name, open = false, class: className, ...attrs } = Astro.props;
+const { pSummary, pName, pOpen = false, pClass, ...attrs } = Astro.props;
 ---
 
-<details name={name} open={open} class={className} {...attrs}>
-  <summary>{summary}</summary>
+<details name={pName} open={pOpen} class={pClass} {...attrs}>
+  <summary>{pSummary}</summary>
   <slot />
 </details>

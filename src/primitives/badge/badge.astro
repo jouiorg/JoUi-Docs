@@ -2,15 +2,15 @@
 import './badge.css';
 
 interface Props {
-  variant?: 'default' | 'secondary' | 'outline' | 'success' | 'warning' | 'danger';
-  class?: string;
+  pVariant?: 'default' | 'secondary' | 'outline' | 'success' | 'warning' | 'danger';
+  pClass?: string;
 }
 
-const { variant = 'default', class: className, ...attrs } = Astro.props;
+const { pVariant = 'default', pClass, ...attrs } = Astro.props;
 
-const isOutline   = variant === 'outline';
-const dataVariant = variant !== 'default' && variant !== 'outline' ? variant : undefined;
-const classes     = ['badge', isOutline ? 'outline' : '', className].filter(Boolean).join(' ');
+const isOutline   = pVariant === 'outline';
+const dataVariant = pVariant !== 'default' && pVariant !== 'outline' ? pVariant : undefined;
+const classes     = ['badge', isOutline ? 'outline' : '', pClass].filter(Boolean).join(' ');
 ---
 
 <span class={classes} data-variant={dataVariant} {...attrs}>

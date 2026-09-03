@@ -2,12 +2,12 @@
 import './skeleton.css';
 
 interface Props {
-  type?: 'line' | 'box';
-  class?: string;
+  pType?: 'line' | 'box';
+  pClass?: string;
 }
 
-const { type = 'line', class: className, ...attrs } = Astro.props;
-const classes = ['skeleton', type, className].filter(Boolean).join(' ');
+const { pType = 'line', pClass, ...attrs } = Astro.props;
+const classes = ['skeleton', pType, pClass].filter(Boolean).join(' ');
 ---
 
 <div role="status" class={classes} aria-label="Loading…" {...attrs} />

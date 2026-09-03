@@ -2,32 +2,34 @@
 import './button.css';
 
 interface Props {
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
-  size?: 'sm' | 'md' | 'lg';
-  disabled?: boolean;
-  href?: string;
-  type?: 'button' | 'submit' | 'reset';
+  pVariant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  pSize?: 'sm' | 'md' | 'lg';
+  pDisabled?: boolean;
+  pHref?: string;
+  pType?: 'button' | 'submit' | 'reset';
+  pClass?: string;
 }
 
 const {
-  variant = 'primary',
-  size = 'md',
-  disabled = false,
-  href,
-  type = 'button',
+  pVariant = 'primary',
+  pSize = 'md',
+  pDisabled = false,
+  pHref,
+  pType = 'button',
+  pClass,
   ...attrs
 } = Astro.props;
 
-const classes = ['btn', `btn--${variant}`, `btn--${size}`].join(' ');
-const Tag = href ? 'a' : 'button';
+const classes = ['btn', `btn--${pVariant}`, `btn--${pSize}`, pClass].filter(Boolean).join(' ');
+const Tag = pHref ? 'a' : 'button';
 ---
 
 <Tag
   class={classes}
-  href={href}
-  type={!href ? type : undefined}
-  disabled={!href ? disabled : undefined}
-  aria-disabled={href && disabled ? 'true' : undefined}
+  href={pHref}
+  type={!pHref ? pType : undefined}
+  disabled={!pHref ? pDisabled : undefined}
+  aria-disabled={pHref && pDisabled ? 'true' : undefined}
   {...attrs}
 >
   <slot />

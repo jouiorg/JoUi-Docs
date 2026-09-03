@@ -2,22 +2,22 @@
 import './spinner.css';
 
 interface Props {
-  size?: 'small' | 'medium' | 'large';
-  overlay?: boolean;
-  label?: string;
-  class?: string;
+  pSize?: 'small' | 'medium' | 'large';
+  pOverlay?: boolean;
+  pLabel?: string;
+  pClass?: string;
 }
 
-const { size = 'medium', overlay = false, label = 'Loading…', class: className, ...attrs } = Astro.props;
+const { pSize = 'medium', pOverlay = false, pLabel = 'Loading…', pClass, ...attrs } = Astro.props;
 
-const spinnerParts = [size !== 'medium' ? size : '', overlay ? 'overlay' : ''].filter(Boolean).join(' ') || undefined;
+const spinnerParts = [pSize !== 'medium' ? pSize : '', pOverlay ? 'overlay' : ''].filter(Boolean).join(' ') || undefined;
 ---
 
 <div
   aria-busy="true"
-  aria-label={label}
+  aria-label={pLabel}
   data-spinner={spinnerParts}
-  class={className}
+  class={pClass}
   {...attrs}
 >
   <slot />
