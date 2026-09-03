@@ -1,0 +1,32 @@
+---
+import './upload.css';
+
+interface Props {
+  pName?: string;
+  pMultiple?: boolean;
+  pAccept?: string;
+  pDisabled?: boolean;
+  pClass?: string;
+}
+
+const { pName, pMultiple = false, pAccept, pDisabled = false, pClass, ...attrs } = Astro.props;
+---
+
+<ot-upload class={pClass} {...attrs}>
+  <input
+    type="file"
+    name={pName}
+    multiple={pMultiple || undefined}
+    accept={pAccept}
+    disabled={pDisabled || undefined}
+    hidden
+  />
+  <button type="button">Choose files</button>
+  <div data-files>
+    <small data-hint>Drop files here or click to choose</small>
+  </div>
+</ot-upload>
+
+<script>
+  import './upload.js';
+</script>

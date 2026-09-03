@@ -1,0 +1,20 @@
+---
+import './dialog.css';
+
+interface Props {
+  pId: string;
+  pClosedby?: 'any' | 'closerequest' | 'none';
+  pClass?: string;
+}
+
+const { pId, pClosedby, pClass, ...attrs } = Astro.props;
+---
+
+<dialog
+  id={pId}
+  class={pClass}
+  {...{ closedby: pClosedby }}
+  {...attrs}
+>
+  <slot />
+</dialog>

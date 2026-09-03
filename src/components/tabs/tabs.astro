@@ -1,0 +1,18 @@
+---
+import './tabs.css';
+
+interface Props {
+  pAnchor?: string;
+  pClass?: string;
+}
+
+const { pAnchor, pClass, ...attrs } = Astro.props;
+---
+
+<ot-tabs data-anchor={pAnchor} class={pClass} {...attrs}>
+  <slot />
+</ot-tabs>
+
+<script>
+  import './tabs.js';
+</script>

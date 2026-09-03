@@ -1,0 +1,17 @@
+---
+import './dropdown.css';
+
+interface Props {
+  pClass?: string;
+}
+
+const { pClass, ...attrs } = Astro.props;
+---
+
+<ot-dropdown class={pClass} {...attrs}>
+  <slot />
+</ot-dropdown>
+
+<script>
+  import './dropdown.js';
+</script>

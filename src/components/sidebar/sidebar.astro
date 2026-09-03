@@ -1,0 +1,18 @@
+---
+import './sidebar.css';
+
+interface Props {
+  pMode?: 'always';
+  pClass?: string;
+}
+
+const { pMode, pClass, ...attrs } = Astro.props;
+---
+
+<div data-sidebar-layout={pMode || ''} class={pClass} {...attrs}>
+  <slot />
+</div>
+
+<script>
+  import './sidebar.js';
+</script>

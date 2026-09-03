@@ -1,0 +1,14 @@
+---
+import './grid.css';
+
+interface Props {
+  pClass?: string;
+}
+
+const { pClass, ...attrs } = Astro.props;
+const classes = ['container', pClass].filter(Boolean).join(' ');
+---
+
+<div class={classes} {...attrs}>
+  <slot />
+</div>

@@ -1,0 +1,25 @@
+---
+import './taginput.css';
+
+interface Props {
+  pValue?: string;
+  pDisabled?: boolean;
+  pPlaceholder?: string;
+  pClass?: string;
+}
+
+const { pValue, pDisabled = false, pPlaceholder = 'Add tags…', pClass, ...attrs } = Astro.props;
+---
+
+<ot-taginput
+  value={pValue}
+  disabled={pDisabled || undefined}
+  class={pClass}
+  {...attrs}
+>
+  <input placeholder={pPlaceholder} />
+</ot-taginput>
+
+<script>
+  import './taginput.js';
+</script>

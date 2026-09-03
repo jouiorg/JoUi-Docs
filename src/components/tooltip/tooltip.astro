@@ -1,0 +1,24 @@
+---
+import './tooltip.css';
+
+interface Props {
+  pContent: string;
+  pPlacement?: 'top' | 'bottom' | 'left' | 'right';
+  pClass?: string;
+}
+
+const { pContent, pPlacement, pClass, ...attrs } = Astro.props;
+---
+
+<span
+  data-tooltip={pContent}
+  data-tooltip-placement={pPlacement}
+  class={pClass}
+  {...attrs}
+>
+  <slot />
+</span>
+
+<script>
+  import './tooltip.js';
+</script>
