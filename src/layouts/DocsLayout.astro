@@ -1,5 +1,6 @@
 ---
 import Layout from './Layout.astro';
+import { getCollection } from 'astro:content';
 import { useTranslations } from '../i18n/utils';
 import type { Locale } from '../i18n/utils';
 
@@ -14,86 +15,43 @@ const path = Astro.url.pathname;
 
 const isActive = (href: string) => path === href || path.startsWith(href + '/');
 
-const nav = [
-  {
-    label: t('sidebar.gettingStarted'),
-    items: [
-      { label: t('docs.introduction'), href: '/docs' },
-      { label: t('docs.installation'), href: '/docs/installation' },
-      { label: t('docs.usage'),        href: '/docs/usage' },
-    ],
-  },
-  {
-    label: t('sidebar.primitives'),
-    items: [
-      { label: 'Heading',  href: '/docs/primitives/heading' },
-      { label: 'Button',   href: '/docs/primitives/button' },
-      { label: 'Badge',    href: '/docs/primitives/badge' },
-      { label: 'Avatar',   href: '/docs/primitives/avatar' },
-      { label: 'Spinner',  href: '/docs/primitives/spinner' },
-      { label: 'Skeleton', href: '/docs/primitives/skeleton' },
-    ],
-  },
-  {
-    label: t('sidebar.content'),
-    items: [
-      { label: 'Card',      href: '/docs/components/card' },
-      { label: 'Accordion', href: '/docs/components/accordion' },
-    ],
-  },
-  {
-    label: t('sidebar.feedback'),
-    items: [
-      { label: 'Alert',   href: '/docs/components/alert' },
-      { label: 'Toast',   href: '/docs/components/toast' },
-    ],
-  },
-  {
-    label: t('sidebar.navigation'),
-    items: [
-      { label: 'Breadcrumb', href: '/docs/components/breadcrumb' },
-      { label: 'Pagination', href: '/docs/components/pagination' },
-    ],
-  },
-  {
-    label: t('sidebar.forms'),
-    items: [
-      { label: 'Form',     href: '/docs/components/form' },
-      { label: 'Switch',   href: '/docs/components/switch' },
-      { label: 'Meter',    href: '/docs/components/meter' },
-      { label: 'Progress', href: '/docs/components/progress' },
-      { label: 'TagInput', href: '/docs/components/taginput' },
-      { label: 'Upload',   href: '/docs/components/upload' },
-    ],
-  },
-  {
-    label: t('sidebar.dataDisplay'),
-    items: [
-      { label: 'Table', href: '/docs/components/table' },
-    ],
-  },
-  {
-    label: t('sidebar.layout'),
-    items: [
-      { label: 'Grid',    href: '/docs/components/grid' },
-      { label: 'Sidebar', href: '/docs/components/sidebar' },
-    ],
-  },
-  {
-    label: t('sidebar.overlays'),
-    items: [
-      { label: 'Dialog',   href: '/docs/components/dialog' },
-      { label: 'Dropdown', href: '/docs/components/dropdown' },
-      { label: 'Tooltip',  href: '/docs/components/tooltip' },
-    ],
-  },
-  {
-    label: t('sidebar.advanced'),
-    items: [
-      { label: 'Tabs', href: '/docs/components/tabs' },
-    ],
-  },
-];
+const sectionOrder = [
+  'gettingStarted',
+  'primitives',
+  'content',
+  'feedback',
+  'navigation',
+  'forms',
+  'dataDisplay',
+  'layout',
+  'overlays',
+  'advanced',
+] as const;
+
+type SectionKey = typeof sectionOrder[number];
+
+const allDocs = await getCollection('docs');
+
+const grouped = new Map<SectionKey, { label: string; href: string; order: number }[]>();
+
+// Introduction is a static page not in the collection
+grouped.set('gettingStarted', [{ label: t('docs.introduction'), href: '/docs', order: 0 }]);
+
+for (const entry of allDocs) {
+  const { section, order, title: label } = entry.data;
+  if (!section) continue;
+  const key = section as SectionKey;
+  if (!grouped.has(key)) grouped.set(key, []);
+  grouped.get(key)!.push({ label, href: `/docs/${entry.id}`, order: order ?? 99 });
+}
+
+for (const items of grouped.values()) {
+  items.sort((a, b) => a.order - b.order);
+}
+
+const nav = sectionOrder
+  .filter(s => grouped.has(s))
+  .map(s => ({ label: t(`sidebar.${s}`), items: grouped.get(s)! }));
 
 const pageTitle = title ? `${title} — joui` : 'joui — Component Library';
 ---
