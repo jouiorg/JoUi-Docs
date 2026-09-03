@@ -2,7 +2,11 @@
   "permissions": {
     "allow": [
       "Bash(gh label *)",
-      "Bash(gh issue *)"
+      "Bash(gh issue *)",
+      "WebFetch(domain:oat.ink)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(gh api *)"
     ]
   }
 }
