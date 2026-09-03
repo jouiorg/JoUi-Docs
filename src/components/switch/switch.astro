@@ -1,0 +1,27 @@
+---
+import './switch.css';
+
+interface Props {
+  pLabel?: string;
+  pName?: string;
+  pValue?: string;
+  pChecked?: boolean;
+  pDisabled?: boolean;
+  pClass?: string;
+}
+
+const { pLabel, pName, pValue, pChecked = false, pDisabled = false, pClass, ...attrs } = Astro.props;
+---
+
+<label class={pClass}>
+  <input
+    type="checkbox"
+    role="switch"
+    name={pName}
+    value={pValue}
+    checked={pChecked}
+    disabled={pDisabled}
+    {...attrs}
+  />
+  {pLabel}
+</label>

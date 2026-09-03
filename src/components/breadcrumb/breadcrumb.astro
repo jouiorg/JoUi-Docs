@@ -1,0 +1,16 @@
+---
+import './breadcrumb.css';
+
+interface Props {
+  pLabel?: string;
+  pClass?: string;
+}
+
+const { pLabel = 'Breadcrumb', pClass, ...attrs } = Astro.props;
+---
+
+<nav aria-label={pLabel} {...attrs}>
+  <ol class={['breadcrumb', pClass].filter(Boolean).join(' ')}>
+    <slot />
+  </ol>
+</nav>

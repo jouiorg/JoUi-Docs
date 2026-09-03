@@ -1,0 +1,13 @@
+---
+import './progress.css';
+
+interface Props {
+  pValue?: number;
+  pMax?: number;
+  pClass?: string;
+}
+
+const { pValue, pMax = 100, pClass, ...attrs } = Astro.props;
+---
+
+<progress value={pValue} max={pMax} class={pClass} {...attrs} />

@@ -1,0 +1,16 @@
+---
+import './pagination.css';
+
+interface Props {
+  pLabel?: string;
+  pClass?: string;
+}
+
+const { pLabel = 'Pagination', pClass, ...attrs } = Astro.props;
+---
+
+<nav aria-label={pLabel} {...attrs}>
+  <ol class={['pagination', pClass].filter(Boolean).join(' ')}>
+    <slot />
+  </ol>
+</nav>

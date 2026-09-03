@@ -1,0 +1,15 @@
+---
+import './table.css';
+
+interface Props {
+  pClass?: string;
+}
+
+const { pClass, ...attrs } = Astro.props;
+---
+
+<div class="table">
+  <table class={pClass} {...attrs}>
+    <slot />
+  </table>
+</div>

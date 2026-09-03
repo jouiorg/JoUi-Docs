@@ -1,0 +1,15 @@
+---
+import './form.css';
+
+interface Props {
+  pAction?: string;
+  pMethod?: 'get' | 'post';
+  pClass?: string;
+}
+
+const { pAction, pMethod = 'post', pClass, ...attrs } = Astro.props;
+---
+
+<form action={pAction} method={pMethod} class={pClass} {...attrs}>
+  <slot />
+</form>

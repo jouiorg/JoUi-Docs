@@ -1,0 +1,26 @@
+---
+import './meter.css';
+
+interface Props {
+  pValue: number;
+  pMin?: number;
+  pMax?: number;
+  pLow?: number;
+  pHigh?: number;
+  pOptimum?: number;
+  pClass?: string;
+}
+
+const { pValue, pMin = 0, pMax = 1, pLow, pHigh, pOptimum, pClass, ...attrs } = Astro.props;
+---
+
+<meter
+  value={pValue}
+  min={pMin}
+  max={pMax}
+  low={pLow}
+  high={pHigh}
+  optimum={pOptimum}
+  class={pClass}
+  {...attrs}
+/>
