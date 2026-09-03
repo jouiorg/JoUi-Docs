@@ -20,6 +20,17 @@ import Toast from 'src/components/toast/toast.astro';
 
 This registers `toast()`, `toastEl()`, and `toastClear()` on `window`.
 
+## Demo
+
+<Toast />
+
+<div class="doc-preview">
+  <button class="btn btn--outline btn--sm" onclick="window.toast('Saved successfully', { variant: 'success' })">Success</button>
+  <button class="btn btn--outline btn--sm" onclick="window.toast('Something went wrong', { variant: 'danger' })">Danger</button>
+  <button class="btn btn--outline btn--sm" onclick="window.toast('Check your input', { variant: 'warning' })">Warning</button>
+  <button class="btn btn--outline btn--sm" onclick="window.toast('Update available')">Default</button>
+</div>
+
 ## Usage
 
 ```js
@@ -49,6 +60,18 @@ toastClear();
 | `'success'` | Positive outcome |
 | `'warning'` | Caution |
 | `'danger'` | Error or destructive action |
+
+## Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `variant` | `'default' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Visual style |
+| `duration` | `number` | `4000` | Auto-dismiss delay in milliseconds |
+| `placement` | `'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right'` | `'bottom-right'` | Screen position |
+
+## CSS Custom Properties
+
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
 
 ## Accessibility
 

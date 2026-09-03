@@ -4,7 +4,25 @@ section: layout
 order: 1
 ---
 
+import Grid from '@components/grid/grid.astro';
+
 Responsive layout container. Applies the `.container` class which provides a max-width, centered layout using CSS grid.
+
+## Example
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Grid>
+    <div class="row">
+      <div class="col-4" style="background: var(--muted); padding: 1rem; border-radius: var(--radius-small); text-align: center">col-4</div>
+      <div class="col-4" style="background: var(--muted); padding: 1rem; border-radius: var(--radius-small); text-align: center">col-4</div>
+      <div class="col-4" style="background: var(--muted); padding: 1rem; border-radius: var(--radius-small); text-align: center">col-4</div>
+    </div>
+    <div class="row" style="margin-top: 1rem">
+      <div class="col-8" style="background: var(--muted); padding: 1rem; border-radius: var(--radius-small); text-align: center">col-8</div>
+      <div class="col-4" style="background: var(--muted); padding: 1rem; border-radius: var(--radius-small); text-align: center">col-4</div>
+    </div>
+  </Grid>
+</div>
 
 ## Usage
 
@@ -33,3 +51,12 @@ import Grid from 'src/components/grid/grid.astro';
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--grid-cols` | `12` | Number of columns |
+| `--grid-gap` | `1.5rem` | Gap between columns |
+| `--container-max` | `1280px` | Maximum container width |
+| `--container-pad` | `1rem` | Container horizontal padding |

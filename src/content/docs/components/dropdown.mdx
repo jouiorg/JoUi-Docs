@@ -4,20 +4,34 @@ section: overlays
 order: 2
 ---
 
-Accessible dropdown menu built as a Web Component (`ot-dropdown`). Handles keyboard navigation and click-outside closing automatically.
+import Dropdown from '@components/dropdown/dropdown.astro';
+
+Accessible dropdown menu built as a Web Component (`ot-dropdown`). Handles keyboard navigation and click-outside closing automatically. Uses the native Popover API.
+
+## Example
+
+<div class="doc-preview">
+  <Dropdown>
+    <button popovertarget="demo-dd" class="btn btn--outline btn--md">Options ▾</button>
+    <div id="demo-dd" popover>
+      <a href="#" role="menuitem">Edit</a>
+      <a href="#" role="menuitem">Duplicate</a>
+      <hr />
+      <a href="#" role="menuitem">Delete</a>
+    </div>
+  </Dropdown>
+</div>
 
 ## Usage
 
 ```html
 <ot-dropdown>
-  <button slot="trigger" class="btn btn--outline btn--md">
-    Options ▾
-  </button>
-  <div slot="content">
-    <a href="#">Edit</a>
-    <a href="#">Duplicate</a>
+  <button popovertarget="my-dropdown" class="btn btn--outline btn--md">Options ▾</button>
+  <div id="my-dropdown" popover>
+    <a href="#" role="menuitem">Edit</a>
+    <a href="#" role="menuitem">Duplicate</a>
     <hr />
-    <a href="#" data-variant="danger">Delete</a>
+    <a href="#" role="menuitem">Delete</a>
   </div>
 </ot-dropdown>
 
@@ -28,13 +42,14 @@ Accessible dropdown menu built as a Web Component (`ot-dropdown`). Handles keybo
 
 ```astro
 import Dropdown from 'src/components/dropdown/dropdown.astro';
-import Button from 'src/primitives/button/button.astro';
 
 <Dropdown>
-  <Button slot="trigger" pVariant="outline">Options ▾</Button>
-  <div slot="content">
-    <a href="#">Edit</a>
-    <a href="#">Delete</a>
+  <button popovertarget="my-dropdown" class="btn btn--outline btn--md">Options ▾</button>
+  <div id="my-dropdown" popover>
+    <a href="#" role="menuitem">Edit</a>
+    <a href="#" role="menuitem">Duplicate</a>
+    <hr />
+    <a href="#" role="menuitem">Delete</a>
   </div>
 </Dropdown>
 ```
@@ -45,12 +60,9 @@ import Button from 'src/primitives/button/button.astro';
 |------|------|---------|-------------|
 | `pClass` | `string` | — | Additional CSS classes on the `ot-dropdown` element |
 
-## Slots
+## CSS Custom Properties
 
-| Slot | Description |
-|------|-------------|
-| `trigger` | The button or element that toggles the dropdown |
-| `content` | The dropdown panel content |
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
 
 ## Accessibility
 

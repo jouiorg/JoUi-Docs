@@ -4,7 +4,25 @@ section: forms
 order: 6
 ---
 
+import Upload from '@components/upload/upload.astro';
+
 File upload zone with drag-and-drop support. Built as a Web Component (`ot-upload`).
+
+## Example
+
+<div class="doc-preview">
+  <div style="width: 22rem">
+    <Upload pName="demo-file" />
+  </div>
+</div>
+
+## Multiple files
+
+<div class="doc-preview">
+  <div style="width: 22rem">
+    <Upload pName="attachments" pMultiple pAccept="image/*,.pdf" />
+  </div>
+</div>
 
 ## Usage
 
@@ -48,6 +66,10 @@ import Upload from 'src/components/upload/upload.astro';
 | `pAccept` | `string` | — | Accepted file types (e.g. `'image/*,.pdf'`) |
 | `pDisabled` | `boolean` | `false` | Disabled state |
 | `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
 
 ## Accessibility
 

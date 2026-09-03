@@ -4,7 +4,29 @@ section: overlays
 order: 3
 ---
 
+import Tooltip from '@components/tooltip/tooltip.astro';
+
 Short contextual text shown on hover or focus. Uses `data-tooltip` attribute — the JS converts `title` attributes to `data-tooltip` automatically.
+
+## Example
+
+<div class="doc-preview">
+  <Tooltip pContent="Default tooltip">
+    <button class="btn btn--outline btn--sm">Hover me</button>
+  </Tooltip>
+  <Tooltip pContent="Appears above" pPlacement="top">
+    <button class="btn btn--outline btn--sm">Top</button>
+  </Tooltip>
+  <Tooltip pContent="Appears below" pPlacement="bottom">
+    <button class="btn btn--outline btn--sm">Bottom</button>
+  </Tooltip>
+  <Tooltip pContent="Left side" pPlacement="left">
+    <button class="btn btn--outline btn--sm">Left</button>
+  </Tooltip>
+  <Tooltip pContent="Right side" pPlacement="right">
+    <button class="btn btn--outline btn--sm">Right</button>
+  </Tooltip>
+</div>
 
 ## Usage
 
@@ -41,6 +63,10 @@ import Tooltip from 'src/components/tooltip/tooltip.astro';
 | `pContent` | `string` | — | **Required.** Tooltip text |
 | `pPlacement` | `'top' \| 'bottom' \| 'left' \| 'right'` | — | Preferred placement |
 | `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
 
 ## Accessibility
 

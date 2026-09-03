@@ -53,6 +53,14 @@ import Switch from 'src/components/switch/switch.astro';
 | `pDisabled` | `boolean` | `false` | Disabled state |
 | `pClass` | `string` | — | Additional CSS classes |
 
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--switch-height` | `calc(var(--bar-height) * 3)` | Overall height of the switch track |
+| `--switch-inset` | `2px` | Spacing between the thumb and the track edge |
+| `--switch-thumb` | `calc(var(--switch-height) - var(--switch-inset) * 3)` | Diameter of the sliding thumb |
+
 ## Accessibility
 
 - `role="switch"` communicates the toggle semantics to screen readers

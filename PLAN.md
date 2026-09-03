@@ -52,48 +52,49 @@ Component library based on oat.ink, documented with Astro.js, compatible with Dr
 ## Phase 2 — Component Audit & Port
 
 ### 2.1 Audit oat.ink Components — closes #5
-- [ ] Go through oat.ink and list all components
-- [ ] Group by category (Typography, Forms, Buttons, Navigation, Feedback, Layout, Overlay, etc.)
-- [ ] Note which ones need JS and which are HTML-native
+- [x] Go through oat.ink and list all components
+- [x] Group by category (Typography, Forms, Buttons, Navigation, Feedback, Layout, Overlay, etc.)
+- [x] Note which ones need JS and which are HTML-native
 - [ ] Save full list in `COMPONENTS.md`
 
 ### 2.2 Port Components (simple → complex) — closes #6
-For each component:
-- [ ] Create component directory
-- [ ] Write standalone CSS (oat.ink naming for now)
-- [ ] Write `.astro` component wrapper
-- [ ] Add JS only if strictly necessary
-- [ ] Use HTML-native APIs where possible:
-  - Dropdown → `<details>` / `<select>`
-  - Modal → `<dialog>`
-  - Accordion → `<details>`
+All components ported:
 
-**Order:** Typography → Buttons → Forms → Cards → Navigation → Overlays → Complex
+**Primitives:** avatar, badge, button, heading, skeleton, spinner
+
+**Components:** accordion, accordion-item, alert, breadcrumb, card, dialog, dropdown, form, grid, meter, pagination, progress, sidebar, switch, table, tabs, taginput, toast, tooltip, upload
+
+- [x] Create component directories
+- [x] Write standalone CSS (oat.ink naming for now)
+- [x] Write `.astro` component wrappers
+- [x] Add JS only where strictly necessary (dropdown, sidebar, tabs, taginput, toast, tooltip, upload)
+- [x] Use HTML-native APIs where possible (accordion → `<details>`, dialog → `<dialog>`)
 
 ---
 
 ## Phase 3 — Documentation Site
 
 ### 3.1 Docs Layout — closes #7
-- [ ] Design and build docs shell:
+- [x] Design and build docs shell:
   - Sidebar with component categories + links
   - Main content area
-  - Top navigation (theme switcher placeholder, GitHub link, language switcher placeholder)
-- [ ] Mobile-responsive layout
+  - Top navigation (theme switcher, GitHub link)
+- [x] Mobile-responsive layout
+- [x] Dark/light theme toggle
+- [x] i18n wired into sidebar labels
 
 ### 3.2 Per-Component Doc Page Template — closes #8
-Each component page includes:
-- [ ] **Overview** — short description
-- [ ] **Variants** — visual preview per variant (live rendered)
-- [ ] **Usage** — copyable HTML code block per variant
-- [ ] **CSS Variables** — table: variable name, default value, description
-- [ ] **Props / Attributes** — table: name, type, default, description
-- [ ] **Accessibility notes** — where relevant
+- [x] Overview description per component
+- [x] Live preview (all 26 components)
+- [x] Usage — HTML + Astro code blocks
+- [x] Props table
+- [x] CSS Custom Properties table (or note when none)
+- [x] Accessibility notes (where relevant)
 
 ### 3.3 Claude Skill — Generate Component Docs — closes #9
-- [ ] Create a Claude skill that generates a full component doc page from a component directory
-- [ ] Input: component name
-- [ ] Output: complete `.astro` doc page with all sections pre-filled
+- [x] Create a Claude skill that generates a full component doc page from a component directory
+- [x] Input: component name
+- [x] Output: complete `.mdx` doc page with all sections pre-filled
 
 ---
 

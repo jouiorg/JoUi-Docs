@@ -4,7 +4,24 @@ section: advanced
 order: 1
 ---
 
+import Tabs from '@components/tabs/tabs.astro';
+
 Tabbed content panels built as a Web Component (`ot-tabs`). Optionally syncs the active tab to the URL hash.
+
+## Example
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Tabs>
+    <div role="tablist">
+      <button role="tab">Overview</button>
+      <button role="tab">Usage</button>
+      <button role="tab">Props</button>
+    </div>
+    <div role="tabpanel">Overview content — what the component does and when to use it.</div>
+    <div role="tabpanel">Usage content — how to use it in HTML or Astro.</div>
+    <div role="tabpanel">Props — all available configuration options.</div>
+  </Tabs>
+</div>
 
 ## Usage
 
@@ -57,6 +74,10 @@ import Tabs from 'src/components/tabs/tabs.astro';
 |------|------|---------|-------------|
 | `pAnchor` | `string` | — | Key used to sync active tab to URL hash |
 | `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
 
 ## Accessibility
 

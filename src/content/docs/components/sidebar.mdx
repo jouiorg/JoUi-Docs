@@ -4,7 +4,32 @@ section: layout
 order: 2
 ---
 
+import Sidebar from '@components/sidebar/sidebar.astro';
+
 Layout component with a main content area and a collapsible sidebar panel. Toggle via `data-sidebar-layout` and the included JS.
+
+## Example
+
+<div class="doc-preview" style="padding: 0; overflow: hidden; width: 100%; min-height: 14rem">
+  <Sidebar style="height: 14rem; width: 100%">
+    <nav data-topnav style="position: relative">
+      <button data-sidebar-toggle class="btn btn--outline btn--sm" style="padding: 0 0.5rem">☰</button>
+      <span style="font-weight: 600">App</span>
+    </nav>
+    <aside data-sidebar>
+      <nav>
+        <ul>
+          <li><a href="#" aria-current>Dashboard</a></li>
+          <li><a href="#">Settings</a></li>
+          <li><a href="#">Profile</a></li>
+        </ul>
+      </nav>
+    </aside>
+    <main>
+      <p style="padding: 1rem; color: var(--muted-foreground)">Main content area</p>
+    </main>
+  </Sidebar>
+</div>
 
 ## Usage
 
@@ -50,3 +75,9 @@ import Sidebar from 'src/components/sidebar/sidebar.astro';
 |------|------|---------|-------------|
 | `pMode` | `'always'` | — | When set, the sidebar is always visible (no toggle) |
 | `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--sidebar-width` | `15rem` | Width of the sidebar panel |

@@ -4,7 +4,25 @@ section: forms
 order: 5
 ---
 
+import TagInput from '@components/taginput/taginput.astro';
+
 Input field that converts typed values into removable tag chips. Built as a Web Component (`ot-taginput`).
+
+## Example
+
+<div class="doc-preview">
+  <div style="width: 22rem">
+    <TagInput pValue="design, development, css" />
+  </div>
+</div>
+
+## Disabled
+
+<div class="doc-preview">
+  <div style="width: 22rem">
+    <TagInput pValue="read-only, tag" pDisabled />
+  </div>
+</div>
 
 ## Usage
 
@@ -56,3 +74,7 @@ import TagInput from 'src/components/taginput/taginput.astro';
 ## Value format
 
 Tags are stored as a comma-separated string in the `value` attribute. To read the current tags in a form, read the `value` property of the `ot-taginput` element.
+
+## CSS Custom Properties
+
+No component-specific CSS variables. Appearance is controlled by the global design tokens in `tokens.css`.
