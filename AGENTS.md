@@ -21,6 +21,26 @@ npm run preview   # Preview production build
 
 No linter or test runner is currently configured.
 
+## Component Structure (SDC-compatible)
+
+Each component lives in its own directory under `src/components/`:
+
+```
+src/components/
+  [component-name]/
+    [component-name].astro   # Astro wrapper — imports the CSS, defines Props interface
+    [component-name].css     # Standalone CSS — shared with Drupal SDC
+    [component-name].js      # Optional — only when JS is strictly necessary
+```
+
+Rules:
+- CSS is standalone (no scoped `<style>` blocks) so it can be consumed by Drupal independently
+- CSS uses custom properties for all variable values (variants, sizes, states)
+- Variants and sizes are expressed as modifier classes: `btn--primary`, `btn--lg`
+- JS is used only when HTML-native APIs (`<dialog>`, `<details>`) are not sufficient
+
+See `src/components/button/` as the reference implementation.
+
 ## Stack
 
 - **Astro 7** — static site, no framework integrations (no React/Vue/Svelte)

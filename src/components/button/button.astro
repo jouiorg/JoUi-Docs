@@ -1,0 +1,34 @@
+---
+import './button.css';
+
+interface Props {
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  size?: 'sm' | 'md' | 'lg';
+  disabled?: boolean;
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+}
+
+const {
+  variant = 'primary',
+  size = 'md',
+  disabled = false,
+  href,
+  type = 'button',
+  ...attrs
+} = Astro.props;
+
+const classes = ['btn', `btn--${variant}`, `btn--${size}`].join(' ');
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag
+  class={classes}
+  href={href}
+  type={!href ? type : undefined}
+  disabled={!href ? disabled : undefined}
+  aria-disabled={href && disabled ? 'true' : undefined}
+  {...attrs}
+>
+  <slot />
+</Tag>
