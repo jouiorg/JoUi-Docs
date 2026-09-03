@@ -21,42 +21,56 @@ npm run preview   # Preview production build
 
 No linter or test runner is currently configured.
 
-## Component Structure (SDC-compatible)
-
-Each component lives in its own directory under `src/components/`:
+## Source Structure
 
 ```
-src/components/
-  [component-name]/
-    [component-name].astro   # Astro wrapper — imports the CSS, defines Props interface
-    [component-name].css     # Standalone CSS — shared with Drupal SDC
-    [component-name].js      # Optional — only when JS is strictly necessary
+src/
+  primitives/   # Atomic building blocks (heading, button, badge…)
+  components/   # Composed/complex components (accordion, dialog, sidebar…)
+  styles/       # Global CSS — imported once in Layout.astro
+  layouts/      # Page wrappers
+  pages/        # File-based routes
 ```
 
-Rules:
-- CSS is standalone (no scoped `<style>` blocks) so it can be consumed by Drupal independently
+## Global styles (`src/styles/`)
+
+Files here are imported **once** in `Layout.astro` and apply site-wide:
+
+- `tokens.css` — design tokens (CSS custom properties)
+- `typography.css` — base HTML element styles (h1–h6, p, a, code…)
+
+When adding a new global style file, add its import to `Layout.astro`.
+
+## Primitives vs Components
+
+Both follow the same file pattern — CSS lives in the component directory and is imported by the `.astro` wrapper:
+
+```
+src/primitives/[name]/
+  [name].css     # Standalone CSS — also consumable by Drupal SDC directly
+  [name].astro   # Astro wrapper — imports its own CSS
+
+src/components/[name]/
+  [name].css     # Standalone CSS — also consumable by Drupal SDC directly
+  [name].astro   # Astro wrapper — imports its own CSS
+  [name].js      # Optional — only when JS is strictly necessary
+```
+
+The distinction is conceptual:
+- **Primitives** — atomic elements used as building blocks everywhere (heading, button, badge, avatar, spinner, skeleton)
+- **Components** — composed or context-specific (accordion, card, alert, dialog, sidebar…)
+
+Rules for both:
+- CSS is standalone (no scoped `<style>` blocks) so it can be consumed by Drupal SDC independently
 - CSS uses custom properties for all variable values (variants, sizes, states)
-- Variants and sizes are expressed as modifier classes: `btn--primary`, `btn--lg`
+- Variants are expressed as modifier classes (`btn--primary`) or `data-variant` attributes
 - JS is used only when HTML-native APIs (`<dialog>`, `<details>`) are not sufficient
-
-See `src/components/button/` as the reference implementation.
 
 ## Stack
 
 - **Astro 7** — static site, no framework integrations (no React/Vue/Svelte)
 - **TypeScript** — strict mode (`astro/tsconfigs/strict`)
-- **Plain scoped CSS** — no Tailwind, no CSS variables system; styles live in `<style>` blocks inside `.astro` files
-
-## Architecture
-
-```
-src/
-  assets/       # Optimized at build time (SVGs, images)
-  components/   # Astro components
-  layouts/      # Page wrappers (Layout.astro is the root shell)
-  pages/        # File-based routes → HTML pages
-public/         # Copied as-is to dist/ (favicons, static assets)
-```
+- **Plain CSS with `@layer`** — no Tailwind; styles in standalone `.css` files per component
 
 `src/pages/index.astro` is the only route. `src/layouts/Layout.astro` wraps it with the HTML shell. No content collections are set up yet.
 
