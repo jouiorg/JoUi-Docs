@@ -1,0 +1,72 @@
+---
+title: Spinner
+description: Animated loading indicator.
+---
+
+import Spinner from '@primitives/spinner/spinner.astro';
+
+Animated loading indicator. Uses `aria-busy="true"` for accessible state communication.
+
+## Sizes
+
+<div class="doc-preview" style="align-items: center">
+  <Spinner pSize="small" />
+  <Spinner />
+  <Spinner pSize="large" />
+</div>
+
+## Overlay
+
+Wraps content with a loading overlay. Child elements are dimmed.
+
+<div class="doc-preview">
+  <Spinner pOverlay>
+    <div style="padding: var(--space-4); background: var(--background); border-radius: var(--radius-medium)">
+      Some content being loaded
+    </div>
+  </Spinner>
+</div>
+
+## Usage
+
+```html
+<!-- Default -->
+<div aria-busy="true" aria-label="Loading…"></div>
+
+<!-- Small -->
+<div aria-busy="true" data-spinner="small" aria-label="Loading…"></div>
+
+<!-- Large -->
+<div aria-busy="true" data-spinner="large" aria-label="Loading…"></div>
+
+<!-- Overlay -->
+<div aria-busy="true" data-spinner="overlay" aria-label="Loading…">
+  <p>Content being loaded</p>
+</div>
+```
+
+## Astro
+
+```astro
+import Spinner from 'src/primitives/spinner/spinner.astro';
+
+<Spinner />
+<Spinner pSize="small" />
+<Spinner pOverlay>
+  <p>Content being loaded</p>
+</Spinner>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Spinner size |
+| `pOverlay` | `boolean` | `false` | Renders as overlay over slotted content |
+| `pLabel` | `string` | `'Loading…'` | Accessible label (`aria-label`) |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Uses `aria-busy="true"` to communicate loading state to assistive technology
+- `aria-label` defaults to `"Loading…"` — customize with `pLabel` when context requires it

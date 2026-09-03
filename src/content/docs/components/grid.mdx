@@ -1,0 +1,34 @@
+---
+title: Grid
+description: Responsive container using CSS grid.
+---
+
+Responsive layout container. Applies the `.container` class which provides a max-width, centered layout using CSS grid.
+
+## Usage
+
+```html
+<div class="container">
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</div>
+```
+
+## Astro
+
+```astro
+import Grid from 'src/components/grid/grid.astro';
+
+<Grid>
+  <div>Column 1</div>
+  <div>Column 2</div>
+  <div>Column 3</div>
+</Grid>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pClass` | `string` | — | Additional CSS classes |

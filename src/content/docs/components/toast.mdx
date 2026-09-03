@@ -1,0 +1,56 @@
+---
+title: Toast
+description: Transient notification messages triggered via JavaScript.
+---
+
+import Toast from '@components/toast/toast.astro';
+
+Transient notification messages triggered via JavaScript. Include the `<Toast />` component once on the page to register the `window.toast` API.
+
+## Setup
+
+Include the component once in your layout or page:
+
+```astro
+import Toast from 'src/components/toast/toast.astro';
+
+<Toast />
+```
+
+This registers `toast()`, `toastEl()`, and `toastClear()` on `window`.
+
+## Usage
+
+```js
+// Simple message
+toast('Saved successfully');
+
+// With variant
+toast('Something went wrong', { variant: 'danger' });
+toast('File uploaded', { variant: 'success' });
+toast('Check your input', { variant: 'warning' });
+
+// Custom duration (ms), default: 4000
+toast('Quick message', { duration: 2000 });
+
+// Element-based (returns the toast element)
+const el = toastEl('Processing…', { variant: 'default' });
+
+// Clear all toasts
+toastClear();
+```
+
+## Variants
+
+| Value | Description |
+|-------|-------------|
+| `'default'` | Neutral message |
+| `'success'` | Positive outcome |
+| `'warning'` | Caution |
+| `'danger'` | Error or destructive action |
+
+## Accessibility
+
+- Toasts are announced to screen readers via an ARIA live region
+- Keep messages short and actionable — toasts disappear automatically
+- Do not use toasts for critical information that requires user action (use `Alert` or `Dialog` instead)

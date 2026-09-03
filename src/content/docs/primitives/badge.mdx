@@ -1,0 +1,57 @@
+---
+title: Badge
+description: Small label used to display status, category, or a count.
+---
+
+import Badge from '@primitives/badge/badge.astro';
+
+Small label used to display status, category, or a count.
+
+## Variants
+
+<div class="doc-preview" style="align-items: center">
+  <Badge>Default</Badge>
+  <Badge pVariant="secondary">Secondary</Badge>
+  <Badge pVariant="outline">Outline</Badge>
+  <Badge pVariant="success">Success</Badge>
+  <Badge pVariant="warning">Warning</Badge>
+  <Badge pVariant="danger">Danger</Badge>
+</div>
+
+## Usage
+
+```html
+<span class="badge">Default</span>
+<span class="badge" data-variant="secondary">Secondary</span>
+<span class="badge outline">Outline</span>
+<span class="badge" data-variant="success">Success</span>
+<span class="badge" data-variant="warning">Warning</span>
+<span class="badge" data-variant="danger">Danger</span>
+```
+
+## Astro
+
+```astro
+import Badge from 'src/primitives/badge/badge.astro';
+
+<Badge pVariant="success">Active</Badge>
+<Badge pVariant="danger">Error</Badge>
+```
+
+## With dismiss button
+
+Add a `<button>` inside the badge for a dismissible tag.
+
+```html
+<span class="badge">
+  Tag
+  <button aria-label="Remove tag">&times;</button>
+</span>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pVariant` | `'default' \| 'secondary' \| 'outline' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Color variant |
+| `pClass` | `string` | — | Additional CSS classes |

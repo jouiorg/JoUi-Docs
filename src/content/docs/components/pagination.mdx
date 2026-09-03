@@ -1,0 +1,60 @@
+---
+title: Pagination
+description: Navigation for paged content.
+---
+
+import Pagination from '@components/pagination/pagination.astro';
+
+Navigation control for paged content.
+
+## Example
+
+<div class="doc-preview">
+  <Pagination>
+    <li><a href="#">&laquo;</a></li>
+    <li><a href="#">1</a></li>
+    <li><a href="#" aria-current="page">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">&raquo;</a></li>
+  </Pagination>
+</div>
+
+## Usage
+
+```html
+<nav aria-label="Pagination">
+  <ol class="pagination">
+    <li><a href="/page/1">&laquo;</a></li>
+    <li><a href="/page/1">1</a></li>
+    <li><a href="/page/2" aria-current="page">2</a></li>
+    <li><a href="/page/3">3</a></li>
+    <li><a href="/page/3">&raquo;</a></li>
+  </ol>
+</nav>
+```
+
+## Astro
+
+```astro
+import Pagination from 'src/components/pagination/pagination.astro';
+
+<Pagination>
+  <li><a href="/page/1">&laquo;</a></li>
+  <li><a href="/page/1">1</a></li>
+  <li><a href="/page/2" aria-current="page">2</a></li>
+  <li><a href="/page/3">3</a></li>
+  <li><a href="/page/3">&raquo;</a></li>
+</Pagination>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pLabel` | `string` | `'Pagination'` | `aria-label` for the `<nav>` wrapper |
+| `pClass` | `string` | — | Additional CSS classes on the `<ol>` |
+
+## Accessibility
+
+- Wrapped in `<nav>` with `aria-label` for landmark navigation
+- Active page uses `aria-current="page"`

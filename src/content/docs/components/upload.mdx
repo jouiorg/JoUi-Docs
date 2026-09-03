@@ -1,0 +1,54 @@
+---
+title: Upload
+description: File upload zone with drag-and-drop support.
+---
+
+File upload zone with drag-and-drop support. Built as a Web Component (`ot-upload`).
+
+## Usage
+
+```html
+<ot-upload>
+  <input type="file" name="files" hidden />
+  <button type="button">Choose files</button>
+  <div data-files>
+    <small data-hint>Drop files here or click to choose</small>
+  </div>
+</ot-upload>
+
+<!-- Multiple files -->
+<ot-upload>
+  <input type="file" name="files" multiple hidden />
+  <button type="button">Choose files</button>
+  <div data-files>
+    <small data-hint>Drop files here or click to choose</small>
+  </div>
+</ot-upload>
+
+<script type="module" src="/path/to/upload.js"></script>
+```
+
+## Astro
+
+```astro
+import Upload from 'src/components/upload/upload.astro';
+
+<Upload pName="avatar" />
+<Upload pName="attachments" pMultiple pAccept="image/*,.pdf" />
+<Upload pName="files" pDisabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pName` | `string` | — | File input `name` attribute |
+| `pMultiple` | `boolean` | `false` | Allow selecting multiple files |
+| `pAccept` | `string` | — | Accepted file types (e.g. `'image/*,.pdf'`) |
+| `pDisabled` | `boolean` | `false` | Disabled state |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- The native `<input type="file">` handles keyboard access and screen reader announcements
+- Drag-and-drop is an enhancement — the button always works as the primary trigger

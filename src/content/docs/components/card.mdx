@@ -1,0 +1,46 @@
+---
+title: Card
+description: Generic content container using the article element.
+---
+
+import Card from '@components/card/card.astro';
+import Button from '@primitives/button/button.astro';
+
+Generic content container. Renders as a semantic `<article>` element.
+
+## Examples
+
+<div class="doc-preview">
+  <Card style="width: 16rem">
+    <h3 style="margin: 0 0 var(--space-2)">Card Title</h3>
+    <p style="margin: 0 0 var(--space-4)">Card description goes here.</p>
+    <Button pVariant="primary" pSize="sm">Action</Button>
+  </Card>
+</div>
+
+## Usage
+
+```html
+<article class="card">
+  <h3>Card Title</h3>
+  <p>Card description goes here.</p>
+  <button class="btn btn--primary btn--sm">Action</button>
+</article>
+```
+
+## Astro
+
+```astro
+import Card from 'src/components/card/card.astro';
+
+<Card>
+  <h3>Card Title</h3>
+  <p>Card description.</p>
+</Card>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pClass` | `string` | — | Additional CSS classes |

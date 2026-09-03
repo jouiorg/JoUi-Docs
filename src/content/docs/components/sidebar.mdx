@@ -1,0 +1,51 @@
+---
+title: Sidebar
+description: Layout component with a collapsible sidebar panel.
+---
+
+Layout component with a main content area and a collapsible sidebar panel. Toggle via `data-sidebar-layout` and the included JS.
+
+## Usage
+
+```html
+<div data-sidebar-layout>
+  <aside>
+    <p>Sidebar content</p>
+  </aside>
+  <main>
+    <p>Main content</p>
+  </main>
+</div>
+
+<!-- Always visible (no collapse) -->
+<div data-sidebar-layout="always">
+  <aside>Sidebar</aside>
+  <main>Main</main>
+</div>
+
+<script type="module" src="/path/to/sidebar.js"></script>
+```
+
+## Astro
+
+```astro
+import Sidebar from 'src/components/sidebar/sidebar.astro';
+
+<Sidebar>
+  <aside>Sidebar</aside>
+  <main>Main content</main>
+</Sidebar>
+
+<!-- Always visible -->
+<Sidebar pMode="always">
+  <aside>Sidebar</aside>
+  <main>Main content</main>
+</Sidebar>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pMode` | `'always'` | — | When set, the sidebar is always visible (no toggle) |
+| `pClass` | `string` | — | Additional CSS classes |

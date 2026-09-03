@@ -1,0 +1,66 @@
+---
+title: Form
+description: Styled form layout with inputs, labels, and validation states.
+---
+
+import Form from '@components/form/form.astro';
+import Button from '@primitives/button/button.astro';
+
+Styled form layout. The CSS covers native form elements — `<input>`, `<select>`, `<textarea>`, `<label>`, fieldsets.
+
+## Example
+
+<div class="doc-preview">
+  <Form style="width: 100%; max-width: 24rem">
+    <div class="field">
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" placeholder="Your name" />
+    </div>
+    <div class="field">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="you@example.com" />
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" rows="3" placeholder="Your message"></textarea>
+    </div>
+    <Button pType="submit" pVariant="primary">Send</Button>
+  </Form>
+</div>
+
+## Usage
+
+```html
+<form action="/submit" method="post">
+  <div class="field">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" />
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" />
+  </div>
+  <button type="submit" class="btn btn--primary btn--md">Submit</button>
+</form>
+```
+
+## Astro
+
+```astro
+import Form from 'src/components/form/form.astro';
+
+<Form pAction="/submit" pMethod="post">
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" />
+  </div>
+</Form>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pAction` | `string` | — | Form `action` URL |
+| `pMethod` | `'get' \| 'post'` | `'post'` | Form submission method |
+| `pClass` | `string` | — | Additional CSS classes |

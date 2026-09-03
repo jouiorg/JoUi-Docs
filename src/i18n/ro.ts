@@ -7,12 +7,28 @@ export const ro: Record<string, string> = {
   'nav.docs': 'Docs',
   'nav.components': 'Componente',
   'nav.github': 'GitHub',
+  'nav.toggleTheme': 'Schimbă tema',
+  'nav.toggleMenu': 'Meniu',
 
-  // Docs sidebar
+  // Docs sidebar sections
   'sidebar.gettingStarted': 'Începe',
+  'sidebar.primitives': 'Primitive',
   'sidebar.components': 'Componente',
+  'sidebar.content': 'Conținut',
+  'sidebar.feedback': 'Feedback',
+  'sidebar.navigation': 'Navigare',
+  'sidebar.forms': 'Formulare',
+  'sidebar.dataDisplay': 'Date',
+  'sidebar.layout': 'Layout',
+  'sidebar.overlays': 'Overlay-uri',
+  'sidebar.advanced': 'Avansate',
 
-  // Component page
+  // Getting started pages
+  'docs.introduction': 'Introducere',
+  'docs.installation': 'Instalare',
+  'docs.usage': 'Utilizare',
+
+  // Component page sections
   'component.overview': 'Prezentare',
   'component.variants': 'Variante',
   'component.usage': 'Utilizare',

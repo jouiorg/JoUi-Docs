@@ -1,0 +1,26 @@
+---
+import DocsLayout from '../../layouts/DocsLayout.astro';
+---
+
+<DocsLayout title="Introduction">
+  <h1>joui</h1>
+  <p>An open-source HTML/CSS/JS component library built for the web — compatible with Astro.js and Drupal SDC.</p>
+
+  <h2>What is joui?</h2>
+  <p>
+    joui is a framework-agnostic component library. Components are plain HTML/CSS with optional
+    minimal JavaScript. They work in any HTML template — Astro, Drupal Twig, Laravel Blade, or static HTML.
+  </p>
+
+  <h2>Design principles</h2>
+  <ul>
+    <li><strong>No framework lock-in</strong> — plain HTML, CSS custom properties, minimal JS</li>
+    <li><strong>Drupal SDC compatible</strong> — each component is a self-contained directory</li>
+    <li><strong>Accessible by default</strong> — semantic HTML and ARIA attributes</li>
+    <li><strong>Themeable</strong> — all values via CSS custom properties</li>
+  </ul>
+
+  <h2>Quick start</h2>
+  <p>Include the CSS for the components you need. Each component CSS file is standalone.</p>
+  <pre><code>&lt;link rel="stylesheet" href="path/to/button/button.css" /&gt;</code></pre>
+</DocsLayout>

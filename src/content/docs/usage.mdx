@@ -1,0 +1,56 @@
+---
+title: Usage
+description: How to use joui components in HTML, Astro, and Drupal.
+---
+
+Components are plain HTML with CSS classes. Apply the root class and modifier classes for variants and sizes.
+
+## HTML
+
+Apply the component's base class and any modifier classes directly in HTML.
+
+```html
+<!-- Button variants -->
+<button class="btn btn--primary btn--md">Primary</button>
+<button class="btn btn--outline btn--sm">Outline</button>
+
+<!-- Badge variants -->
+<span class="badge">Default</span>
+<span class="badge" data-variant="success">Success</span>
+```
+
+## Astro
+
+Astro wrapper components expose props with the `p` prefix to avoid conflicts with native HTML attributes and Drupal template variables.
+
+```astro
+import Button from 'src/primitives/button/button.astro';
+import Badge from 'src/primitives/badge/badge.astro';
+
+<Button pVariant="primary" pSize="md">Click me</Button>
+<Badge pVariant="success">Active</Badge>
+```
+
+## CSS Custom Properties
+
+Override component tokens on the element or in your theme.
+
+```css
+/* Override button radius globally */
+:root {
+  --btn-radius: 0.75rem;
+}
+```
+
+```html
+<!-- Override inline -->
+<button class="btn btn--primary" style="--btn-radius: 0">Square</button>
+```
+
+## Dark mode
+
+All components respond to the `data-theme="dark"` attribute on `<html>`. Tokens use `light-dark()` internally — no extra classes needed.
+
+```html
+<html data-theme="dark">
+```

@@ -1,0 +1,57 @@
+---
+title: Dropdown
+description: Accessible dropdown menu using a custom Web Component.
+---
+
+Accessible dropdown menu built as a Web Component (`ot-dropdown`). Handles keyboard navigation and click-outside closing automatically.
+
+## Usage
+
+```html
+<ot-dropdown>
+  <button slot="trigger" class="btn btn--outline btn--md">
+    Options ▾
+  </button>
+  <div slot="content">
+    <a href="#">Edit</a>
+    <a href="#">Duplicate</a>
+    <hr />
+    <a href="#" data-variant="danger">Delete</a>
+  </div>
+</ot-dropdown>
+
+<script type="module" src="/path/to/dropdown.js"></script>
+```
+
+## Astro
+
+```astro
+import Dropdown from 'src/components/dropdown/dropdown.astro';
+import Button from 'src/primitives/button/button.astro';
+
+<Dropdown>
+  <Button slot="trigger" pVariant="outline">Options ▾</Button>
+  <div slot="content">
+    <a href="#">Edit</a>
+    <a href="#">Delete</a>
+  </div>
+</Dropdown>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pClass` | `string` | — | Additional CSS classes on the `ot-dropdown` element |
+
+## Slots
+
+| Slot | Description |
+|------|-------------|
+| `trigger` | The button or element that toggles the dropdown |
+| `content` | The dropdown panel content |
+
+## Accessibility
+
+- Keyboard navigation: `Arrow Down` / `Arrow Up` moves between items, `Escape` closes
+- `aria-expanded` is toggled on the trigger automatically

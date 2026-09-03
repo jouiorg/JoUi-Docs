@@ -1,0 +1,52 @@
+---
+title: Progress
+description: Shows the completion progress of a task.
+---
+
+import Progress from '@components/progress/progress.astro';
+
+Shows the completion progress of a task. Uses the native `<progress>` element.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; width: 100%; gap: var(--space-3)">
+  <Progress pValue={30} />
+  <Progress pValue={60} />
+  <Progress pValue={100} />
+  <Progress />
+</div>
+
+## Usage
+
+```html
+<!-- 60% complete -->
+<progress value="60" max="100"></progress>
+
+<!-- Indeterminate (no value) -->
+<progress></progress>
+```
+
+## Astro
+
+```astro
+import Progress from 'src/components/progress/progress.astro';
+
+<Progress pValue={60} />
+<Progress pValue={60} pMax={200} />
+
+<!-- Indeterminate -->
+<Progress />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pValue` | `number` | — | Current value. Omit for indeterminate state |
+| `pMax` | `number` | `100` | Maximum value |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Always pair with a visible label or `aria-label` describing what's being measured
+- Indeterminate state (no `value`) is communicated to assistive technology automatically

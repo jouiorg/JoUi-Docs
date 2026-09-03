@@ -1,0 +1,57 @@
+---
+title: TagInput
+description: Input field that converts typed values into removable tag chips.
+---
+
+Input field that converts typed values into removable tag chips. Built as a Web Component (`ot-taginput`).
+
+## Usage
+
+```html
+<ot-taginput>
+  <input placeholder="Add tags…" />
+</ot-taginput>
+
+<!-- With pre-populated tags -->
+<ot-taginput value="design, development, css">
+  <input placeholder="Add tags…" />
+</ot-taginput>
+
+<!-- Disabled -->
+<ot-taginput disabled>
+  <input placeholder="Add tags…" />
+</ot-taginput>
+
+<script type="module" src="/path/to/taginput.js"></script>
+```
+
+## Keyboard interaction
+
+| Key | Action |
+|-----|--------|
+| `Enter` or `,` | Confirm current input as a tag |
+| `Backspace` (on empty input) | Remove last tag |
+| `Escape` | Clear current input |
+
+## Astro
+
+```astro
+import TagInput from 'src/components/taginput/taginput.astro';
+
+<TagInput pPlaceholder="Add tags…" />
+<TagInput pValue="design, css" />
+<TagInput pDisabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pValue` | `string` | — | Comma-separated initial tags |
+| `pDisabled` | `boolean` | `false` | Disabled state |
+| `pPlaceholder` | `string` | `'Add tags…'` | Input placeholder text |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Value format
+
+Tags are stored as a comma-separated string in the `value` attribute. To read the current tags in a form, read the `value` property of the `ot-taginput` element.

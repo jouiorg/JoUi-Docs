@@ -1,0 +1,54 @@
+---
+title: Accordion Item
+description: Individual expandable disclosure panel built on the native details element.
+---
+
+import Accordion from '@components/accordion/accordion.astro';
+import AccordionItem from '@components/accordion-item/accordion-item.astro';
+
+A single expandable panel. Built on the native `<details>` element — no JavaScript required. Use inside an [`Accordion`](/components/accordion) wrapper.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Accordion>
+    <AccordionItem pSummary="What is joui?">
+      joui is a framework-agnostic component library built for the web. Components are plain HTML/CSS with optional minimal JavaScript.
+    </AccordionItem>
+    <AccordionItem pSummary="Open by default" pOpen>
+      This item is open by default via the `pOpen` prop.
+    </AccordionItem>
+  </Accordion>
+</div>
+
+## Usage
+
+```html
+<details class="accordion__item">
+  <summary>Title</summary>
+  <p>Content goes here.</p>
+</details>
+```
+
+## Astro
+
+```astro
+import AccordionItem from 'src/components/accordion-item/accordion-item.astro';
+
+<AccordionItem pSummary="Title">Content goes here.</AccordionItem>
+<AccordionItem pSummary="Open by default" pOpen>Content.</AccordionItem>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pSummary` | `string` | — | **Required.** Toggle label |
+| `pName` | `string` | — | Groups items — only one in the group can be open at a time |
+| `pOpen` | `boolean` | `false` | Open by default |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Built on native `<details>` / `<summary>` — keyboard-accessible and screen-reader-friendly with no extra ARIA needed
+- The `name` attribute (exclusive group) is part of the HTML Living Standard

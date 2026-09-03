@@ -1,0 +1,43 @@
+---
+title: Heading
+description: Semantic heading element h1–h6 using the global typography scale.
+---
+
+import Heading from '@primitives/heading/heading.astro';
+
+Renders a semantic heading element `h1`–`h6` using the global typography scale.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; align-items: flex-start; gap: var(--space-2)">
+  <Heading pLevel={1}>Heading 1</Heading>
+  <Heading pLevel={2}>Heading 2</Heading>
+  <Heading pLevel={3}>Heading 3</Heading>
+  <Heading pLevel={4}>Heading 4</Heading>
+  <Heading pLevel={5}>Heading 5</Heading>
+  <Heading pLevel={6}>Heading 6</Heading>
+</div>
+
+## Usage
+
+```html
+<h1>Heading 1</h1>
+<h2>Heading 2</h2>
+<h3>Heading 3</h3>
+```
+
+## Astro
+
+```astro
+import Heading from 'src/primitives/heading/heading.astro';
+
+<Heading pLevel={1}>Page Title</Heading>
+<Heading pLevel={2}>Section Title</Heading>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pLevel` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `1` | Heading level — maps to `h1`–`h6` |
+| `pClass` | `string` | — | Additional CSS classes |

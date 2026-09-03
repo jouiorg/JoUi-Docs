@@ -1,0 +1,56 @@
+---
+title: Meter
+description: Displays a scalar measurement within a known range.
+---
+
+import Meter from '@components/meter/meter.astro';
+
+Displays a scalar measurement within a known range (e.g., disk usage, skill level). Uses the native `<meter>` element.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; width: 100%; gap: var(--space-3)">
+  <div>
+    <p style="margin: 0 0 var(--space-1)">Storage: 60%</p>
+    <Meter pValue={0.6} />
+  </div>
+  <div>
+    <p style="margin: 0 0 var(--space-1)">Low (20%)</p>
+    <Meter pValue={0.2} pHigh={0.5} pOptimum={0.8} />
+  </div>
+  <div>
+    <p style="margin: 0 0 var(--space-1)">High (90%)</p>
+    <Meter pValue={0.9} pHigh={0.8} pOptimum={0.5} />
+  </div>
+</div>
+
+## Usage
+
+```html
+<!-- 60% of a 0–1 range -->
+<meter value="0.6"></meter>
+
+<!-- With thresholds -->
+<meter value="0.2" low="0.3" high="0.7" optimum="0.5"></meter>
+```
+
+## Astro
+
+```astro
+import Meter from 'src/components/meter/meter.astro';
+
+<Meter pValue={0.6} />
+<Meter pValue={0.2} pLow={0.3} pHigh={0.7} pOptimum={0.5} />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pValue` | `number` | — | **Required.** Current value |
+| `pMin` | `number` | `0` | Minimum value |
+| `pMax` | `number` | `1` | Maximum value |
+| `pLow` | `number` | — | Low threshold |
+| `pHigh` | `number` | — | High threshold |
+| `pOptimum` | `number` | — | Optimum value (determines color range) |
+| `pClass` | `string` | — | Additional CSS classes |

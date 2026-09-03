@@ -1,0 +1,47 @@
+---
+title: Tooltip
+description: Short contextual text shown on hover or focus.
+---
+
+Short contextual text shown on hover or focus. Uses `data-tooltip` attribute — the JS converts `title` attributes to `data-tooltip` automatically.
+
+## Usage
+
+```html
+<span data-tooltip="This is a tooltip">Hover me</span>
+
+<!-- With placement -->
+<span data-tooltip="Tooltip above" data-tooltip-placement="top">Top</span>
+<span data-tooltip="Tooltip below" data-tooltip-placement="bottom">Bottom</span>
+<span data-tooltip="Left side" data-tooltip-placement="left">Left</span>
+<span data-tooltip="Right side" data-tooltip-placement="right">Right</span>
+
+<script type="module" src="/path/to/tooltip.js"></script>
+```
+
+## Astro
+
+```astro
+import Tooltip from 'src/components/tooltip/tooltip.astro';
+
+<Tooltip pContent="Helpful tip">
+  Hover me
+</Tooltip>
+
+<Tooltip pContent="Appears above" pPlacement="top">
+  <button class="btn btn--outline btn--sm">Top</button>
+</Tooltip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pContent` | `string` | — | **Required.** Tooltip text |
+| `pPlacement` | `'top' \| 'bottom' \| 'left' \| 'right'` | — | Preferred placement |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Tooltip content is announced to screen readers on focus
+- Never put essential information only in a tooltip — it is supplementary

@@ -1,0 +1,79 @@
+---
+title: Avatar
+description: Displays a user photo or initials fallback.
+---
+
+import Avatar from '@primitives/avatar/avatar.astro';
+
+Displays a user photo or initials fallback, with optional group stacking.
+
+## Sizes
+
+<div class="doc-preview" style="align-items: center">
+  <Avatar pInitials="XS" pSize="small" />
+  <Avatar pInitials="MD" />
+  <Avatar pInitials="LG" pSize="large" />
+</div>
+
+## With image
+
+<div class="doc-preview" style="align-items: center">
+  <Avatar pSrc="https://i.pravatar.cc/80" pAlt="User avatar" />
+  <Avatar pSrc="https://i.pravatar.cc/80?img=5" pAlt="User avatar" pSize="small" />
+  <Avatar pSrc="https://i.pravatar.cc/80?img=8" pAlt="User avatar" pSize="large" />
+</div>
+
+## Group (stacked)
+
+Wrap in a `<figure role="group">` for overlapping stack.
+
+```html
+<figure data-variant="avatar" role="group">
+  <figure data-variant="avatar">AB</figure>
+  <figure data-variant="avatar">CD</figure>
+  <figure data-variant="avatar">EF</figure>
+</figure>
+```
+
+## Usage
+
+```html
+<!-- Initials fallback -->
+<figure data-variant="avatar">AB</figure>
+
+<!-- With image -->
+<figure data-variant="avatar">
+  <img src="/avatar.jpg" alt="User name" />
+</figure>
+
+<!-- Small size -->
+<figure data-variant="avatar" class="small">AB</figure>
+
+<!-- Large size -->
+<figure data-variant="avatar" class="large">AB</figure>
+```
+
+## Astro
+
+```astro
+import Avatar from 'src/primitives/avatar/avatar.astro';
+
+<Avatar pInitials="AB" />
+<Avatar pSrc="/avatar.jpg" pAlt="User name" pSize="large" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pSrc` | `string` | — | Image URL |
+| `pAlt` | `string` | `''` | Image alt text |
+| `pInitials` | `string` | — | Fallback initials when no image |
+| `pSize` | `'small' \| 'medium' \| 'large'` | `'medium'` | Avatar size |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--sz` | `2.5rem` | Avatar size (overridden by size modifiers) |

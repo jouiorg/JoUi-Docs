@@ -1,0 +1,56 @@
+---
+title: Skeleton
+description: Placeholder for content that is still loading.
+---
+
+import Skeleton from '@primitives/skeleton/skeleton.astro';
+
+Placeholder that mimics content layout while data is loading. Animates with a shimmer effect.
+
+## Types
+
+<div class="doc-preview" style="flex-direction: column; width: 100%; gap: var(--space-2)">
+  <Skeleton pType="line" />
+  <Skeleton pType="line" style="width: 75%" />
+  <Skeleton pType="line" style="width: 50%" />
+</div>
+
+<div class="doc-preview">
+  <Skeleton pType="box" />
+  <Skeleton pType="box" />
+</div>
+
+## Usage
+
+```html
+<!-- Line (full width) -->
+<div role="status" class="skeleton line" aria-label="Loading…"></div>
+
+<!-- Line with custom width -->
+<div role="status" class="skeleton line" style="width: 60%" aria-label="Loading…"></div>
+
+<!-- Box -->
+<div role="status" class="skeleton box" aria-label="Loading…"></div>
+```
+
+## Astro
+
+```astro
+import Skeleton from 'src/primitives/skeleton/skeleton.astro';
+
+<Skeleton pType="line" />
+<Skeleton pType="line" style="width: 60%" />
+<Skeleton pType="box" />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pType` | `'line' \| 'box'` | `'line'` | Shape — line is full-width, box is 4rem × 4rem |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Uses `role="status"` so screen readers announce loading state changes
+- `aria-label="Loading…"` is set automatically

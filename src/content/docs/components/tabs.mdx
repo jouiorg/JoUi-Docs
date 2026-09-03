@@ -1,0 +1,64 @@
+---
+title: Tabs
+description: Tabbed content panels using a Web Component with optional URL anchor sync.
+---
+
+Tabbed content panels built as a Web Component (`ot-tabs`). Optionally syncs the active tab to the URL hash.
+
+## Usage
+
+```html
+<ot-tabs>
+  <button slot="tab">Tab 1</button>
+  <button slot="tab">Tab 2</button>
+  <button slot="tab">Tab 3</button>
+
+  <div slot="panel">Content for tab 1</div>
+  <div slot="panel">Content for tab 2</div>
+  <div slot="panel">Content for tab 3</div>
+</ot-tabs>
+
+<script type="module" src="/path/to/tabs.js"></script>
+```
+
+## URL anchor sync
+
+Set `data-anchor` (or `pAnchor`) to sync the active tab index to the URL hash, enabling deep-linking and back-button navigation.
+
+```html
+<ot-tabs data-anchor="code-examples">
+  <!-- ... -->
+</ot-tabs>
+```
+
+## Astro
+
+```astro
+import Tabs from 'src/components/tabs/tabs.astro';
+
+<Tabs>
+  <button slot="tab">Overview</button>
+  <button slot="tab">Usage</button>
+
+  <div slot="panel">Overview content</div>
+  <div slot="panel">Usage content</div>
+</Tabs>
+
+<!-- With URL sync -->
+<Tabs pAnchor="examples">
+  <!-- ... -->
+</Tabs>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pAnchor` | `string` | — | Key used to sync active tab to URL hash |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Tab buttons receive `role="tab"` and `aria-selected` automatically
+- Panels receive `role="tabpanel"` with correct `aria-labelledby`
+- Arrow keys navigate between tabs; `Enter` / `Space` activate

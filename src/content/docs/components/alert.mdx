@@ -1,0 +1,50 @@
+---
+title: Alert
+description: Inline message for status feedback — info, success, warning, or danger.
+---
+
+import Alert from '@components/alert/alert.astro';
+
+Inline message for status feedback. Uses `role="alert"` to announce messages to assistive technology.
+
+## Variants
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Alert>This is a default alert message.</Alert>
+  <Alert pVariant="success">Your changes have been saved successfully.</Alert>
+  <Alert pVariant="warning">Your session is about to expire.</Alert>
+  <Alert pVariant="danger">Something went wrong. Please try again.</Alert>
+  <Alert pVariant="error">A critical error occurred.</Alert>
+</div>
+
+## Usage
+
+```html
+<div role="alert">Default message.</div>
+<div role="alert" data-variant="success">Saved successfully.</div>
+<div role="alert" data-variant="warning">Session expiring.</div>
+<div role="alert" data-variant="danger">Something went wrong.</div>
+<div role="alert" data-variant="error">Critical error.</div>
+```
+
+## Astro
+
+```astro
+import Alert from 'src/components/alert/alert.astro';
+
+<Alert>Default</Alert>
+<Alert pVariant="success">Success message</Alert>
+<Alert pVariant="danger">Error message</Alert>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pVariant` | `'default' \| 'success' \| 'warning' \| 'danger' \| 'error'` | `'default'` | Color variant |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- `role="alert"` causes screen readers to announce the content immediately when it appears in the DOM
+- For non-urgent messages, consider `role="status"` with `aria-live="polite"` instead

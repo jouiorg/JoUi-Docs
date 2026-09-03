@@ -1,0 +1,64 @@
+---
+title: Dialog
+description: Modal dialog using the native dialog element — zero JavaScript.
+---
+
+Native modal dialog. Uses the HTML `<dialog>` element with the `commandfor` / `command` attributes — zero JavaScript required for open/close.
+
+## Example
+
+```html
+<!-- Trigger button -->
+<button commandfor="my-dialog" command="show-modal" class="btn btn--primary btn--md">
+  Open dialog
+</button>
+
+<!-- Dialog -->
+<dialog id="my-dialog">
+  <h2>Dialog Title</h2>
+  <p>Dialog content goes here.</p>
+  <button commandfor="my-dialog" command="close" class="btn btn--outline btn--sm">
+    Close
+  </button>
+</dialog>
+```
+
+## Astro
+
+```astro
+import Dialog from 'src/components/dialog/dialog.astro';
+
+<button commandfor="confirm-dialog" command="show-modal" class="btn btn--primary btn--md">
+  Open
+</button>
+
+<Dialog pId="confirm-dialog">
+  <h2>Confirm action</h2>
+  <p>Are you sure?</p>
+  <button commandfor="confirm-dialog" command="close" class="btn btn--outline btn--sm">
+    Cancel
+  </button>
+</Dialog>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pId` | `string` | — | **Required.** ID used by `commandfor` to target the dialog |
+| `pClosedby` | `'any' \| 'closerequest' \| 'none'` | — | Controls how the dialog can be closed |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## `closedby` values
+
+| Value | Behavior |
+|-------|----------|
+| `'any'` | Closes on backdrop click or Escape key |
+| `'closerequest'` | Closes on Escape key only |
+| `'none'` | Cannot be closed by the user — must be closed programmatically |
+
+## Accessibility
+
+- `<dialog>` traps focus automatically when open
+- Escape key closes the dialog (unless `closedby="none"`)
+- `commandfor` / `command` is a modern HTML API — a polyfill is included in `src/js/base.js` for older browsers

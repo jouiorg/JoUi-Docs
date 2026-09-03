@@ -1,0 +1,58 @@
+---
+title: Switch
+description: Toggle control using a styled checkbox with role switch.
+---
+
+import Switch from '@components/switch/switch.astro';
+
+Toggle control. Uses a native `<input type="checkbox" role="switch">` — fully keyboard-accessible with no JavaScript.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; gap: var(--space-3)">
+  <Switch pLabel="Notifications" />
+  <Switch pLabel="Dark mode" pChecked />
+  <Switch pLabel="Disabled" pDisabled />
+  <Switch pLabel="Disabled on" pChecked pDisabled />
+</div>
+
+## Usage
+
+```html
+<label>
+  <input type="checkbox" role="switch" name="notifications" />
+  Notifications
+</label>
+
+<!-- Checked -->
+<label>
+  <input type="checkbox" role="switch" checked />
+  Dark mode
+</label>
+```
+
+## Astro
+
+```astro
+import Switch from 'src/components/switch/switch.astro';
+
+<Switch pLabel="Notifications" pName="notifications" />
+<Switch pLabel="Dark mode" pChecked />
+<Switch pLabel="Disabled" pDisabled />
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pLabel` | `string` | — | Label text |
+| `pName` | `string` | — | Form field name |
+| `pValue` | `string` | — | Form field value |
+| `pChecked` | `boolean` | `false` | Default checked state |
+| `pDisabled` | `boolean` | `false` | Disabled state |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- `role="switch"` communicates the toggle semantics to screen readers
+- `aria-checked` state is managed automatically by the native checkbox

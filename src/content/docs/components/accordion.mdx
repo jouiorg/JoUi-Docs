@@ -1,0 +1,100 @@
+---
+title: Accordion
+description: Expandable disclosure panels built on the native details element.
+---
+
+import Accordion from '@components/accordion/accordion.astro';
+import AccordionItem from '@components/accordion-item/accordion-item.astro';
+
+Expandable disclosure panels. Built on the native `<details>` element — no JavaScript required.
+
+## Examples
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Accordion>
+    <AccordionItem pSummary="What is joui?">
+      joui is a framework-agnostic component library built for the web. Components are plain HTML/CSS with optional minimal JavaScript.
+    </AccordionItem>
+    <AccordionItem pSummary="Is it compatible with Drupal?">
+      Yes — each component is a self-contained directory compatible with Drupal Single Directory Components (SDC).
+    </AccordionItem>
+    <AccordionItem pSummary="Does it require a build step?" pOpen>
+      No. Components are plain CSS files. Include only what you need via a `<link>` tag.
+    </AccordionItem>
+  </Accordion>
+</div>
+
+## Exclusive (one open at a time)
+
+Use the same `pName` (maps to `<details name>`) to group items — only one can be open at a time.
+
+<div class="doc-preview" style="flex-direction: column; width: 100%">
+  <Accordion>
+    <AccordionItem pSummary="Section 1" pName="group">Content for section 1.</AccordionItem>
+    <AccordionItem pSummary="Section 2" pName="group">Content for section 2.</AccordionItem>
+    <AccordionItem pSummary="Section 3" pName="group">Content for section 3.</AccordionItem>
+  </Accordion>
+</div>
+
+## Usage
+
+```html
+<div class="accordion">
+  <details class="accordion__item">
+    <summary>Title</summary>
+    <p>Content goes here.</p>
+  </details>
+</div>
+
+<!-- Exclusive group -->
+<div class="accordion">
+  <details class="accordion__item" name="faq">
+    <summary>Question 1</summary>
+    <p>Answer 1.</p>
+  </details>
+  <details class="accordion__item" name="faq">
+    <summary>Question 2</summary>
+    <p>Answer 2.</p>
+  </details>
+</div>
+```
+
+## Astro
+
+```astro
+import Accordion from 'src/components/accordion/accordion.astro';
+import AccordionItem from 'src/components/accordion-item/accordion-item.astro';
+
+<Accordion>
+  <AccordionItem pSummary="Title">Content goes here.</AccordionItem>
+  <AccordionItem pSummary="Open by default" pOpen>Content.</AccordionItem>
+</Accordion>
+
+<!-- Exclusive group -->
+<Accordion>
+  <AccordionItem pSummary="Q1" pName="faq">Answer 1.</AccordionItem>
+  <AccordionItem pSummary="Q2" pName="faq">Answer 2.</AccordionItem>
+</Accordion>
+```
+
+## Props
+
+### Accordion
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pClass` | `string` | — | Additional CSS classes |
+
+### AccordionItem
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pSummary` | `string` | — | **Required.** Toggle label |
+| `pName` | `string` | — | Groups items — only one in the group can be open at a time |
+| `pOpen` | `boolean` | `false` | Open by default |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## Accessibility
+
+- Built on native `<details>` / `<summary>` — keyboard-accessible and screen-reader-friendly with no extra ARIA needed
+- The `name` attribute (exclusive group) is part of the HTML Living Standard

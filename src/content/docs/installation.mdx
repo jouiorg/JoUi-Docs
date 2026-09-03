@@ -1,0 +1,46 @@
+---
+title: Installation
+description: How to add joui components to your project.
+---
+
+joui components are standalone HTML/CSS files. No build step, no package required — include only what you need.
+
+## Option 1 — Copy the CSS file
+
+Each component ships as a single self-contained CSS file. Copy it into your project and link it.
+
+```html
+<link rel="stylesheet" href="/path/to/tokens.css" />
+<link rel="stylesheet" href="/path/to/button/button.css" />
+```
+
+## Option 2 — Astro component
+
+If you use Astro, import the `.astro` wrapper. It imports the CSS automatically.
+
+```astro
+import Button from 'src/primitives/button/button.astro';
+
+<Button pVariant="primary">Click me</Button>
+```
+
+## Option 3 — Drupal SDC
+
+Each component directory is structured as a Drupal Single Directory Component. Copy the component directory into your Drupal theme's `components/` folder.
+
+```
+themes/my_theme/
+  components/
+    button/
+      button.css
+      button.component.yml
+```
+
+## Design tokens
+
+Components depend on the global design tokens. Include `tokens.css` before any component CSS.
+
+```html
+<link rel="stylesheet" href="/path/to/tokens.css" />
+<link rel="stylesheet" href="/path/to/button/button.css" />
+```

@@ -1,0 +1,81 @@
+---
+title: Table
+description: Styled data table with responsive horizontal scrolling.
+---
+
+import Table from '@components/table/table.astro';
+
+Styled data table. Wrapped in a `<div class="table">` container for responsive horizontal scrolling.
+
+## Example
+
+<div class="doc-preview" style="width: 100%">
+  <Table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alice</td>
+        <td>Active</td>
+        <td>Admin</td>
+      </tr>
+      <tr>
+        <td>Bob</td>
+        <td>Inactive</td>
+        <td>Editor</td>
+      </tr>
+    </tbody>
+  </Table>
+</div>
+
+## Usage
+
+```html
+<div class="table">
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Alice</td>
+        <td>Active</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+```
+
+## Astro
+
+```astro
+import Table from 'src/components/table/table.astro';
+
+<Table>
+  <thead>
+    <tr><th>Name</th><th>Status</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>Active</td></tr>
+  </tbody>
+</Table>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pClass` | `string` | — | Additional CSS classes on the `<table>` element |
+
+## Accessibility
+
+- Use `<th>` with appropriate `scope` attribute for headers
+- Use `<caption>` to describe the table's purpose

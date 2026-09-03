@@ -1,0 +1,206 @@
+---
+import Layout from './Layout.astro';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  locale?: Locale;
+}
+
+const { title, locale = 'en' } = Astro.props;
+const t = useTranslations(locale);
+const path = Astro.url.pathname;
+
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+
+const nav = [
+  {
+    label: t('sidebar.gettingStarted'),
+    items: [
+      { label: t('docs.introduction'), href: '/docs' },
+      { label: t('docs.installation'), href: '/docs/installation' },
+      { label: t('docs.usage'),        href: '/docs/usage' },
+    ],
+  },
+  {
+    label: t('sidebar.primitives'),
+    items: [
+      { label: 'Heading',  href: '/docs/primitives/heading' },
+      { label: 'Button',   href: '/docs/primitives/button' },
+      { label: 'Badge',    href: '/docs/primitives/badge' },
+      { label: 'Avatar',   href: '/docs/primitives/avatar' },
+      { label: 'Spinner',  href: '/docs/primitives/spinner' },
+      { label: 'Skeleton', href: '/docs/primitives/skeleton' },
+    ],
+  },
+  {
+    label: t('sidebar.content'),
+    items: [
+      { label: 'Card',      href: '/docs/components/card' },
+      { label: 'Accordion', href: '/docs/components/accordion' },
+    ],
+  },
+  {
+    label: t('sidebar.feedback'),
+    items: [
+      { label: 'Alert',   href: '/docs/components/alert' },
+      { label: 'Toast',   href: '/docs/components/toast' },
+    ],
+  },
+  {
+    label: t('sidebar.navigation'),
+    items: [
+      { label: 'Breadcrumb', href: '/docs/components/breadcrumb' },
+      { label: 'Pagination', href: '/docs/components/pagination' },
+    ],
+  },
+  {
+    label: t('sidebar.forms'),
+    items: [
+      { label: 'Form',     href: '/docs/components/form' },
+      { label: 'Switch',   href: '/docs/components/switch' },
+      { label: 'Meter',    href: '/docs/components/meter' },
+      { label: 'Progress', href: '/docs/components/progress' },
+      { label: 'TagInput', href: '/docs/components/taginput' },
+      { label: 'Upload',   href: '/docs/components/upload' },
+    ],
+  },
+  {
+    label: t('sidebar.dataDisplay'),
+    items: [
+      { label: 'Table', href: '/docs/components/table' },
+    ],
+  },
+  {
+    label: t('sidebar.layout'),
+    items: [
+      { label: 'Grid',    href: '/docs/components/grid' },
+      { label: 'Sidebar', href: '/docs/components/sidebar' },
+    ],
+  },
+  {
+    label: t('sidebar.overlays'),
+    items: [
+      { label: 'Dialog',   href: '/docs/components/dialog' },
+      { label: 'Dropdown', href: '/docs/components/dropdown' },
+      { label: 'Tooltip',  href: '/docs/components/tooltip' },
+    ],
+  },
+  {
+    label: t('sidebar.advanced'),
+    items: [
+      { label: 'Tabs', href: '/docs/components/tabs' },
+    ],
+  },
+];
+
+const pageTitle = title ? `${title} — joui` : 'joui — Component Library';
+---
+
+<Layout title={pageTitle} lang={locale}>
+  <nav class="docs-topnav">
+    <button
+      class="docs-icon-btn docs-menu-btn"
+      aria-label={t('nav.toggleMenu')}
+      data-docs-menu-toggle
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg>
+    </button>
+
+    <a href="/" class="docs-brand">joui</a>
+
+    <div class="docs-topnav-end">
+      <a href="/docs" class="docs-topnav-link">{t('nav.docs')}</a>
+      <a
+        href="https://github.com/jouiorg/JoUi-Docs"
+        class="docs-topnav-link"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {t('nav.github')}
+      </a>
+
+      <button
+        class="docs-icon-btn"
+        aria-label={t('nav.toggleTheme')}
+        data-theme-toggle
+      >
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <div class="docs-body" id="docs-body">
+    <aside class="docs-sidebar" id="docs-sidebar">
+      {nav.map(section => (
+        <div class="docs-sidebar-section">
+          <p class="docs-sidebar-title">{section.label}</p>
+          <ul class="docs-sidebar-list">
+            {section.items.map(item => (
+              <li>
+                <a
+                  href={item.href}
+                  class="docs-sidebar-link"
+                  aria-current={isActive(item.href) ? 'page' : undefined}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </aside>
+
+    <main class="docs-main">
+      <slot />
+    </main>
+  </div>
+</Layout>
+
+<script>
+  // Sidebar toggle (mobile)
+  const menuBtn = document.querySelector('[data-docs-menu-toggle]');
+  const body    = document.getElementById('docs-body');
+  menuBtn?.addEventListener('click', () => body?.toggleAttribute('data-sidebar-open'));
+
+  // Close sidebar when clicking outside (mobile)
+  document.addEventListener('click', e => {
+    const target = e.target as HTMLElement;
+    if (!target.closest('#docs-sidebar') && !target.closest('[data-docs-menu-toggle]')) {
+      body?.removeAttribute('data-sidebar-open');
+    }
+  });
+
+  // Theme toggle
+  const themeBtn = document.querySelector('[data-theme-toggle]');
+  const iconSun  = themeBtn?.querySelector('.icon-sun') as HTMLElement | null;
+  const iconMoon = themeBtn?.querySelector('.icon-moon') as HTMLElement | null;
+
+  const applyTheme = (theme: string) => {
+    document.documentElement.setAttribute('data-theme', theme);
+    if (iconSun && iconMoon) {
+      iconSun.style.display  = theme === 'dark' ? 'none' : '';
+      iconMoon.style.display = theme === 'dark' ? '' : 'none';
+    }
+  };
+
+  // Sync icon with current theme on load
+  applyTheme(document.documentElement.getAttribute('data-theme') || 'light');
+
+  themeBtn?.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const next = isDark ? 'light' : 'dark';
+    applyTheme(next);
+    localStorage.setItem('joui-theme', next);
+  });
+</script>

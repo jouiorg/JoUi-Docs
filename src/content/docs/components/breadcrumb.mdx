@@ -1,0 +1,54 @@
+---
+title: Breadcrumb
+description: Navigation trail showing the current page location.
+---
+
+import Breadcrumb from '@components/breadcrumb/breadcrumb.astro';
+
+Navigation trail showing the current page location within the site hierarchy.
+
+## Example
+
+<div class="doc-preview">
+  <Breadcrumb>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Docs</a></li>
+    <li aria-current="page">Breadcrumb</li>
+  </Breadcrumb>
+</div>
+
+## Usage
+
+```html
+<nav aria-label="Breadcrumb">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="/docs">Docs</a></li>
+    <li aria-current="page">Current Page</li>
+  </ol>
+</nav>
+```
+
+## Astro
+
+```astro
+import Breadcrumb from 'src/components/breadcrumb/breadcrumb.astro';
+
+<Breadcrumb>
+  <li><a href="/">Home</a></li>
+  <li><a href="/docs">Docs</a></li>
+  <li aria-current="page">Current Page</li>
+</Breadcrumb>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pLabel` | `string` | `'Breadcrumb'` | `aria-label` for the `<nav>` wrapper |
+| `pClass` | `string` | — | Additional CSS classes on the `<ol>` |
+
+## Accessibility
+
+- Wrapped in `<nav>` with `aria-label` for landmark navigation
+- The last item uses `aria-current="page"` to indicate the current location
