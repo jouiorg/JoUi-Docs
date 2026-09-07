@@ -1,0 +1,53 @@
+/**
+ * Primitive Design Tokens — Brand Seed Values
+ *
+ * The ONLY file that changes when a new brand/theme is created.
+ * These values seed:
+ *   - styleguide/color-palette.css → generates full color scales
+ *   - tokens.css → semantic tokens consumed by components
+ *
+ * ⚠️  Components MUST NOT reference these directly.
+ *     Use semantic tokens from tokens.css instead.
+ */
+:root {
+
+  /* ── BRAND COLORS
+     Seed values — color-palette.css auto-generates 100–950 scales.
+  ───────────────────────────────────────────────────────────────── */
+  --c_primary:   #00aeef;
+  --c_secondary: #4c9f38;
+  --c_accent:    #81a1c1;
+  --c_tertiary:  #2c2c2c;
+  --c_neutral:   #4c566a;
+  --c_gray:      #3a3a3a;
+
+  --c_info:      #0dcaf0;
+  --c_success:   #198754;
+  --c_warning:   #ffc107;
+  --c_danger:    #dc3545;
+
+  --c_white:     #ffffff;
+  --c_black:     #000000;
+
+
+  /* ── FONT FAMILIES
+     Semantic aliases in tokens.css: --body_ff, --h_ff, --code_ff
+  ───────────────────────────────────────────────────────────────── */
+  --f-f:      "Lexend", sans-serif;
+  --f-f_s:    "Nunito", sans-serif;
+  --f-f-code: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+              'Courier New', monospace;
+
+
+  /* ── SPACING SEED
+     Base unit for the spacing scale (--s-1 … --s-5) in tokens.css.
+  ───────────────────────────────────────────────────────────────── */
+  --spacer: 0.75rem;
+
+
+  /* ── TRANSITION SEED
+     Duration used by --t_b shorthand in tokens.css.
+  ───────────────────────────────────────────────────────────────── */
+  --t-t: 0.25s;
+
+}

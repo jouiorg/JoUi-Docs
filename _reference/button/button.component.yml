@@ -1,0 +1,196 @@
+$schema: https://git.drupalcode.org/project/drupal/-/raw/10.1.x/core/modules/sdc/src/metadata.schema.json
+name: Button
+status: stable
+group: Globals
+version: 2.0.0
+description: Button component aligned with MUD design system. Supports multiple variants, appearances, sizes, shapes and states.
+
+# Props.
+props:
+  type: object
+  required:
+    - label
+
+  properties:
+    # fields values
+    label:
+      type: string
+      title: Label
+      description: Visible text content.
+      default: ''
+
+    url:
+      type: ['string', 'null']
+      title: URL
+      description: Renders the button as `<a>` when set.
+      default: null
+
+    id:
+      type: ['string', 'null']
+      title: ID
+      default: null
+
+    target:
+      type: ['string', 'null']
+      title: Target
+      description: anchor target. Used only when url is set.
+      default: null
+
+    rel:
+      type: ['string', 'null']
+      title: Rel
+      description: anchor rel. Used only when url is set.
+      default: null
+
+    name:
+      type: ['string', 'null']
+      title: Name
+      description: Form control name. Used when type=submit.
+      default: null
+
+    value:
+      type: ['string', 'null']
+      title: Value
+      description: Form control value submitted alongside name.
+      default: null
+
+    icon_second:
+      type: ['string', 'null']
+      title: Icon
+      description: SVG icon code. Include aria-hidden="true".
+      default: null
+
+    # component variations
+    tag:
+      type: string
+      title: Button tag
+      description: HTML tag. Defaults to `button`, or `a` when url is set.
+      default: button
+      enum:
+        - a
+        - button
+        - span
+        - input
+        - summary
+
+    variant:
+      type: ['string', 'null']
+      title: Variant
+      description: Color treatment.
+      default: null
+      enum:
+        - null
+        - ''
+        - primary
+        - secondary
+        - strict
+        - destructive
+
+    appearance:
+      type: ['string', 'null']
+      title: Appearance
+      description: Visual treatment. filled | outlined | text
+      default: null
+      enum:
+        - null
+        - filled
+        - outlined
+        - text
+
+    size:
+      type: ['string', 'null']
+      title: Size
+      default: null
+      enum:
+        - null
+        - sm
+        - md
+        - lg
+
+    shape:
+      type: ['string', 'null']
+      title: Shape
+      description: Container silhouette. circular = fully rounded.
+      default: null
+      enum:
+        - null
+        - none
+        - rectangular
+        - circular
+
+    icon_position:
+      type: string
+      title: Icon position
+      description: Icon position relative to label.
+      default: 'right'
+      enum:
+        - ''
+        - right
+        - left
+        - only
+
+    disabled:
+      type: boolean
+      title: Disabled
+      default: false
+
+    loading:
+      type: boolean
+      title: Loading
+      description: Shows a spinner and blocks interactivity. Sets aria-busy on the control.
+      default: false
+
+    full_width:
+      type: boolean
+      title: Full width
+      description: Expands the button to fill its container.
+      default: false
+
+    aria_expanded:
+      type: boolean
+      title: Aria expanded
+      description: Use only for buttons that toggle visibility (dropdown, accordion).
+      default: false
+
+    role:
+      type: ['string', 'null']
+      title: Role
+      description: ARIA role.
+      default: null
+
+    aria_label:
+      type: ['string', 'null']
+      title: Aria label
+      description: Accessible name forwarded to aria-label. Required for icon-only buttons.
+      default: null
+
+    # uc -> utility_classes
+    button_uc:
+      type: array
+      items:
+        type: string
+      title: Utility Classes
+      default: []
+
+    # att -> attributes
+    button_att:
+      type: Drupal\Core\Template\Attribute
+      title: Attributes
+      default: null
+
+slots:
+  slot_icon_before:
+    title: Icon Before
+    description: Icon when position is left.
+
+  slot_content:
+    title: Content
+    description: Main button content.
+
+  slot_icon:
+    title: Icon
+    description: Icon when position is right or only.
+
+  slot_icon_second:
+    title: Second icon
+    description: Second icon when position is right or only.

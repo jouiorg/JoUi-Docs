@@ -2,13 +2,13 @@
   label:has(input[role="switch"]) {
     display: inline-flex;
     align-items: center;
-    gap: var(--space-2);
-    font-weight: var(--font-normal);
+    gap: var(--s_2);
+    font-weight: var(--f-w_normal);
     cursor: pointer;
   }
 
   input[type=checkbox][role=switch] {
-    --switch-height: calc(var(--bar-height) * 3);
+    --switch-height: calc(var(--bar_h) * 3);
     --switch-inset: 2px;
     --switch-thumb: calc(var(--switch-height) - var(--switch-inset) * 3);
 
@@ -16,11 +16,11 @@
     position: relative;
     width: calc(var(--switch-height) * 2);
     height: var(--switch-height);
-    border-radius: var(--radius-full);
-    background-color: var(--input);
-    border: 1px solid var(--input);
+    border-radius: var(--b-r_full);
+    background-color: var(--c_input);
+    border: 1px solid var(--c_input);
     cursor: pointer;
-    transition: background-color var(--transition-fast), border-color var(--transition-fast);
+    transition: background-color var(--t_fast), border-color var(--t_fast);
 
     &::before {
       content: "";
@@ -30,15 +30,15 @@
       transform: translateY(-50%);
       width: var(--switch-thumb);
       height: var(--switch-thumb);
-      background-color: var(--background);
-      border-radius: var(--radius-full);
-      transition: transform var(--transition);
-      box-shadow: var(--shadow-small);
+      background-color: var(--c_bg);
+      border-radius: var(--b-r_full);
+      transition: transform var(--t);
+      box-shadow: var(--sh_s);
     }
 
     &:checked {
-      background-color: var(--primary);
-      border-color: var(--primary);
+      background-color: var(--c_accent);
+      border-color: var(--c_accent);
 
       &::before {
         transform: translateY(-50%) translateX(var(--switch-height));

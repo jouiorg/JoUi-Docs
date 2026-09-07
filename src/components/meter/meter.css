@@ -2,31 +2,31 @@
   meter {
     appearance: none;
     width: 100%;
-    height: var(--bar-height);
+    height: var(--bar_h);
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: var(--b-r_full);
     overflow: hidden;
-    background: var(--muted);
+    background: var(--c_surface_muted);
 
     &::-webkit-meter-bar {
-      background: var(--muted);
+      background: var(--c_surface_muted);
       border: none;
-      border-radius: var(--radius-full);
-      height: var(--bar-height);
+      border-radius: var(--b-r_full);
+      height: var(--bar_h);
     }
 
     &::-webkit-meter-optimum-value,
     &::-webkit-meter-suboptimum-value,
     &::-webkit-meter-even-less-good-value {
-      border-radius: var(--radius-full);
+      border-radius: var(--b-r_full);
     }
 
-    &::-webkit-meter-optimum-value        { background: var(--success); }
-    &::-webkit-meter-suboptimum-value     { background: var(--warning); }
-    &::-webkit-meter-even-less-good-value { background: var(--danger); }
+    &::-webkit-meter-optimum-value        { background: var(--c_success); }
+    &::-webkit-meter-suboptimum-value     { background: var(--c_warning); }
+    &::-webkit-meter-even-less-good-value { background: var(--c_danger); }
 
-    &::-moz-meter-bar { background: var(--success); border-radius: var(--radius-full); }
-    &:-moz-meter-sub-optimum::-moz-meter-bar          { background: var(--warning); }
-    &:-moz-meter-sub-sub-optimum::-moz-meter-bar      { background: var(--danger); }
+    &::-moz-meter-bar { background: var(--c_success); border-radius: var(--b-r_full); }
+    &:-moz-meter-sub-optimum::-moz-meter-bar          { background: var(--c_warning); }
+    &:-moz-meter-sub-sub-optimum::-moz-meter-bar      { background: var(--c_danger); }
   }
 }

@@ -1,10 +1,10 @@
 @layer components {
   .card {
-    background-color: var(--card);
-    color: var(--card-foreground);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
-    box-shadow: var(--shadow-small);
-    padding: var(--space-6);
+    background-color: var(--c_surface);
+    color: var(--c_fg);
+    border: 1px solid var(--c_border);
+    border-radius: var(--b-r);
+    box-shadow: var(--sh_s);
+    padding: var(--s_6);
   }
 }

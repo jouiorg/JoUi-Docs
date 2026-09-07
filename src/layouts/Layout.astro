@@ -1,6 +1,9 @@
 ---
+import '../styles/vars.css';
+import '../styles/styleguide.css';
 import '../styles/tokens.css';
 import '../styles/typography.css';
+import '../styles/containers.css';
 import '../styles/docs.css';
 
 interface Props {
@@ -37,18 +40,3 @@ const {
     <slot />
   </body>
 </html>
-
-<style is:global>
-  html, body {
-    margin: 0;
-    width: 100%;
-  }
-
-  html[data-theme="dark"] {
-    color-scheme: dark;
-  }
-
-  html[data-theme="light"] {
-    color-scheme: light;
-  }
-</style>

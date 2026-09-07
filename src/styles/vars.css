@@ -1,0 +1,44 @@
+/**
+ * joui Brand Seeds
+ *
+ * The ONLY file that changes when a new theme is created.
+ * These values seed:
+ *   color-palette.css → generates full 50–950 color scales
+ *   tokens.css        → semantic tokens consumed by components
+ *
+ * ⚠️  Components MUST NOT reference these directly.
+ *     Use semantic tokens from tokens.css instead.
+ */
+
+/**
+ * Layer order — declared once, here, so every file can safely use @layer X.
+ * Later layers win: components > theme > base > primitives.
+ */
+@layer primitives, base, theme, components;
+
+:root {
+
+  /* ── BRAND COLORS
+     Seed values — color-palette.css generates 50–950 scales.
+     Each seed = the _500 step of its scale.
+  ───────────────────────────────────────────────────────────── */
+  --c_primary: #574747;  /* brownish brand */
+  --c_gray:    #71717a;  /* neutral zinc gray */
+  --c_success: #198754;
+  --c_danger:  #dc3545;
+  --c_warning: #e89500;
+  --c_info:    #0dcaf0;
+  --c_white:   #ffffff;
+  --c_black:   #000000;
+
+
+  /* ── FONT FAMILIES ──────────────────────────────────────────── */
+  --f_sans: system-ui, sans-serif;
+  --f_mono: ui-monospace, Consolas, monospace;
+
+
+  /* ── TIMING SEEDS ───────────────────────────────────────────── */
+  --t_dur:  200ms;
+  --t_ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+}

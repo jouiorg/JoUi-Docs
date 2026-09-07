@@ -5,9 +5,9 @@
       display: inline-block;
       width: 1.5rem;
       height: 1.5rem;
-      border: 2px solid var(--muted);
-      border-top-color: var(--primary);
-      border-radius: var(--radius-full);
+      border: 2px solid var(--c_surface_muted);
+      border-top-color: var(--c_accent);
+      border-radius: var(--b-r_full);
       animation: spin 1s linear infinite;
     }
 

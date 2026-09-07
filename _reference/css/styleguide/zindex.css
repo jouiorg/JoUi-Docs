@@ -1,0 +1,19 @@
+:where(html) {
+  --z-i_1: 10;
+  --z-i_2: 20;
+  --z-i_3: 30;
+  --z-i_4: 40;
+  --z-i_5: 50;
+  --z-i_i: 2147483647;
+
+  --z_dropdown: 80;
+  --z_sticky: 100;
+  --z_fixed: 120;
+  --z_offcanvas-backdrop: 140;
+  --z_offcanvas: 150;
+  --z_modal-backdrop: 160;
+  --z_modal: 180;
+  --z_popover: 200;
+  --z_tooltip: 220;
+  --z_toast: 240;
+}

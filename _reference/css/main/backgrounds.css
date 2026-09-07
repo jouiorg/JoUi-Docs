@@ -1,0 +1,15 @@
+:where([class*=bg-]) {
+  --_is-bg_bg: var(--is-bg_bg, transparent);
+  --_is-bg_c: var(--is-bg_c, initial);
+
+  --link_c: var(--_is-bg_c);
+
+  background-color: var(--_is-bg_bg);
+  color: var(--_is-bg_c);
+
+  &.bg-secondary {
+    --_is-bg_bg: var(--is-bg_bg_secondary, var(--c_gray_50));
+  }
+}
+
+

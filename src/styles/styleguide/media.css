@@ -1,0 +1,39 @@
+/**
+ * Media / layout breakpoint primitives
+ *
+ * Container max-width and layout label by viewport.
+ */
+
+@layer primitives {
+  :where(html) {
+    @media (min-width: 36rem) {
+      --layout:        sm;
+      --container_m-w: 540px;
+    }
+
+    @media (min-width: 48rem) {
+      --layout:        md;
+      --container_m-w: 720px;
+    }
+
+    @media (min-width: 62rem) {
+      --layout:        lg;
+      --container_m-w: 950px;
+    }
+
+    @media (min-width: 75rem) {
+      --layout:        xl;
+      --container_m-w: 1140px;
+    }
+
+    @media (min-width: 87.5rem) {
+      --layout:        xxl;
+      --container_m-w: 1320px;
+    }
+
+    @media (min-width: 100rem) {
+      --layout:        xxxl;
+      --container_m-w: 1440px;
+    }
+  }
+}

@@ -1,0 +1,159 @@
+---
+title: Styleguide Primitives
+section: designSystem
+order: 2
+---
+
+The `styleguide/` folder contains **primitive CSS custom properties** — the raw building blocks that semantic tokens and components are built on.
+
+All files live in `src/styles/styleguide/` and are imported via `src/styles/styleguide.css`. They run in `@layer primitives`, meaning semantic tokens in `tokens.css` (`@layer theme`) always win.
+
+## Files
+
+| File | What it defines |
+|---|---|
+| `color-palette.css` | Full 50–950 color scales via `color-mix()` |
+| `animation.css` | Easing vars, duration scale, named animation presets, `@keyframes` |
+| `aspect.css` | Aspect ratio vars (`--ratio_square`, `--ratio_widescreen`…) |
+| `border.css` | Border-radius scale, drawn/blob shapes, conditional radius |
+| `fonts.css` | Static + fluid font-size scale, font-weight, line-height, letter-spacing |
+| `gradients.css` | 30 gradient presets + noise textures |
+| `media.css` | Breakpoint `--container_m-w` and `--layout` vars |
+| `shadows.css` | Layered shadow scale (`--shadow_1`–`--shadow_6`) + inner shadows |
+| `size.css` | Pixel-based fixed size scale (`--size_100`–`--size_2000`) |
+| `zindex.css` | Numeric z-index scale + semantic layer stack |
+
+## Animation
+
+Duration scale:
+
+```css
+--a-d_instant:    0ms
+--a-d_quick_1:    80ms
+--a-d_quick_2:    120ms
+--a-d_moderate_1: 180ms
+--a-d_moderate_2: 260ms
+--a-d_gentle_1:   320ms
+--a-d_gentle_2:   420ms
+```
+
+Easing vars (native cubic-bezier, no dependencies):
+
+```css
+--ease_3          /* standard ease */
+--ease-out_5      /* elastic out */
+--ease-in-out_3   /* symmetric ease-in-out */
+--ease-squish_2   /* overshoot bounce */
+```
+
+Named animation presets — use directly on `animation`:
+
+```css
+.my-element {
+  opacity: 0;
+  animation: var(--a_fade-in) forwards;
+}
+```
+
+Available presets: `--a_fade-in`, `--a_fade-out`, `--a_scale-up`, `--a_scale-down`, `--a_slide-in-up/down/left/right`, `--a_slide-out-up/down/left/right`, `--a_shake-x/y/z`, `--a_spin`, `--a_ping`, `--a_blink`, `--a_float`, `--a_bounce`, `--a_pulse`.
+
+## Shadows
+
+Layered shadow scale — `--shadow_1` (subtle) to `--shadow_6` (dramatic):
+
+```css
+box-shadow: var(--shadow_2);
+```
+
+Semantic shortcuts in `tokens.css` for most component use:
+
+```css
+box-shadow: var(--sh_s);   /* small */
+box-shadow: var(--sh_m);   /* medium */
+box-shadow: var(--sh_l);   /* large */
+```
+
+Inner shadows for inset/embossed effects:
+
+```css
+box-shadow: var(--inner-shadow_2);
+```
+
+## Gradients
+
+30 predefined gradient presets. Use on `background` or `background-image`:
+
+```css
+.hero { background: var(--gradient_3); }
+```
+
+Gradients use `in oklab` interpolation when supported (progressive enhancement via `@supports`).
+
+Noise textures for grain effects:
+
+```css
+.card {
+  background-image: var(--noise_2);
+  filter: var(--noise_filter-2);
+}
+```
+
+## Border primitives
+
+Extended radius scale beyond the semantic tokens:
+
+```css
+--b-r_0:    0px
+--b-r_sm:   2px
+--b-r_md:   4px
+--b-r:      6px      /* overridden to 0.375rem in tokens.css */
+--b-r_lg:   16px
+--b-r_xl:   32px
+--b-r_pill: 1e5px    /* overridden to 9999px in tokens.css */
+```
+
+Organic/drawn shapes for creative use:
+
+```css
+border-radius: var(--b-r_blob_1);
+border-radius: var(--b-r_drawn_3);
+```
+
+Conditional radius (rounds only when not full-width):
+
+```css
+border-radius: var(--b-r_cond_1);
+```
+
+## Size scale
+
+Pixel-based fixed sizes for component dimensions, icons, fixed-height elements:
+
+```css
+--size_100:  4px
+--size_200:  8px
+--size_400:  16px
+--size_800:  42px
+--size_1200: 72px
+--size_2000: 218px
+```
+
+For spacing in rem, use the semantic `--s_*` scale from `tokens.css`.
+
+## Z-index
+
+Numeric scale for arbitrary stacking:
+
+```css
+--z-i_1: 10  --z-i_3: 30  --z-i_5: 50
+--z-i_2: 20  --z-i_4: 40  --z-i_i: 2147483647
+```
+
+Semantic layer stack (overridden in `tokens.css`):
+
+```css
+--z_dropdown:  80    --z_modal:   180
+--z_sticky:    100   --z_popover: 200
+--z_fixed:     120   --z_tooltip: 220
+--z_offcanvas: 150   --z_toast:   240
+```

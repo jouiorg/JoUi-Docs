@@ -1,0 +1,268 @@
+/**
+ * @file tokens.css
+ *
+ * Semantic Design Tokens
+ *
+ * Architecture:
+ *   vars.css (brand seeds)
+ *     ↓
+ *   styleguide/color-palette.css (scale generator)
+ *     ↓
+ *   tokens.css ← YOU ARE HERE
+ *     ↓
+ *   components/ (consume tokens, never primitives)
+ *
+ * Dark mode: uses light-dark() — no duplicate block needed.
+ * Manual toggle:
+ *   :root[data-theme="dark"]  → color-scheme: dark
+ *   :root[data-theme="light"] → color-scheme: light
+ *   (system default follows prefers-color-scheme)
+ */
+
+:root {
+  /* color-scheme: light dark; */
+
+  /** COLOR TOKENS — Semantic Layer
+    Categories:
+      bg        → Page background & surfaces
+      surface   → Cards, panels, modals
+      fg        → Text & icons
+      border    → Lines, separators, outlines
+      accent    → Brand primary (interactive)
+      link      → Links in text
+      focus     → Focus ring (accessibility)
+      selection → Selected text
+      overlay   → Backdrop, scrim
+      success / warning / danger / info / neutral
+      skeleton  → Loading state
+      media     → Images, avatars
+      input     → Form elements
+  */
+
+  /* 🪟 BACKGROUND */
+  --c_bg:          light-dark(var(--c_white), var(--c_gray_950));
+  --c_bg-subtle:   light-dark(var(--c_gray_50),   var(--c_gray_900));
+  --c_bg-muted:    light-dark(var(--c_gray_100),  var(--c_gray_800));
+  --c_bg-inverse:  light-dark(var(--c_gray_950),  var(--c_gray_50));
+  --c_bg-disabled: light-dark(var(--c_gray_100),  var(--c_gray_800));
+
+  /* 🪟 SURFACE */
+  --c_surface:         light-dark(var(--c_white),      var(--c_gray_900));
+  --c_surface-raised:  light-dark(var(--c_white),      var(--c_gray_800));
+  --c_surface-overlay: light-dark(var(--c_white),      var(--c_gray_700));
+  --c_surface-sunken:  light-dark(var(--c_gray_50),    var(--c_gray_950));
+  --c_surface-inverse: light-dark(var(--c_gray_900),   var(--c_gray_100));
+
+  /* ✍️ FOREGROUND */
+  --c_fg:            light-dark(var(--body_c),       var(--c_gray_100));
+  --c_fg-muted:      light-dark(var(--c_gray_400),   var(--c_gray_400));
+  --c_fg-subtle:     light-dark(var(--c_gray_300),   var(--c_gray_600));
+  --c_fg-inverse:    light-dark(var(--c_white),      var(--c_gray_950));
+  --c_fg-on-accent:  light-dark(var(--c_white),      var(--c_white));
+  --c_fg-on-inverse: light-dark(var(--c_gray_100),   var(--c_gray_900));
+  --c_fg-disabled:   light-dark(var(--c_gray_300),   var(--c_gray_600));
+  --c_fg-heading:    light-dark(var(--c_primary_dark, var(--c_gray_950)), var(--c_gray_100));
+  --c_fg-code:       light-dark(var(--c_danger_700), var(--c_danger_300));
+
+  /* 🖊️ BORDER */
+  --c_border:          light-dark(var(--c_gray_300), var(--c_gray_700));
+  --c_border-muted:    light-dark(var(--c_gray_100), var(--c_gray_800));
+  --c_border-strong:   light-dark(var(--c_gray_400), var(--c_gray_600));
+  --c_border-inverse:  light-dark(var(--c_gray_700), var(--c_gray_200));
+  --c_border-disabled: light-dark(var(--c_gray_200), var(--c_gray_800));
+
+  /* 🎯 ACCENT */
+  --c_accent:           light-dark(var(--c_primary_500), var(--c_primary_400));
+  --c_accent_hover:     light-dark(var(--c_primary_600), var(--c_primary_300));
+  --c_accent_active:    light-dark(var(--c_primary_700), var(--c_primary_200));
+  --c_accent_subtle:    light-dark(var(--c_primary_100), var(--c_primary_950));
+  --c_accent_muted:     light-dark(var(--c_primary_200), var(--c_primary_900));
+  --c_accent_border:    light-dark(var(--c_primary_300), var(--c_primary_800));
+  --c_accent_fg:        light-dark(var(--c_white),       var(--c_white));
+  --c_accent_fg-subtle: light-dark(var(--c_primary_700), var(--c_primary_300));
+
+  /* 🔗 LINK */
+  --c_link:         light-dark(var(--c_primary_500), var(--c_primary_400));
+  --c_link-hover:   light-dark(var(--c_primary_700), var(--c_primary_300));
+  --c_link-visited: light-dark(var(--c_primary_800), var(--c_primary_500));
+  --c_link-active:  light-dark(var(--c_primary_900), var(--c_primary_200));
+  --c_link-inverse: light-dark(var(--c_primary_300), var(--c_primary_600));
+
+  /* 🔵 FOCUS */
+  --c_focus-ring:        light-dark(var(--c_primary_500), var(--c_primary_400));
+  --c_focus-ring-offset: light-dark(var(--c_white),       var(--c_gray_950));
+
+  /* 🔲 SELECTION */
+  --c_selection-bg: light-dark(var(--c_primary_200), var(--c_primary_800));
+  --c_selection-fg: light-dark(var(--c_primary_900), var(--c_primary_200));
+
+  /* 🌫️ OVERLAY */
+  --c_overlay:        light-dark(rgba(0, 0, 0, 0.50), rgba(0, 0, 0, 0.70));
+  --c_overlay-subtle: light-dark(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.40));
+  --c_overlay-strong: light-dark(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85));
+  --c_overlay-image:  light-dark(rgba(0, 0, 0, 0.40), rgba(0, 0, 0, 0.60));
+
+  /* ✅ SUCCESS */
+  --c_success:        light-dark(var(--c_success_500), var(--c_success_400));
+  --c_success_hover:  light-dark(var(--c_success_600), var(--c_success_300));
+  --c_success_active: light-dark(var(--c_success_700), var(--c_success_700));
+  --c_success_subtle: light-dark(var(--c_success_100), var(--c_success_950));
+  --c_success_muted:  light-dark(var(--c_success_200), var(--c_success_900));
+  --c_success_border: light-dark(var(--c_success_300), var(--c_success_800));
+  --c_success_fg:     light-dark(var(--c_success_800), var(--c_success_300));
+  --c_success_icon:   light-dark(var(--c_success_500), var(--c_success_400));
+
+  /* ⚠️ WARNING */
+  --c_warning:        light-dark(var(--c_warning_500), var(--c_warning_400));
+  --c_warning_hover:  light-dark(var(--c_warning_600), var(--c_warning_300));
+  --c_warning_active: light-dark(var(--c_warning_700), var(--c_warning_700));
+  --c_warning_subtle: light-dark(var(--c_warning_100), var(--c_warning_950));
+  --c_warning_muted:  light-dark(var(--c_warning_200), var(--c_warning_900));
+  --c_warning_border: light-dark(var(--c_warning_300), var(--c_warning_800));
+  --c_warning_fg:     light-dark(var(--c_warning_900), var(--c_warning_300));
+  --c_warning_icon:   light-dark(var(--c_warning_600), var(--c_warning_400));
+
+  /* ❌ DANGER */
+  --c_danger:        light-dark(var(--c_danger_500), var(--c_danger_400));
+  --c_danger_hover:  light-dark(var(--c_danger_600), var(--c_danger_300));
+  --c_danger_active: light-dark(var(--c_danger_700), var(--c_danger_700));
+  --c_danger_subtle: light-dark(var(--c_danger_100), var(--c_danger_950));
+  --c_danger_muted:  light-dark(var(--c_danger_200), var(--c_danger_900));
+  --c_danger_border: light-dark(var(--c_danger_300), var(--c_danger_800));
+  --c_danger_fg:     light-dark(var(--c_danger_800), var(--c_danger_300));
+  --c_danger_icon:   light-dark(var(--c_danger_500), var(--c_danger_400));
+
+  /* ℹ️ INFO */
+  --c_info:        light-dark(var(--c_info_500), var(--c_info_400));
+  --c_info_hover:  light-dark(var(--c_info_600), var(--c_info_300));
+  --c_info_active: light-dark(var(--c_info_700), var(--c_info_700));
+  --c_info_subtle: light-dark(var(--c_info_100), var(--c_info_950));
+  --c_info_muted:  light-dark(var(--c_info_200), var(--c_info_900));
+  --c_info_border: light-dark(var(--c_info_300), var(--c_info_800));
+  --c_info_fg:     light-dark(var(--c_info_800), var(--c_info_300));
+  --c_info_icon:   light-dark(var(--c_info_500), var(--c_info_400));
+
+  /* ⚪ NEUTRAL */
+  --c_neutral:        light-dark(var(--c_gray_500), var(--c_gray_400));
+  --c_neutral_hover:  light-dark(var(--c_gray_600), var(--c_gray_300));
+  --c_neutral_active: light-dark(var(--c_gray_700), var(--c_gray_700));
+  --c_neutral_subtle: light-dark(var(--c_gray_100), var(--c_gray_900));
+  --c_neutral_muted:  light-dark(var(--c_gray_200), var(--c_gray_800));
+  --c_neutral_border: light-dark(var(--c_gray_300), var(--c_gray_700));
+  --c_neutral_fg:     light-dark(var(--c_gray_800), var(--c_gray_200));
+  --c_neutral_icon:   light-dark(var(--c_gray_500), var(--c_gray_400));
+
+  /* 💀 SKELETON */
+  --c_skeleton-base:  light-dark(var(--c_gray_200), var(--c_gray_800));
+  --c_skeleton-shine: light-dark(var(--c_gray_100), var(--c_gray_700));
+
+  /* 🖼️ MEDIA */
+  --c_media-bg:      light-dark(var(--c_gray_100), var(--c_gray_800));
+  --c_media-border:  light-dark(var(--c_gray_200), var(--c_gray_700));
+  --c_media-caption: light-dark(var(--c_gray_400), var(--c_gray_500));
+
+  /* 📝 FORM */
+  --c_input-bg:             light-dark(var(--c_white),    var(--c_gray_950));
+  --c_input-bg-focus:       light-dark(var(--c_white),    var(--c_gray_900));
+  --c_input-border:         light-dark(var(--c_gray_300), var(--c_gray_700));
+  --c_input-border-hover:   light-dark(var(--c_gray_400), var(--c_gray_600));
+  --c_input-border-focus:   var(--c_accent);
+  --c_input-border-error:   var(--c_danger);
+  --c_input-border-success: var(--c_success);
+  --c_input-fg:             var(--body_c);
+  --c_input-placeholder:    light-dark(var(--c_gray_400), var(--c_gray_600));
+  --c_input-disabled-bg:    light-dark(var(--c_gray_100), var(--c_gray_800));
+  --c_input-disabled-fg:    light-dark(var(--c_gray_400), var(--c_gray_600));
+
+  /* 🔘 INTERACTIVE */
+  --c_hover-bg:    light-dark(var(--c_gray_50),                     var(--c_gray_900));
+  --c_active-bg:   light-dark(var(--c_gray_100),                    var(--c_gray_800));
+  --c_selected-bg: light-dark(var(--c_primary_50, var(--c_primary_100)), var(--c_primary_950));
+  --c_selected-fg: var(--c_accent);
+
+
+  /** TYPOGRAPHY
+  == */
+
+  /* Font sizes */
+  --f-s_root: 1rem;
+  --f-s_base: 1rem;
+  --f-s_sm:   0.875em;
+
+  /* Font weight (not in styleguide/fonts.css — components use these names) */
+  --f-w_semibold: 600;
+
+  /* Line height */
+  --l-h: 1.5;
+
+  /* Headings */
+  --h_f-f:    var(--f-f);
+  --h_f-style: inherit;
+  --h_f-w:    var(--f-w_semibold);
+  --h_l-h:    1.2;
+  --h_c:      light-dark(var(--c_primary_dark, var(--c_gray_950)), var(--c_gray_100));
+
+  /* Heading font sizes — responsive fluid scale (used by type.css) */
+  --f-s_h1: clamp(1.625rem, 1rem + 1.667vw, 2.5rem); /* 26px → 40px */
+  --f-s_h2: clamp(1.375rem, 0.929rem + 1.19vw,  2rem); /* 22px → 32px */
+  --f-s_h3: clamp(1.25rem,  0.893rem + 0.952vw, 1.75rem); /* 20px → 28px */
+  --f-s_h4: 1.5rem;
+  --f-s_h5: 1.25rem;
+  --f-s_h6: 1rem;
+
+  /* Heading font sizes — fixed scale (used by reboot/components) */
+  --h1_f-s: clamp(1.625rem, 1rem + 1.667vw, 2.5rem);
+  --h2_f-s: 2rem;
+  --h3_f-s: 1.75rem;
+  --h4_f-s: 1.5rem;
+  --h5_f-s: 1.25rem;
+  --h6_f-s: 1rem;
+
+  /* Heading margins */
+  --h1_m-b: 0.75em;
+  --h2_m-b: 0.5rem;
+  --h3_m-b: 0.35rem;
+  --h4_m-b: 0.25rem;
+  --h5_m-b: 0.1rem;
+  --h6_m-b: 0;
+
+  /** MOTION */
+  --t_ease: ease-in-out;
+  --t_b:    all var(--t-t) var(--t_ease);
+
+
+  /** SPACING SCALE */
+  --s-0: 0;
+  --s-1: var(--spacer);
+  --s-2: calc(var(--spacer) * 2);
+  --s-3: calc(var(--spacer) * 3);
+  --s-4: calc(var(--spacer) * 4);
+  --s-5: calc(var(--spacer) * 5);
+  --gutter: 1.25rem;
+
+  /** HR */
+  --hr_m-b:     var(--spacer);
+  --hr_b-w:     var(--b-w);
+  --hr_b-c:     transparent;
+  --hr_opacity: 0.25;
+
+  /** CONTAINER */
+  --gap:           1.875rem;
+  --container_p-i: 20px;
+  --container_m-w: calc(100% - var(--container_p-i) * 2);
+
+  /** BODY & LINK  (legacy semantic — widely used in components)
+  == */
+
+  --body_c: light-dark(var(--c_black, #212529), var(--c_gray_100));
+  --body_bg: light-dark(var(--c_white, #fff),    var(--c_gray_950));
+
+  --link_c: light-dark(var(--c_primary_500), var(--c_primary_400));
+  --link_c_h: light-dark(var(--c_primary_700), var(--c_primary_300));
+  --link_d: underline;
+
+}
+
+/* Dark mode manual toggle */
+:root[data-theme="dark"]  { color-scheme: dark; }
+:root[data-theme="light"] { color-scheme: light; }

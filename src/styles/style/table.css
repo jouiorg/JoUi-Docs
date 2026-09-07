@@ -1,0 +1,47 @@
+/**
+ * Table base styles
+ *
+ * Full-width, bordered table with separated border-radius.
+ * Consume via <table> — no extra class needed.
+ */
+
+@layer components {
+  :where(table) {
+    table-layout:    auto;
+    border-collapse: separate;
+    border-spacing:  0;
+    width:           100%;
+    font-size:       var(--f-s_7);
+    border:          var(--b-w) var(--b-s) var(--c_border_muted);
+    border-radius:   var(--b-r);
+    overflow:        hidden;
+
+    th {
+      background:   var(--c_bg_subtle);
+      padding:      var(--s_3) var(--s_4);
+      text-align:   left;
+      font-weight:  var(--f-w_semibold);
+      color:        var(--c_fg);
+      font-size:    var(--f-s_7);
+
+      &:not(:last-child) {
+        border-inline-end: var(--b-w) var(--b-s) var(--c_border_muted);
+      }
+    }
+
+    td {
+      padding:        var(--s_3) var(--s_4);
+      color:          var(--c_fg);
+      vertical-align: middle;
+      border-block-start: var(--b-w) var(--b-s) var(--c_border_muted);
+
+      &:not(:last-child) {
+        border-inline-end: var(--b-w) var(--b-s) var(--c_border_muted);
+      }
+    }
+
+    tr:hover td {
+      background: var(--c_hover_bg);
+    }
+  }
+}

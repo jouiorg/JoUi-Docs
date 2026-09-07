@@ -1,0 +1,126 @@
+:root {
+  --palett-light: white;
+  --palett-dark: black;
+
+  /* Primary */
+  --c_primary_950: color-mix(in oklch, var(--c_primary), var(--palett-dark) 90%);
+  --c_primary_900: color-mix(in oklch, var(--c_primary), var(--palett-dark) 80%);
+  --c_primary_800: color-mix(in oklch, var(--c_primary), var(--palett-dark) 60%);
+  --c_primary_700: color-mix(in oklch, var(--c_primary), var(--palett-dark) 40%);
+  --c_primary_600: color-mix(in oklch, var(--c_primary), var(--palett-dark) 20%);
+  --c_primary_500: var(--c_primary);
+  --c_primary_400: color-mix(in oklch, var(--c_primary), var(--palett-light) 20%);
+  --c_primary_300: color-mix(in oklch, var(--c_primary), var(--palett-light) 40%);
+  --c_primary_200: color-mix(in oklch, var(--c_primary), var(--palett-light) 60%);
+  --c_primary_100: color-mix(in oklch, var(--c_primary), var(--palett-light) 80%);
+
+  /* Accent */
+  --c_accent_950: color-mix(in oklch, var(--c_accent), var(--palett-dark) 90%);
+  --c_accent_900: color-mix(in oklch, var(--c_accent), var(--palett-dark) 80%);
+  --c_accent_800: color-mix(in oklch, var(--c_accent), var(--palett-dark) 60%);
+  --c_accent_700: color-mix(in oklch, var(--c_accent), var(--palett-dark) 40%);
+  --c_accent_600: color-mix(in oklch, var(--c_accent), var(--palett-dark) 20%);
+  --c_accent_500: var(--c_accent);
+  --c_accent_400: color-mix(in oklch, var(--c_accent), var(--palett-light) 20%);
+  --c_accent_300: color-mix(in oklch, var(--c_accent), var(--palett-light) 40%);
+  --c_accent_200: color-mix(in oklch, var(--c_accent), var(--palett-light) 60%);
+  --c_accent_100: color-mix(in oklch, var(--c_accent), var(--palett-light) 80%);
+
+  /* Secondary */
+  --c_secondary_950: color-mix(in oklch, var(--c_secondary), var(--palett-dark) 90%);
+  --c_secondary_900: color-mix(in oklch, var(--c_secondary), var(--palett-dark) 80%);
+  --c_secondary_800: color-mix(in oklch, var(--c_secondary), var(--palett-dark) 60%);
+  --c_secondary_700: color-mix(in oklch, var(--c_secondary), var(--palett-dark) 40%);
+  --c_secondary_600: color-mix(in oklch, var(--c_secondary), var(--palett-dark) 20%);
+  --c_secondary_500: var(--c_secondary);
+  --c_secondary_400: color-mix(in oklch, var(--c_secondary), var(--palett-light) 20%);
+  --c_secondary_300: color-mix(in oklch, var(--c_secondary), var(--palett-light) 40%);
+  --c_secondary_200: color-mix(in oklch, var(--c_secondary), var(--palett-light) 60%);
+  --c_secondary_100: color-mix(in oklch, var(--c_secondary), var(--palett-light) 80%);
+
+  /* Tertiary */
+  --c_tertiary_950: color-mix(in oklch, var(--c_tertiary), var(--palett-dark) 90%);
+  --c_tertiary_900: color-mix(in oklch, var(--c_tertiary), var(--palett-dark) 80%);
+  --c_tertiary_800: color-mix(in oklch, var(--c_tertiary), var(--palett-dark) 60%);
+  --c_tertiary_700: color-mix(in oklch, var(--c_tertiary), var(--palett-dark) 40%);
+  --c_tertiary_600: color-mix(in oklch, var(--c_tertiary), var(--palett-dark) 20%);
+  --c_tertiary_500: var(--c_tertiary);
+  --c_tertiary_400: color-mix(in oklch, var(--c_tertiary), var(--palett-light) 20%);
+  --c_tertiary_300: color-mix(in oklch, var(--c_tertiary), var(--palett-light) 40%);
+  --c_tertiary_200: color-mix(in oklch, var(--c_tertiary), var(--palett-light) 60%);
+  --c_tertiary_100: color-mix(in oklch, var(--c_tertiary), var(--palett-light) 80%);
+
+  /* Neutral */
+  --c_neutral_950: color-mix(in oklch, var(--c_neutral), var(--palett-dark) 90%);
+  --c_neutral_900: color-mix(in oklch, var(--c_neutral), var(--palett-dark) 80%);
+  --c_neutral_800: color-mix(in oklch, var(--c_neutral), var(--palett-dark) 60%);
+  --c_neutral_700: color-mix(in oklch, var(--c_neutral), var(--palett-dark) 40%);
+  --c_neutral_600: color-mix(in oklch, var(--c_neutral), var(--palett-dark) 20%);
+  --c_neutral_500: var(--c_neutral);
+  --c_neutral_400: color-mix(in oklch, var(--c_neutral), var(--palett-light) 20%);
+  --c_neutral_300: color-mix(in oklch, var(--c_neutral), var(--palett-light) 40%);
+  --c_neutral_200: color-mix(in oklch, var(--c_neutral), var(--palett-light) 60%);
+  --c_neutral_100: color-mix(in oklch, var(--c_neutral), var(--palett-light) 80%);
+
+  /* Gray */
+  --c_gray_950: color-mix(in oklch, var(--c_gray), var(--palett-dark) 90%);
+  --c_gray_900: color-mix(in oklch, var(--c_gray), var(--palett-dark) 80%);
+  --c_gray_800: color-mix(in oklch, var(--c_gray), var(--palett-dark) 60%);
+  --c_gray_700: color-mix(in oklch, var(--c_gray), var(--palett-dark) 40%);
+  --c_gray_600: color-mix(in oklch, var(--c_gray), var(--palett-dark) 20%);
+  --c_gray_500: var(--c_gray);
+  --c_gray_400: color-mix(in oklch, var(--c_gray), var(--palett-light) 20%);
+  --c_gray_300: color-mix(in oklch, var(--c_gray), var(--palett-light) 40%);
+  --c_gray_250: color-mix(in oklch, var(--c_gray), var(--palett-light) 50%);
+  --c_gray_200: color-mix(in oklch, var(--c_gray), var(--palett-light) 60%);
+  --c_gray_100: color-mix(in oklch, var(--c_gray), var(--palett-light) 80%);
+  --c_gray_50: color-mix(in oklch, var(--c_gray), var(--palett-light) 90%);
+
+  /* Info */
+  --c_info_950: color-mix(in oklch, var(--c_info), var(--palett-dark) 90%);
+  --c_info_900: color-mix(in oklch, var(--c_info), var(--palett-dark) 80%);
+  --c_info_800: color-mix(in oklch, var(--c_info), var(--palett-dark) 60%);
+  --c_info_700: color-mix(in oklch, var(--c_info), var(--palett-dark) 40%);
+  --c_info_600: color-mix(in oklch, var(--c_info), var(--palett-dark) 20%);
+  --c_info_500: var(--c_info);
+  --c_info_400: color-mix(in oklch, var(--c_info), var(--palett-light) 20%);
+  --c_info_300: color-mix(in oklch, var(--c_info), var(--palett-light) 40%);
+  --c_info_200: color-mix(in oklch, var(--c_info), var(--palett-light) 60%);
+  --c_info_100: color-mix(in oklch, var(--c_info), var(--palett-light) 80%);
+
+  /* Success */
+  --c_success_950: color-mix(in oklch, var(--c_success), var(--palett-dark) 90%);
+  --c_success_900: color-mix(in oklch, var(--c_success), var(--palett-dark) 80%);
+  --c_success_800: color-mix(in oklch, var(--c_success), var(--palett-dark) 60%);
+  --c_success_700: color-mix(in oklch, var(--c_success), var(--palett-dark) 40%);
+  --c_success_600: color-mix(in oklch, var(--c_success), var(--palett-dark) 20%);
+  --c_success_500: var(--c_success);
+  --c_success_400: color-mix(in oklch, var(--c_success), var(--palett-light) 20%);
+  --c_success_300: color-mix(in oklch, var(--c_success), var(--palett-light) 40%);
+  --c_success_200: color-mix(in oklch, var(--c_success), var(--palett-light) 60%);
+  --c_success_100: color-mix(in oklch, var(--c_success), var(--palett-light) 80%);
+
+  /* Warning */
+  --c_warning_950: color-mix(in oklch, var(--c_warning), var(--palett-dark) 90%);
+  --c_warning_900: color-mix(in oklch, var(--c_warning), var(--palett-dark) 80%);
+  --c_warning_800: color-mix(in oklch, var(--c_warning), var(--palett-dark) 60%);
+  --c_warning_700: color-mix(in oklch, var(--c_warning), var(--palett-dark) 40%);
+  --c_warning_600: color-mix(in oklch, var(--c_warning), var(--palett-dark) 20%);
+  --c_warning_500: var(--c_warning);
+  --c_warning_400: color-mix(in oklch, var(--c_warning), var(--palett-light) 20%);
+  --c_warning_300: color-mix(in oklch, var(--c_warning), var(--palett-light) 40%);
+  --c_warning_200: color-mix(in oklch, var(--c_warning), var(--palett-light) 60%);
+  --c_warning_100: color-mix(in oklch, var(--c_warning), var(--palett-light) 80%);
+
+  /* Danger */
+  --c_danger_950: color-mix(in oklch, var(--c_danger), var(--palett-dark) 90%);
+  --c_danger_900: color-mix(in oklch, var(--c_danger), var(--palett-dark) 80%);
+  --c_danger_800: color-mix(in oklch, var(--c_danger), var(--palett-dark) 60%);
+  --c_danger_700: color-mix(in oklch, var(--c_danger), var(--palett-dark) 40%);
+  --c_danger_600: color-mix(in oklch, var(--c_danger), var(--palett-dark) 20%);
+  --c_danger_500: var(--c_danger);
+  --c_danger_400: color-mix(in oklch, var(--c_danger), var(--palett-light) 20%);
+  --c_danger_300: color-mix(in oklch, var(--c_danger), var(--palett-light) 40%);
+  --c_danger_200: color-mix(in oklch, var(--c_danger), var(--palett-light) 60%);
+  --c_danger_100: color-mix(in oklch, var(--c_danger), var(--palett-light) 80%);
+}

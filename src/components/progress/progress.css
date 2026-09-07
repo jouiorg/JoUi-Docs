@@ -2,26 +2,26 @@
   progress {
     appearance: none;
     width: 100%;
-    height: var(--bar-height);
+    height: var(--bar_h);
     border: none;
-    border-radius: var(--radius-full);
+    border-radius: var(--b-r_full);
     overflow: hidden;
-    background: var(--muted);
+    background: var(--c_surface_muted);
 
     &::-webkit-progress-bar {
-      background-color: var(--muted);
-      border-radius: var(--radius-full);
+      background-color: var(--c_surface_muted);
+      border-radius: var(--b-r_full);
     }
 
     &::-webkit-progress-value {
-      background-color: var(--primary);
-      border-radius: var(--radius-full);
-      transition: width var(--transition);
+      background-color: var(--c_accent);
+      border-radius: var(--b-r_full);
+      transition: width var(--t);
     }
 
     &::-moz-progress-bar {
-      background-color: var(--primary);
-      border-radius: var(--radius-full);
+      background-color: var(--c_accent);
+      border-radius: var(--b-r_full);
     }
   }
 }

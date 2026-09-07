@@ -1,0 +1,54 @@
+/**
+ * Border primitives
+ *
+ * Radius scale, border style/width defaults, drawn and blob organic shapes.
+ * Semantic border-radius tokens in tokens.css override the --b-r default here.
+ */
+
+@layer primitives {
+  :where(html) {
+    --b-c: light-dark(var(--c_gray_50), var(--c_gray_700));
+    --b-s: solid;
+
+    /* ── Border radius ────────────────────────────────────────────────── */
+    --b-r_0:    0px;
+    --b-r_sm:   2px;
+    --b-r_md:   4px;
+    --b-r:      6px;
+    --b-r_lg:   16px;
+    --b-r_xl:   32px;
+    --b-r_pill: 1e5px;
+
+    /* ── Border size (for outline/ring use cases) ─────────────────────── */
+    --b-s_1: 1px;
+    --b-s_2: 2px;
+    --b-s_3: 5px;
+    --b-s_4: 10px;
+    --b-s_5: 25px;
+
+    /* ── Border width ─────────────────────────────────────────────────── */
+    --b-w_0:  0px;
+    --b-w:    1px;
+    --b-w_lg: 2px;
+
+    /* ── Drawn / organic shapes ───────────────────────────────────────── */
+    --b-r_drawn_1: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    --b-r_drawn_2: 125px 10px 20px 185px / 25px 205px 205px 25px;
+    --b-r_drawn_3: 15px 255px 15px 225px / 225px 15px 255px 15px;
+    --b-r_drawn_4: 15px 25px 155px 25px / 225px 150px 25px 115px;
+    --b-r_drawn_5: 250px 25px 15px 20px / 15px 80px 105px 115px;
+    --b-r_drawn_6: 28px 100px 20px 15px / 150px 30px 205px 225px;
+
+    --b-r_blob_1: 30% 70% 70% 30% / 53% 30% 70% 47%;
+    --b-r_blob_2: 53% 47% 34% 66% / 63% 46% 54% 37%;
+    --b-r_blob_3: 37% 63% 56% 44% / 49% 56% 44% 51%;
+    --b-r_blob_4: 63% 37% 37% 63% / 43% 37% 63% 57%;
+    --b-r_blob_5: 49% 51% 48% 52% / 57% 44% 56% 43%;
+
+    /* ── Conditional radius (0 on full-width, rounded otherwise) ─────── */
+    --b-r_cond_1: clamp(0px, calc(100vw - 100%) * 1e5, var(--b-r));
+    --b-r_cond_2: clamp(0px, calc(100vw - 100%) * 1e5, var(--b-r_lg));
+    --b-r_cond_3: clamp(0px, calc(100vw - 100%) * 1e5, var(--b-r_xl));
+    --b-r_cond_4: clamp(0px, calc(100vw - 100%) * 1e5, var(--b-r_pill));
+  }
+}

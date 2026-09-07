@@ -1,0 +1,14 @@
+/**
+ * Aspect ratio primitives
+ */
+
+@layer primitives {
+  :where(html) {
+    --ratio_square:     1;
+    --ratio_landscape:  4/3;
+    --ratio_portrait:   3/4;
+    --ratio_widescreen: 16/9;
+    --ratio_ultrawide:  18/5;
+    --ratio_golden:     1.6180/1;
+  }
+}

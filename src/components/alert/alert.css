@@ -2,12 +2,12 @@
   [role="alert"] {
     position: relative;
     display: flex;
-    gap: var(--space-3);
-    padding: var(--space-4) var(--space-6);
-    background-color: var(--background);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
-    font-size: var(--text-7);
+    gap: var(--s_3);
+    padding: var(--s_4) var(--s_6);
+    background-color: var(--c_bg);
+    border: 1px solid var(--c_border);
+    border-radius: var(--b-r);
+    font-size: var(--f-s_7);
 
     &[data-variant] {
       border: none;

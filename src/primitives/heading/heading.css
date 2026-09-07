@@ -1,15 +1,15 @@
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    font-weight: var(--font-semibold);
+    font-weight: var(--f-w_semibold);
     line-height: 1.25;
 
     &:first-child { margin-block-start: 0; }
   }
 
-  h1 { font-size: var(--text-1); margin: var(--space-10) 0 var(--space-6); }
-  h2 { font-size: var(--text-2); margin: var(--space-8) 0 var(--space-5); }
-  h3 { font-size: var(--text-3); margin: var(--space-6) 0 var(--space-4); }
-  h4 { font-size: var(--text-4); margin: var(--space-5) 0 var(--space-3); }
-  h5 { font-size: var(--text-5); margin: var(--space-4) 0 var(--space-2); }
-  h6 { font-size: var(--text-regular); margin: var(--space-4) 0 var(--space-2); }
+  h1 { font-size: var(--f-s_1); margin: var(--s_10) 0 var(--s_6); }
+  h2 { font-size: var(--f-s_2); margin: var(--s_8) 0 var(--s_5); }
+  h3 { font-size: var(--f-s_3); margin: var(--s_6) 0 var(--s_4); }
+  h4 { font-size: var(--f-s_4); margin: var(--s_5) 0 var(--s_3); }
+  h5 { font-size: var(--f-s_5); margin: var(--s_4) 0 var(--s_2); }
+  h6 { font-size: var(--f-s); margin: var(--s_4) 0 var(--s_2); }
 }

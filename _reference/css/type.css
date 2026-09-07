@@ -1,0 +1,91 @@
+/* Headings */
+:where(h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6) {
+  margin-bottom: var(--_h-mb);
+  font-size: var(--_h-fs);
+  margin-top: 0;
+  font-family: var(--h_f-f);
+  font-style: var(--h-fstyle);
+  font-weight: var(--h-fw);
+  line-height: var(--h-lh);
+  color: var(--h-c);
+}
+
+:where(h1, .h1) {
+  --_h-mb: var(--h1_mb);
+  --_h-fs: var(--f-s_h1);
+}
+
+:where(h2, .h2) {
+  --_h-mb: var(--h2_mb);
+  --_h-fs: var(--f-s_h2);
+}
+
+:where(h3, .h3) {
+  --_h-mb: var(--h3_mb);
+  --_h-fs: var(--f-s_h3);
+}
+
+:where(h4, .h4) {
+  --_h-mb: var(--h4_mb);
+  --_h-fs: var(--f-s_h4);
+}
+
+:where(h5, .h5) {
+  --_h-mb: var(--h5_mb);
+  --_h-fs: var(--f-s_h5);
+}
+
+:where(h6, .h6) {
+  --_h-mb: var(--h6_mb);
+  --_h-fs: var(--f-s_h6);
+}
+
+.lead {
+  --f-s_lead: calc(var(--f-s_base) * .125);
+  --lead-font-weight: 300;
+
+  font-size: var(--f-s_lead);
+  font-weight: var(--lead-font-weight);
+}
+
+/* Misc */
+/* Builds on `abbr` */
+.initialism {
+  font-size: var(--initialism-font-size, .875em);
+  text-transform: uppercase;
+}
+
+/* Blockquotesx */
+.blockquote {
+  --blockquote-margin-y: var(--spacer);
+  margin-bottom: var(--blockquote-margin-y);
+  font-size: var(--blockquote-font-size, 1.25);
+
+  & > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+.blockquote-footer {
+  --blockquote-footer-font-size: var(--f-s_sm);
+  --blockquote-footer-color: var(--c_gray)
+
+  margin-top: calc(var(--blockquote-margin-y) * -1);
+  margin-bottom: var(--blockquote-margin-y);
+  font-size: var(--blockquote-footer-font-size);
+  color: var(--blockquote-footer-color);
+
+  &::before {
+    content: "\2014\00A0";
+  }
+}
+
+.main-color-text {
+  color: var(--c_primary);
+}
+
+.highlighted-text {
+  color: var(--c_tertiary);
+  padding: 0.15rem 1rem;
+  border-left: 2px solid var(--c_tertiary);
+}

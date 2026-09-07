@@ -1,0 +1,50 @@
+:where(html) {
+  /* Font */
+  /* Font size */
+  --f-s_0: .875rem;
+  --f-s_1: .75rem;
+  --f-s_2: 1rem;
+  --f-s_3: 1.1rem;
+  --f-s_4: 1.25rem;
+  --f-s_5: 1.5rem;
+  --f-s_6: 2rem;
+  --f-s_7: 3rem;
+  --f-s_8: 3.5rem;
+
+  /* Font weight */
+  --f-w_thin: 100;
+  --f-w_extra-light: 200;
+  --f-w_light: 300;
+  --f-w_normal: 400;
+  --f-w_medium: 500;
+  --f-w_semi-bold: 600;
+  --f-w_bold: 700;
+  --f-w_extra-bold: 800;
+  --f-w_black: 900;
+
+  /* Line height */
+  --l-h_0: .95;
+  --l-h_1: 1.1;
+  --l-h_2: 1.25;
+  --l-h_3: 1.375;
+  --l-h_4: 1.5;
+  --l-h_5: 1.75;
+  --l-h_6: 2;
+
+  /* Letter spacing */
+  --l-s: -.05em;
+  --l-s_1: .025em;
+  --l-s_2: .050em;
+  --l-s_3: .075em;
+  --l-s_4: .100em;
+  --l-s_5: .300em;
+  --l-s_6: .750em;
+  --l-s_7: 1em;
+
+
+  /* Font size fluid */
+  --f-s-fluid-0: clamp(.75rem, 2vw, 1rem);
+  --f-s-fluid-1: clamp(1rem, 4vw, 1.5rem);
+  --f-s-fluid-2: clamp(1.5rem, 6vw, 2.5rem);
+  --f-s-fluid-3: clamp(2rem, 9vw, 3.5rem);
+}

@@ -1,0 +1,34 @@
+:where(html) {
+  /* 4px */
+  --size_0: 0;
+  --size_25: 1px;
+  --size_50: 2px;
+  --size_100: 4px;
+  --size_150: 6px;
+  --size_200: 8px;
+  --size_250: 10px;
+  --size_300: 12px;
+  --size_350: 14px;
+  --size_400: 16px;
+  --size_450: 18px;
+  --size_500: 20px;
+  /* 8px */
+  --size_600: 28px;
+  --size_700: 34px;
+  --size_800: 42px;
+  --size_900: 50px;
+  --size_1000: 58px;
+  /* 12px */
+  --size_1100: 60px;
+  --size_1200: 72px;
+  --size_1300: 84px;
+  --size_1400: 96px;
+  --size_1500: 108px;
+  /* 24px */
+  --size_1600: 122px;
+  --size_1700: 146px;
+  --size_1800: 170px;
+  --size_1900: 194px;
+  --size_2000: 218px;
+}
+

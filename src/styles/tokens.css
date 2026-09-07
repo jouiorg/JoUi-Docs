@@ -1,134 +1,258 @@
-/*
- * joui Design Tokens
- * Starting point: oat.ink tokens
- * Will be replaced with joui-specific values in Phase 4.2 (see GitHub Issue #15)
+/**
+ * joui Semantic Tokens
+ *
+ * Architecture:
+ *   vars.css           → brand seeds (change per theme)
+ *     ↓
+ *   color-palette.css  → full 50–950 color scales via color-mix()
+ *     ↓
+ *   tokens.css         → semantic tokens  ← YOU ARE HERE
+ *     ↓
+ *   components/        → consume tokens, never primitives
+ *
+ * ── Naming convention ────────────────────────────────────────────────────
+ *
+ *   Global:    --{category}_{semantic}_{modifier}
+ *   Component: --{comp}_{prop}          public override
+ *              --_{comp}_{prop}         private computed
+ *              --_{comp}_{prop}_h       hover state
+ *              --_{comp}_{prop}_a       active state
+ *
+ *   Underscore (_) separates all name segments.
+ *   Dash (-) only inside CSS property abbreviations (b-r, f-s, p-b, m-t…).
+ *
+ *   Category prefixes:
+ *     --c_       color (semantic)
+ *     --c_{n}_   color palette scale (e.g. --c_primary_500)
+ *     --s_       spacing
+ *     --b-r      border-radius default / --b-r_{s|l|full}
+ *     --f_       font-family
+ *     --f-s_     font-size
+ *     --f-w_     font-weight
+ *     --l-h      line-height
+ *     --sh_      shadow
+ *     --t        transition base / --t_fast
+ *     --z_       z-index
  */
 
 @layer theme {
   :root {
     color-scheme: light dark;
 
-    /* ================================
-       Colors — Semantic
-       ================================ */
+    /* ══ BACKGROUND ═══════════════════════════════════════════════════════ */
 
-    --background:          light-dark(#fff, #09090b);
-    --foreground:          light-dark(#09090b, #fafafa);
+    --c_bg:           light-dark(var(--c_white),       var(--c_gray_950));
+    --c_bg_subtle:    light-dark(var(--c_gray_50),     var(--c_gray_900));
+    --c_bg_muted:     light-dark(var(--c_gray_100),    var(--c_gray_800));
+    --c_bg_inverse:   light-dark(var(--c_gray_950),    var(--c_gray_50));
+    --c_bg_disabled:  light-dark(var(--c_gray_100),    var(--c_gray_800));
 
-    --card:                light-dark(#fff, #18181b);
-    --card-foreground:     light-dark(#09090b, #fafafa);
+    /* ══ SURFACE — cards, panels, modals ══════════════════════════════════ */
 
-    --primary:             light-dark(#574747, #fafafa);
-    --primary-foreground:  light-dark(#fafafa, #18181b);
+    --c_surface:         light-dark(var(--c_white),       var(--c_gray_900));
+    --c_surface_raised:  light-dark(var(--c_white),       var(--c_gray_800));
+    --c_surface_overlay: light-dark(var(--c_white),       var(--c_gray_700));
+    --c_surface_sunken:  light-dark(var(--c_gray_50),     var(--c_gray_950));
+    --c_surface_inverse: light-dark(var(--c_gray_900),    var(--c_gray_100));
+    --c_surface_muted:   light-dark(var(--c_gray_100),    var(--c_gray_800));
 
-    --secondary:           light-dark(#f4f4f5, #27272a);
-    --secondary-foreground:light-dark(#574747, #fafafa);
+    /* ══ FOREGROUND — text & icons ════════════════════════════════════════ */
 
-    --muted:               light-dark(#f4f4f5, #27272a);
-    --muted-foreground:    light-dark(#71717a, #a1a1aa);
+    --c_fg:           light-dark(var(--c_gray_900),    var(--c_gray_100));
+    --c_fg_muted:     light-dark(var(--c_gray_500),    var(--c_gray_400));
+    --c_fg_subtle:    light-dark(var(--c_gray_400),    var(--c_gray_600));
+    --c_fg_inverse:   light-dark(var(--c_white),       var(--c_gray_950));
+    --c_fg_on_accent: light-dark(var(--c_white),       var(--c_white));
+    --c_fg_disabled:  light-dark(var(--c_gray_300),    var(--c_gray_600));
+    --c_fg_heading:   light-dark(var(--c_gray_950),    var(--c_gray_100));
+    --c_fg_code:      light-dark(var(--c_danger_700),  var(--c_danger_300));
 
-    --faint:               light-dark(#fafafa, #1e1e21);
-    --faint-foreground:    light-dark(#a1a1aa, #71717a);
+    /* ══ ACCENT — brand primary (interactive) ════════════════════════════ */
 
-    --accent:              light-dark(#f4f4f5, #27272a);
+    --c_accent:        light-dark(var(--c_primary_500), var(--c_primary_300));
+    --c_accent_fg:     light-dark(var(--c_white),       var(--c_white));
+    --c_accent_h:      light-dark(var(--c_primary_600), var(--c_primary_200));
+    --c_accent_a:      light-dark(var(--c_primary_700), var(--c_primary_100));
+    --c_accent_subtle: light-dark(var(--c_primary_50),  var(--c_primary_950));
+    --c_accent_muted:  light-dark(var(--c_primary_100), var(--c_primary_900));
+    --c_accent_border: light-dark(var(--c_primary_300), var(--c_primary_700));
 
-    --danger:              light-dark(#d32f2f, #f4807b);
-    --danger-foreground:   light-dark(#fafafa, #18181b);
+    /* ══ BORDER ═══════════════════════════════════════════════════════════ */
 
-    --success:             light-dark(#008032, #6cc070);
-    --success-foreground:  light-dark(#fafafa, #18181b);
+    --c_border:          light-dark(var(--c_gray_300),  var(--c_gray_700));
+    --c_border_muted:    light-dark(var(--c_gray_100),  var(--c_gray_800));
+    --c_border_strong:   light-dark(var(--c_gray_400),  var(--c_gray_600));
+    --c_border_disabled: light-dark(var(--c_gray_200),  var(--c_gray_800));
 
-    --warning:             light-dark(#a65b00, #f0a030);
-    --warning-foreground:  #09090b;
+    /* ══ LINK ═════════════════════════════════════════════════════════════ */
 
-    --border:              light-dark(#d4d4d8, #52525b);
-    --input:               light-dark(#d4d4d8, #52525b);
-    --ring:                light-dark(#574747, #d4d4d8);
+    --c_link:         light-dark(var(--c_primary_500), var(--c_primary_300));
+    --c_link_h:       light-dark(var(--c_primary_700), var(--c_primary_200));
+    --c_link_visited: light-dark(var(--c_primary_700), var(--c_primary_400));
 
-    /* ================================
-       Spacing
-       ================================ */
+    /* ══ FOCUS ════════════════════════════════════════════════════════════ */
 
-    --space-1:  0.25rem;
-    --space-2:  0.5rem;
-    --space-3:  0.75rem;
-    --space-4:  1rem;
-    --space-5:  1.25rem;
-    --space-6:  1.5rem;
-    --space-8:  2rem;
-    --space-10: 2.5rem;
-    --space-12: 3rem;
-    --space-14: 3.5rem;
-    --space-16: 4rem;
-    --space-18: 4.5rem;
+    --c_focus:        light-dark(var(--c_primary_500), var(--c_primary_300));
+    --c_focus_offset: light-dark(var(--c_white),       var(--c_gray_950));
 
-    /* ================================
-       Border Radius
-       ================================ */
+    /* ══ OVERLAY — backdrop, scrim ════════════════════════════════════════ */
 
-    --radius-small:  0.125rem;
-    --radius-medium: 0.375rem;
-    --radius-large:  0.75rem;
-    --radius-full:   9999px;
+    --c_overlay:        light-dark(rgb(0 0 0 / 0.50), rgb(0 0 0 / 0.70));
+    --c_overlay_subtle: light-dark(rgb(0 0 0 / 0.20), rgb(0 0 0 / 0.40));
+    --c_overlay_strong: light-dark(rgb(0 0 0 / 0.75), rgb(0 0 0 / 0.85));
 
-    /* ================================
-       Typography — Fonts
-       ================================ */
+    /* ══ STATUS — SUCCESS ═════════════════════════════════════════════════ */
 
-    --font-sans: system-ui, sans-serif;
-    --font-mono: ui-monospace, Consolas, monospace;
+    --c_success:        light-dark(var(--c_success_500), var(--c_success_400));
+    --c_success_h:      light-dark(var(--c_success_600), var(--c_success_300));
+    --c_success_a:      light-dark(var(--c_success_700), var(--c_success_200));
+    --c_success_subtle: light-dark(var(--c_success_50),  var(--c_success_950));
+    --c_success_muted:  light-dark(var(--c_success_100), var(--c_success_900));
+    --c_success_border: light-dark(var(--c_success_300), var(--c_success_700));
+    --c_success_fg:     light-dark(var(--c_success_700), var(--c_success_300));
 
-    /* ================================
-       Typography — Scale (fluid)
-       ================================ */
+    /* ══ STATUS — DANGER ══════════════════════════════════════════════════ */
 
-    --text-1: clamp(1.75rem, 1.5rem + 1.1vw, 2.25rem);
-    --text-2: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
-    --text-3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
-    --text-4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
-    --text-5: 1.125rem;
-    --text-6: 1rem;
-    --text-7: 0.875rem;
-    --text-8: 0.75rem;
-    --text-regular: var(--text-6);
+    --c_danger:        light-dark(var(--c_danger_500), var(--c_danger_400));
+    --c_danger_h:      light-dark(var(--c_danger_600), var(--c_danger_300));
+    --c_danger_a:      light-dark(var(--c_danger_700), var(--c_danger_200));
+    --c_danger_subtle: light-dark(var(--c_danger_50),  var(--c_danger_950));
+    --c_danger_muted:  light-dark(var(--c_danger_100), var(--c_danger_900));
+    --c_danger_border: light-dark(var(--c_danger_300), var(--c_danger_700));
+    --c_danger_fg:     light-dark(var(--c_danger_700), var(--c_danger_300));
 
-    /* ================================
-       Typography — Line height & Weight
-       ================================ */
+    /* ══ STATUS — WARNING ═════════════════════════════════════════════════ */
 
-    --leading-normal: 1.5;
+    --c_warning:        light-dark(var(--c_warning_500), var(--c_warning_400));
+    --c_warning_h:      light-dark(var(--c_warning_600), var(--c_warning_300));
+    --c_warning_a:      light-dark(var(--c_warning_700), var(--c_warning_200));
+    --c_warning_subtle: light-dark(var(--c_warning_50),  var(--c_warning_950));
+    --c_warning_muted:  light-dark(var(--c_warning_100), var(--c_warning_900));
+    --c_warning_border: light-dark(var(--c_warning_300), var(--c_warning_700));
+    --c_warning_fg:     light-dark(var(--c_warning_700), var(--c_warning_300));
 
-    --font-normal:   400;
-    --font-medium:   500;
-    --font-semibold: 600;
-    --font-bold:     700;
+    /* ══ STATUS — INFO ════════════════════════════════════════════════════ */
 
-    /* ================================
-       Shadows
-       ================================ */
+    --c_info:        light-dark(var(--c_info_500), var(--c_info_400));
+    --c_info_h:      light-dark(var(--c_info_600), var(--c_info_300));
+    --c_info_subtle: light-dark(var(--c_info_50),  var(--c_info_950));
+    --c_info_muted:  light-dark(var(--c_info_100), var(--c_info_900));
+    --c_info_border: light-dark(var(--c_info_300), var(--c_info_700));
+    --c_info_fg:     light-dark(var(--c_info_700), var(--c_info_300));
 
-    --shadow-small:  0 1px 2px 0 rgb(0 0 0 / 0.05);
-    --shadow-medium: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-    --shadow-large:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    /* ══ NEUTRAL ══════════════════════════════════════════════════════════ */
 
-    /* ================================
-       Transitions
-       ================================ */
+    --c_neutral:        light-dark(var(--c_gray_500), var(--c_gray_400));
+    --c_neutral_subtle: light-dark(var(--c_gray_50),  var(--c_gray_950));
+    --c_neutral_muted:  light-dark(var(--c_gray_100), var(--c_gray_900));
+    --c_neutral_border: light-dark(var(--c_gray_300), var(--c_gray_700));
+    --c_neutral_fg:     light-dark(var(--c_gray_700), var(--c_gray_300));
 
-    --transition-fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
-    --transition:      200ms cubic-bezier(0.4, 0, 0.2, 1);
+    /* ══ INTERACTIVE ══════════════════════════════════════════════════════ */
 
-    /* ================================
-       Misc
-       ================================ */
+    --c_hover_bg:    light-dark(var(--c_gray_50),      var(--c_gray_900));
+    --c_active_bg:   light-dark(var(--c_gray_100),     var(--c_gray_800));
+    --c_selected_bg: light-dark(var(--c_primary_50),   var(--c_primary_950));
+    --c_selected_fg: var(--c_accent);
 
-    --bar-height: 0.5rem;
-    --z-dropdown: 50;
-    --z-modal:    200;
+    /* ══ SKELETON ═════════════════════════════════════════════════════════ */
+
+    --c_skeleton_base:  light-dark(var(--c_gray_200), var(--c_gray_800));
+    --c_skeleton_shine: light-dark(var(--c_gray_100), var(--c_gray_700));
+
+    /* ══ FORM — INPUT ═════════════════════════════════════════════════════ */
+
+    --c_input:                light-dark(var(--c_gray_300),  var(--c_gray_700));
+    --c_input_bg:             light-dark(var(--c_white),     var(--c_gray_950));
+    --c_input_bg_focus:       light-dark(var(--c_white),     var(--c_gray_900));
+    --c_input_border_h:       light-dark(var(--c_gray_400),  var(--c_gray_600));
+    --c_input_border_focus:   var(--c_accent);
+    --c_input_border_error:   var(--c_danger);
+    --c_input_border_success: var(--c_success);
+    --c_input_placeholder:    light-dark(var(--c_gray_400),  var(--c_gray_600));
+    --c_input_disabled_bg:    light-dark(var(--c_gray_100),  var(--c_gray_800));
+    --c_input_disabled_fg:    light-dark(var(--c_gray_400),  var(--c_gray_600));
+
+    /* ══ BODY & LINK — legacy semantic (widely used in components) ════════ */
+
+    --body_c:  light-dark(var(--c_gray_900), var(--c_gray_100));
+    --body_bg: light-dark(var(--c_white),    var(--c_gray_950));
+    --link_c:  var(--c_link);
+    --link_c_h: var(--c_link_h);
+
+    /* ══ SPACING ══════════════════════════════════════════════════════════ */
+
+    --s_1:  0.25rem;
+    --s_2:  0.5rem;
+    --s_3:  0.75rem;
+    --s_4:  1rem;
+    --s_5:  1.25rem;
+    --s_6:  1.5rem;
+    --s_8:  2rem;
+    --s_10: 2.5rem;
+    --s_12: 3rem;
+    --s_14: 3.5rem;
+    --s_16: 4rem;
+    --s_18: 4.5rem;
+
+    /* ══ BORDER RADIUS ════════════════════════════════════════════════════ */
+
+    --b-r_s:    0.125rem;
+    --b-r:      0.375rem;   /* default */
+    --b-r_l:    0.75rem;
+    --b-r_full: 9999px;
+
+    /* ══ TYPOGRAPHY ═══════════════════════════════════════════════════════ */
+
+    /* Font families set in vars.css: --f_sans, --f_mono */
+
+    /* Fluid type scale */
+    --f-s_1: clamp(1.75rem, 1.5rem + 1.1vw, 2.25rem);
+    --f-s_2: clamp(1.5rem, 1.3rem + 0.8vw, 1.875rem);
+    --f-s_3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+    --f-s_4: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+    --f-s_5: 1.125rem;
+    --f-s_6: 1rem;
+    --f-s_7: 0.875rem;
+    --f-s_8: 0.75rem;
+    --f-s:   var(--f-s_6);   /* body default */
+
+    /* Font weight */
+    --f-w_normal:   400;
+    --f-w_md:       500;
+    --f-w_semibold: 600;
+    --f-w_bold:     700;
+
+    /* Line height */
+    --l-h: 1.5;
+
+    /* ══ SHADOWS ══════════════════════════════════════════════════════════ */
+
+    --sh_s: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --sh_m: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --sh_l: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+    /* ══ TRANSITIONS ══════════════════════════════════════════════════════ */
+
+    --t_fast: 120ms cubic-bezier(0.4, 0, 0.2, 1);
+    --t:      200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+    /* ══ Z-INDEX ══════════════════════════════════════════════════════════ */
+
+    --z_dropdown: 50;
+    --z_modal:    200;
+
+    /* ══ MISC ═════════════════════════════════════════════════════════════ */
+
+    --bar_h: 0.5rem;   /* shared: progress, meter, range, switch */
   }
 
-  /* Variant color mapping — shared by alert, badge, toast, etc. */
-  [data-variant="success"] { --_variant-color: var(--success); }
-  [data-variant="warning"] { --_variant-color: var(--warning); }
-  :is([data-variant="danger"], [data-variant="error"]) { --_variant-color: var(--danger); }
+  /* Dark mode manual toggle */
+  :root[data-theme="dark"]  { color-scheme: dark; }
+  :root[data-theme="light"] { color-scheme: light; }
+
+  /* Variant color mapping — shared by alert, badge, toast */
+  [data-variant="success"] { --_variant-color: var(--c_success); }
+  [data-variant="warning"] { --_variant-color: var(--c_warning); }
+  :is([data-variant="danger"], [data-variant="error"]) { --_variant-color: var(--c_danger); }
 }

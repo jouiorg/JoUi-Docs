@@ -12,39 +12,40 @@
 
     &::backdrop { display: none; }
 
-    &[data-placement^="top"]    { inset: var(--space-4) auto auto auto; }
-    &[data-placement^="bottom"] { inset: auto auto var(--space-4) auto; flex-direction: column-reverse; }
-    &[data-placement$="left"]   { left: var(--space-4); }
+    &[data-placement^="top"]    { inset: var(--s_4) auto auto auto; }
+    &[data-placement^="bottom"] { inset: auto auto var(--s_4) auto; flex-direction: column-reverse; }
+    &[data-placement$="left"]   { left: var(--s_4); }
     &[data-placement$="center"] { left: 50%; transform: translateX(-50%); }
-    &[data-placement$="right"]  { right: var(--space-4); }
+    &[data-placement$="right"]  { right: var(--s_4); }
   }
 
   .toast {
-    --transition: 300ms;
-    --transition-in: calc(var(--transition) - 50ms);
+    /* Local timing vars — independent of global --t */
+    --_toast_t:    300ms;
+    --_toast_t-in: calc(var(--_toast_t) - 50ms);
 
-    padding: var(--space-5) var(--space-4);
+    padding: var(--s_5) var(--s_4);
     max-width: 28rem;
     min-width: 20rem;
     pointer-events: auto;
-    background-color: var(--card);
-    border: 1px solid var(--border);
-    border-inline-start-width: var(--space-1);
+    background-color: var(--c_surface);
+    border: 1px solid var(--c_border);
+    border-inline-start-width: var(--s_1);
     border-inline-start-style: solid;
-    border-inline-start-color: var(--_variant-color, var(--border));
-    border-radius: var(--radius-medium);
-    box-shadow: var(--shadow-small);
-    transition: opacity var(--transition-in), transform var(--transition-in), margin var(--transition-in);
+    border-inline-start-color: var(--_variant-color, var(--c_border));
+    border-radius: var(--b-r);
+    box-shadow: var(--sh_s);
+    transition: opacity var(--_toast_t-in), transform var(--_toast_t-in), margin var(--_toast_t-in);
     line-height: 1;
-    margin: var(--space-2) 0;
+    margin: var(--s_2) 0;
 
     .toast-title {
       font-weight: 600;
-      margin: 0 0 var(--space-3) 0;
+      margin: 0 0 var(--s_3) 0;
       color: var(--_variant-color, inherit);
     }
 
-    .toast-message { color: var(--muted-foreground); }
+    .toast-message { color: var(--c_fg_muted); }
 
     & > [data-close] {
       margin-inline-start: auto;
@@ -64,7 +65,7 @@
       padding-block: 0;
       max-height: 0;
       overflow: hidden;
-      transition: opacity var(--transition), margin var(--transition), padding var(--transition), max-height var(--transition);
+      transition: opacity var(--_toast_t), margin var(--_toast_t), padding var(--_toast_t), max-height var(--_toast_t);
     }
   }
 }

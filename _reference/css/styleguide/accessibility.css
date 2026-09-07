@@ -1,0 +1,42 @@
+/**
+ * Accessibility utilities
+ * 
+ * Common utilities for improving accessibility that work in both Astro and Drupal.
+ * These classes hide content visually while keeping it available to screen readers.
+ */
+
+/**
+ * .visually-hidden
+ * Hides content visually while preserving it for screen readers.
+ * Useful for icon-only buttons with accessible labels.
+ * 
+ * Reference: https://www.a11y-101.com/design/visually-hidden
+ */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/**
+ * Alternative approach using clip-path (newer, cleaner)
+ * Uncomment to use instead of clip property above.
+ * Requires PostCSS autoprefixer for older browser support.
+ * 
+ * .visually-hidden {
+ *   position: absolute;
+ *   width: 1px;
+ *   height: 1px;
+ *   padding: 0;
+ *   margin: -1px;
+ *   overflow: hidden;
+ *   clip-path: inset(50%);
+ *   white-space: nowrap;
+ * }
+ */

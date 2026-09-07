@@ -21,6 +21,7 @@ export const en = {
   'sidebar.dataDisplay': 'Data Display',
   'sidebar.layout': 'Layout',
   'sidebar.overlays': 'Overlays',
+  'sidebar.designSystem': 'Design System',
   'sidebar.advanced': 'Advanced',
 
   // Getting started pages

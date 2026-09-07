@@ -1,0 +1,50 @@
+/**
+ * Navigation menu base
+ *
+ * Base styles for <nav class="menu"> using the joui public/private var pattern.
+ * Override via public vars: --nav_d, --nav_f-d, --nav_gap, --nav_link_c, etc.
+ */
+
+@layer components {
+  nav.menu {
+    --_nav_d:     var(--nav_d,     flex);
+    --_nav_f-d:   var(--nav_f-d,   row);
+    --_nav_f-w:   var(--nav_f-w,   nowrap);
+    --_nav_r-gap: var(--nav_r-gap, 18px);
+    --_nav_c-gap: var(--nav_c-gap, 36px);
+    --_nav_m-b:   var(--nav_m-b,   0px);
+    --_nav_m-i:   var(--nav_m-i,   0px);
+    --_nav_p:     var(--nav_p,     0px);
+    --_nav_l-s:   var(--nav_l-s,   none);
+    --_nav_gap:   var(--nav_gap,   var(--_nav_r-gap) var(--_nav_c-gap));
+
+    ul {
+      list-style:     var(--_nav_l-s);
+      display:        var(--_nav_d);
+      flex-direction: var(--_nav_f-d);
+      flex-wrap:      var(--_nav_f-w);
+      margin-block:   var(--_nav_m-b);
+      margin-inline:  var(--_nav_m-i);
+      padding:        var(--_nav_p);
+      gap:            var(--_nav_gap);
+    }
+
+    a {
+      --_nav_link_p-b: var(--nav_link_p-b, 0.5em);
+      --_nav_link_p-i: var(--nav_link_p-i, 0px);
+      --_nav_link_f-s: var(--nav_link_f-s, var(--f-s_6));
+      --_nav_link_f-w: var(--nav_link_f-w, var(--f-w_md));
+
+      --link_c:   var(--nav_link_c,   var(--c_fg));
+      --link_c_h: var(--nav_link_c_h, var(--c_accent));
+
+      position:       relative;
+      font-size:      var(--_nav_link_f-s);
+      font-weight:    var(--_nav_link_f-w);
+      padding-inline: var(--_nav_link_p-i);
+      padding-block:  var(--_nav_link_p-b);
+
+      &.is-active { color: var(--nav_link_c_a, var(--c_accent)); }
+    }
+  }
+}

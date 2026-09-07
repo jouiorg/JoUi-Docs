@@ -1,0 +1,169 @@
+{#
+/**
+ * @file
+ * Template for a button component.
+ *
+ * Props:
+ * - tag: (string) default: ('button' | 'a' when url set)
+ *    enum: a | button | span | input | summary
+ * - variant: (string | null) default: (null)
+ *    enum: null | primary | secondary | strict | neutral | destructive
+ * - appearance: (string | null) default: (null)
+ *    enum: null | filled | outlined | text
+ * - size: (string | null) default: (null)
+ *    enum: null | sm | md | lg
+ * - shape: (string | null) default: (null)
+ *    enum: null | rectangular | circular
+ * - icon_position: (string) default: ('right')
+ *    enum: left | right | only
+ * - disabled: (boolean) default: (false)
+ * - loading: (boolean) default: (false)
+ * - full_width: (boolean) default: (false)
+ * - aria_expanded: (boolean | null) default: (null)
+ *
+ * Values:
+ * - label: (string) default: ('')
+ * - aria_label: (string | null) default: (null) - Required for icon-only
+ * - url: (string | null) default: (null)
+ * - target: (string | null) default: (null)
+ * - rel: (string | null) default: (null)
+ * - name: (string | null) default: (null)
+ * - value: (string | null) default: (null)
+ * - icon: (string | null) default: (null) - SVG with aria-hidden="true"
+ * - id: (string | null) default: (null)
+ * - role: (string | null) default: (null)
+ *
+ * Utility classes: button_uc
+ * Attributes: button_att
+ *
+ * Slots:
+ * - slot_icon_before: Icon when position is left
+ * - slot_content: Main content
+ * - slot_icon: Icon when position is right or only
+ */
+#}
+
+{# Defaults #}
+{% if url %}
+  {% set tag = tag|default('a') %}
+{% else %}
+  {% set tag = tag|default('button') %}
+{% endif %}
+
+{% set variant = variant|default(null) %}
+{% set appearance = appearance|default(null) %}
+{% set size = size|default(null) %}
+{% set shape = shape|default(null) %}
+{% set disabled = disabled|default(false) %}
+{% set loading = loading|default(false) %}
+{% set full_width = full_width|default(false) %}
+{% set aria_expanded = aria_expanded|default(null) %}
+{% set aria_label = aria_label|default(null) %}
+{% set id = id|default(null) %}
+{% if icon %}
+  {% set icon_position = icon_position|default('right') %}
+{% endif %}
+
+{# Create attributes #}
+{% set button_att = button_att ?: create_attribute() %}
+
+{# Component classes #}
+{%
+  set classes = [
+    'button',
+    variant ? 'button-' ~ variant,
+    appearance ? 'button-' ~ appearance,
+    size ? 'button-' ~ size,
+    icon_position ? 'button-icon-' ~ icon_position,
+    shape ? 'button-' ~ shape,
+    full_width ? 'button-full-width',
+    loading ? 'is-loading',
+  ]|merge(button_uc ?: [])
+%}
+
+{% set spinner_size = size == 'sm' ? 'xs' : 'sm' %}
+
+{# Link attributes #}
+{% if url %}
+  {% set button_att = button_att.setAttribute('href', url) %}
+  {% if target %}
+    {% set button_att = button_att.setAttribute('target', target) %}
+  {% endif %}
+  {% if rel %}
+    {% set button_att = button_att.setAttribute('rel', rel) %}
+  {% endif %}
+{% endif %}
+
+{# Form attributes #}
+{% if name %}
+  {% set att = att.setAttribute('name', name) %}
+{% endif %}
+
+{% if value %}
+  {% set button_att = button_att.setAttribute('value', value) %}
+{% endif %}
+
+{% if loading %}
+  {% set button_att = button_att.setAttribute('aria-busy', 'false') %}
+{% endif %}
+
+{# Disabled #}
+{% if disabled %}
+  {% if tag == 'button' %}
+    {% set button_att = button_att.setAttribute('disabled', true) %}
+  {% else %}
+    {% set button_att = button_att
+      .setAttribute('role', 'link')
+      .setAttribute('aria-disabled', 'true')
+      .setAttribute('tabindex', '-1')
+    %}
+  {% endif %}
+{% endif %}
+
+{# aria-expanded — only when explicitly set #}
+{% if aria_expanded is not null %}
+  {% set button_att = button_att.setAttribute('aria-expanded', aria_expanded ? 'true' : 'false') %}
+{% endif %}
+
+{% if role is not null %}
+  {% set button_att = button_att.setAttribute('role', role) %}
+{% endif %}
+
+{# aria-label #}
+{% if aria_label %}
+  {% set button_att = button_att.setAttribute('aria-label', aria_label) %}
+{% elseif icon_position == 'only' and not label %}
+  {% set button_att = button_att.setAttribute('aria-label', 'Button') %}
+{% endif %}
+
+{% if id %}
+  {% set button_att = button_att.setAttribute('id', id) %}
+{% endif %}
+
+{# type for <button> elements #}
+{% if tag == 'button' and not button_att.offsetGet('type') %}
+  {% set button_att = button_att.setAttribute('type', 'button') %}
+{% endif %}
+
+{# Render #}
+<{{tag}}{{ button_att.addClass(classes) }}>
+  {%- block slot_icon -%}
+    {{- icon|raw -}}
+  {%- endblock -%}
+
+  {%- block slot_content -%}
+    <span {{ icon_position == 'only' ? 'class="visually-hidden"' }}>
+      {{- label -}}
+    </span>
+  {%- endblock -%}
+
+  {%- if loading -%}
+    {%- include 'mud_egov:spinner' with { size: spinner_size } only -%}
+  {%- endif -%}
+
+  {%- if icon_position != 'only' -%}
+    {%- block slot_icon_second -%}
+      {{- icon_second|raw -}}
+    {%- endblock -%}
+  {% endif %}
+</{{tag}}>

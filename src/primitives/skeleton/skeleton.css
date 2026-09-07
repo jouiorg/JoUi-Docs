@@ -1,20 +1,20 @@
 @layer components {
   [role="status"].skeleton {
     --_c: light-dark(
-      color-mix(in srgb, var(--muted) 15%, white),
-      color-mix(in srgb, var(--muted) 90%, var(--foreground))
+      color-mix(in srgb, var(--c_surface_muted) 15%, white),
+      color-mix(in srgb, var(--c_surface_muted) 90%, var(--c_fg))
     );
 
-    margin-block-end: var(--space-3);
-    background: var(--muted);
-    border-radius: var(--radius-medium);
+    margin-block-end: var(--s_3);
+    background: var(--c_surface_muted);
+    border-radius: var(--b-r);
     animation: skeleton-shimmer 2s infinite;
     background-size: 200% 100%;
     background-image: linear-gradient(
       90deg,
-      var(--muted) 0%,
+      var(--c_surface_muted) 0%,
       var(--_c) 50%,
-      var(--muted) 100%
+      var(--c_surface_muted) 100%
     );
 
     &.box  { width: 4rem; height: 4rem; }

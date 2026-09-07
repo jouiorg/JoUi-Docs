@@ -1,0 +1,106 @@
+/**
+ * joui Color Palette
+ *
+ * Full color scales generated dynamically from vars.css seeds via color-mix().
+ * Each seed = _500 step. Scale generated toward white (lighter) and black (darker).
+ * Naming: --c_{palette}_{step}
+ *
+ * Scale pattern:
+ *   _50  → color-mix(seed, white 90%)
+ *   _100 → color-mix(seed, white 80%)
+ *   _200 → color-mix(seed, white 60%)
+ *   _300 → color-mix(seed, white 40%)
+ *   _400 → color-mix(seed, white 20%)
+ *   _500 → seed itself
+ *   _600 → color-mix(seed, black 20%)
+ *   _700 → color-mix(seed, black 40%)
+ *   _800 → color-mix(seed, black 60%)
+ *   _900 → color-mix(seed, black 80%)
+ *   _950 → color-mix(seed, black 90%)
+ *
+ * ⚠️  Do NOT use these directly in components — use semantic tokens from tokens.css.
+ */
+
+@layer primitives {
+  :root {
+
+    /* ── Primary (brownish brand — seed: --c_primary) ────────────────────── */
+    --c_primary_50:  color-mix(in oklch, var(--c_primary), var(--c_white) 90%);
+    --c_primary_100: color-mix(in oklch, var(--c_primary), var(--c_white) 80%);
+    --c_primary_200: color-mix(in oklch, var(--c_primary), var(--c_white) 60%);
+    --c_primary_300: color-mix(in oklch, var(--c_primary), var(--c_white) 40%);
+    --c_primary_400: color-mix(in oklch, var(--c_primary), var(--c_white) 20%);
+    --c_primary_500: var(--c_primary);
+    --c_primary_600: color-mix(in oklch, var(--c_primary), var(--c_black) 20%);
+    --c_primary_700: color-mix(in oklch, var(--c_primary), var(--c_black) 40%);
+    --c_primary_800: color-mix(in oklch, var(--c_primary), var(--c_black) 60%);
+    --c_primary_900: color-mix(in oklch, var(--c_primary), var(--c_black) 80%);
+    --c_primary_950: color-mix(in oklch, var(--c_primary), var(--c_black) 90%);
+
+    /* ── Gray (neutral zinc — seed: --c_gray) ───────────────────────────── */
+    --c_gray_50:  color-mix(in oklch, var(--c_gray), var(--c_white) 90%);
+    --c_gray_100: color-mix(in oklch, var(--c_gray), var(--c_white) 80%);
+    --c_gray_200: color-mix(in oklch, var(--c_gray), var(--c_white) 60%);
+    --c_gray_300: color-mix(in oklch, var(--c_gray), var(--c_white) 40%);
+    --c_gray_400: color-mix(in oklch, var(--c_gray), var(--c_white) 20%);
+    --c_gray_500: var(--c_gray);
+    --c_gray_600: color-mix(in oklch, var(--c_gray), var(--c_black) 20%);
+    --c_gray_700: color-mix(in oklch, var(--c_gray), var(--c_black) 40%);
+    --c_gray_800: color-mix(in oklch, var(--c_gray), var(--c_black) 60%);
+    --c_gray_900: color-mix(in oklch, var(--c_gray), var(--c_black) 80%);
+    --c_gray_950: color-mix(in oklch, var(--c_gray), var(--c_black) 90%);
+
+    /* ── Success (green — seed: --c_success) ────────────────────────────── */
+    --c_success_50:  color-mix(in oklch, var(--c_success), var(--c_white) 90%);
+    --c_success_100: color-mix(in oklch, var(--c_success), var(--c_white) 80%);
+    --c_success_200: color-mix(in oklch, var(--c_success), var(--c_white) 60%);
+    --c_success_300: color-mix(in oklch, var(--c_success), var(--c_white) 40%);
+    --c_success_400: color-mix(in oklch, var(--c_success), var(--c_white) 20%);
+    --c_success_500: var(--c_success);
+    --c_success_600: color-mix(in oklch, var(--c_success), var(--c_black) 20%);
+    --c_success_700: color-mix(in oklch, var(--c_success), var(--c_black) 40%);
+    --c_success_800: color-mix(in oklch, var(--c_success), var(--c_black) 60%);
+    --c_success_900: color-mix(in oklch, var(--c_success), var(--c_black) 80%);
+    --c_success_950: color-mix(in oklch, var(--c_success), var(--c_black) 90%);
+
+    /* ── Danger (red — seed: --c_danger) ────────────────────────────────── */
+    --c_danger_50:  color-mix(in oklch, var(--c_danger), var(--c_white) 90%);
+    --c_danger_100: color-mix(in oklch, var(--c_danger), var(--c_white) 80%);
+    --c_danger_200: color-mix(in oklch, var(--c_danger), var(--c_white) 60%);
+    --c_danger_300: color-mix(in oklch, var(--c_danger), var(--c_white) 40%);
+    --c_danger_400: color-mix(in oklch, var(--c_danger), var(--c_white) 20%);
+    --c_danger_500: var(--c_danger);
+    --c_danger_600: color-mix(in oklch, var(--c_danger), var(--c_black) 20%);
+    --c_danger_700: color-mix(in oklch, var(--c_danger), var(--c_black) 40%);
+    --c_danger_800: color-mix(in oklch, var(--c_danger), var(--c_black) 60%);
+    --c_danger_900: color-mix(in oklch, var(--c_danger), var(--c_black) 80%);
+    --c_danger_950: color-mix(in oklch, var(--c_danger), var(--c_black) 90%);
+
+    /* ── Warning (amber — seed: --c_warning) ────────────────────────────── */
+    --c_warning_50:  color-mix(in oklch, var(--c_warning), var(--c_white) 90%);
+    --c_warning_100: color-mix(in oklch, var(--c_warning), var(--c_white) 80%);
+    --c_warning_200: color-mix(in oklch, var(--c_warning), var(--c_white) 60%);
+    --c_warning_300: color-mix(in oklch, var(--c_warning), var(--c_white) 40%);
+    --c_warning_400: color-mix(in oklch, var(--c_warning), var(--c_white) 20%);
+    --c_warning_500: var(--c_warning);
+    --c_warning_600: color-mix(in oklch, var(--c_warning), var(--c_black) 20%);
+    --c_warning_700: color-mix(in oklch, var(--c_warning), var(--c_black) 40%);
+    --c_warning_800: color-mix(in oklch, var(--c_warning), var(--c_black) 60%);
+    --c_warning_900: color-mix(in oklch, var(--c_warning), var(--c_black) 80%);
+    --c_warning_950: color-mix(in oklch, var(--c_warning), var(--c_black) 90%);
+
+    /* ── Info (cyan — seed: --c_info) ───────────────────────────────────── */
+    --c_info_50:  color-mix(in oklch, var(--c_info), var(--c_white) 90%);
+    --c_info_100: color-mix(in oklch, var(--c_info), var(--c_white) 80%);
+    --c_info_200: color-mix(in oklch, var(--c_info), var(--c_white) 60%);
+    --c_info_300: color-mix(in oklch, var(--c_info), var(--c_white) 40%);
+    --c_info_400: color-mix(in oklch, var(--c_info), var(--c_white) 20%);
+    --c_info_500: var(--c_info);
+    --c_info_600: color-mix(in oklch, var(--c_info), var(--c_black) 20%);
+    --c_info_700: color-mix(in oklch, var(--c_info), var(--c_black) 40%);
+    --c_info_800: color-mix(in oklch, var(--c_info), var(--c_black) 60%);
+    --c_info_900: color-mix(in oklch, var(--c_info), var(--c_black) 80%);
+    --c_info_950: color-mix(in oklch, var(--c_info), var(--c_black) 90%);
+
+  }
+}

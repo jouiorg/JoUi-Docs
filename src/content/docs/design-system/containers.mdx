@@ -1,0 +1,99 @@
+---
+title: Containers & Grid
+section: designSystem
+order: 3
+---
+
+`containers.css` provides two layout primitives: `.grid-container` (named-line subgrid) and `.wrapper` (centered max-width box).
+
+## `.grid-container`
+
+A CSS grid with named column lines (`full` and `container`) that let children break out to full-bleed without nesting tricks.
+
+### Column layout
+
+| Breakpoint | Columns | Gap |
+|---|---|---|
+| `< 36rem` (default) | 6 | 16px |
+| `≥ 36rem` (sm) | 4 | 16px |
+| `≥ 48rem` (md) | 12 | 30px |
+
+Children default to the `container` span. Add `.full` to break out to full-bleed:
+
+```html
+<div class="grid-container">
+  <div>I'm in the container column</div>
+  <div class="full">I'm full-bleed</div>
+</div>
+```
+
+### Narrow variant
+
+`.grid-container_sm` centers content in a narrower column span on large screens:
+
+```html
+<div class="grid-container grid-container_sm">
+  <article>Narrow reading column</article>
+</div>
+```
+
+### CSS custom properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--gutter` | `16px` / `30px` | Column gap (overridable) |
+| `--custom_container_m-w` | — | Override the computed max-width |
+| `--container_m-w` | from `media.css` breakpoints | Outer max-width |
+
+### How the grid works
+
+```css
+grid-template-columns:
+  [full-start] minmax(margin, 1fr)
+  [container-start]
+  repeat(N, column-width)
+  [container-end]
+  minmax(margin, 1fr) [full-end];
+```
+
+Margin columns expand to fill remaining space. At full-bleed widths the margin collapses to `0`.
+
+## `.wrapper`
+
+Simple centered box — no grid, just `max-width` + `margin: auto`:
+
+```html
+<div class="wrapper">
+  <p>Centered content</p>
+</div>
+```
+
+Max-width follows `--container_m-w` set by `styleguide/media.css` breakpoints:
+
+| Breakpoint | Max-width |
+|---|---|
+| `≥ 36rem` | 540px |
+| `≥ 48rem` | 720px |
+| `≥ 62rem` | 950px |
+| `≥ 75rem` | 1140px |
+| `≥ 87.5rem` | 1320px |
+| `≥ 100rem` | 1440px |
+
+### CSS custom properties
+
+| Property | Default | Description |
+|---|---|---|
+| `--container_m-w` | from breakpoints | Max-width of the wrapper |
+| `--container-py` | `--s_4` | Inline padding (overridable) |
+| `--gutter` | `30px` | Inline padding on md+ |
+
+## Drupal usage
+
+In Drupal SDC, `containers.css` is loaded independently alongside component SDC CSS. The named grid lines map to Drupal's region/layout builder slots:
+
+```twig
+<div class="grid-container">
+  {{ content.field_full_width }}   {# .full #}
+  {{ content.field_body }}         {# container span (default) #}
+</div>
+```

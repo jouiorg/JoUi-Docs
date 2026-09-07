@@ -1,8 +1,8 @@
 @layer components {
   .accordion__item {
     width: 100%;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-medium);
+    border: 1px solid var(--c_border);
+    border-radius: var(--b-r);
     overflow: hidden;
 
     & + .accordion__item {
@@ -17,10 +17,10 @@
     }
 
     &[open] > summary {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--c_border);
     }
 
-    & > *:not(summary) { margin: var(--space-4); }
+    & > *:not(summary) { margin: var(--s_4); }
 
     &[open] > *:not(summary) {
       animation: fade-in-up 0.3s both;
@@ -31,14 +31,14 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: var(--space-2);
-    padding: var(--space-4);
-    font-weight: var(--font-medium);
+    gap: var(--s_2);
+    padding: var(--s_4);
+    font-weight: var(--f-w_md);
     cursor: pointer;
     user-select: none;
-    transition: background-color var(--transition-fast);
+    transition: background-color var(--t_fast);
 
-    &:hover { background-color: var(--muted); }
+    &:hover { background-color: var(--c_surface_muted); }
 
     &::-webkit-details-marker, &::marker { display: none; }
 
@@ -51,7 +51,7 @@
       mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
       mask-size: contain;
       mask-repeat: no-repeat;
-      transition: transform var(--transition-fast);
+      transition: transform var(--t_fast);
     }
 
     .accordion__item[open] &::after { transform: rotate(180deg); }

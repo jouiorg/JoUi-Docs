@@ -21,6 +21,7 @@ export const ro: Record<string, string> = {
   'sidebar.dataDisplay': 'Date',
   'sidebar.layout': 'Layout',
   'sidebar.overlays': 'Overlay-uri',
+  'sidebar.designSystem': 'Design System',
   'sidebar.advanced': 'Avansate',
 
   // Getting started pages

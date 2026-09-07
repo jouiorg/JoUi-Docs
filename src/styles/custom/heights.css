@@ -1,0 +1,17 @@
+/**
+ * Height utilities
+ *
+ * Drupal toolbar offset support + minimum full-viewport height.
+ * --drupal-displace-offset-top is injected by Drupal's toolbar module.
+ */
+
+@layer components {
+  .align-top {
+    top: var(--drupal-displace-offset-top, 0);
+  }
+
+  .min-height {
+    min-height: 100dvh;
+    min-height: calc(100dvh - var(--drupal-displace-offset-top, 0px));
+  }
+}

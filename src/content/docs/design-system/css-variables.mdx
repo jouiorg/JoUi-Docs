@@ -1,0 +1,293 @@
+---
+title: CSS Variables
+section: designSystem
+order: 1
+---
+
+How joui CSS variables are named and structured — from brand seeds to component-level overrides.
+
+## Architecture
+
+Tokens are organized in **4 cascade layers**. Each layer feeds the next, and later layers always win:
+
+```
+vars.css           → brand seeds (colors, fonts, timing)
+  ↓
+styleguide.css     → primitive tokens (palette, shadows, animation, border, fonts…)
+  ↓
+tokens.css         → semantic tokens consumed by components
+  ↓
+typography.css     → base HTML element styles (reset + type)
+  ↓
+components/        → use tokens, never primitives
+```
+
+Layer order declared in `vars.css`:
+
+```css
+@layer primitives, base, theme, components;
+```
+
+| Layer | File(s) | Wins over |
+|---|---|---|
+| `primitives` | `styleguide/*.css` | — |
+| `base` | `typography.css` | primitives |
+| `theme` | `tokens.css` | base, primitives |
+| `components` | component `.css` files | everything |
+
+**Changing a theme:** only `vars.css` changes — the full palette recalculates automatically via `color-mix()`.
+
+### Color scale generation
+
+Scales are generated dynamically from a single seed color (the `_500` step):
+
+```css
+/* vars.css */
+--c_primary: #574747;
+
+/* styleguide/color-palette.css */
+--c_primary_50:  color-mix(in oklch, var(--c_primary), var(--c_white) 90%);
+--c_primary_100: color-mix(in oklch, var(--c_primary), var(--c_white) 80%);
+--c_primary_300: color-mix(in oklch, var(--c_primary), var(--c_white) 40%);
+--c_primary_500: var(--c_primary);   /* seed itself */
+--c_primary_700: color-mix(in oklch, var(--c_primary), var(--c_black) 40%);
+--c_primary_950: color-mix(in oklch, var(--c_primary), var(--c_black) 90%);
+```
+
+Steps `_50`–`_400`: progressively more white mixed in (90% → 20%)  
+Step `_500`: the seed color itself  
+Steps `_600`–`_950`: progressively more black mixed in (20% → 90%)
+
+## Naming convention
+
+**Rule:** underscore `_` separates all token segments. Dash `-` appears only inside CSS property abbreviations.
+
+```
+--{category}_{semantic}_{modifier}
+```
+
+### Property abbreviations
+
+| CSS property | Abbreviation | Example |
+|---|---|---|
+| `color` | `c` | `--c_accent` |
+| `background` | `bg` | `--c_bg` |
+| `border-radius` | `b-r` | `--b-r`, `--b-r_s` |
+| `border-color` | `b-c` | `--_btn_b-c` |
+| `border-width` | `b-w` | `--_btn_b-w` |
+| `font-size` | `f-s` | `--f-s_7` |
+| `font-weight` | `f-w` | `--f-w_md` |
+| `font-family` | `f` | `--f_sans` |
+| `line-height` | `l-h` | `--l-h` |
+| `letter-spacing` | `l-s` | `--l-s_tight` |
+| `padding-block` | `p-b` | `--_btn_p-b` |
+| `padding-inline` | `p-i` | `--_card_p-i` |
+| `margin-block` | `m-b` | `--_field_m-b` |
+| `margin-block-start` | `m-b-s` | |
+| `margin-block-end` | `m-b-e` | |
+| `gap` | `gap` | `--_btn_gap` |
+| `shadow` | `sh` | `--sh_s` |
+| `transition` | `t` | `--t`, `--t_fast` |
+| `grid-template-columns` | `g-t-c` | |
+| `flex-direction` | `f-d` | |
+| `display` | `d` | `--_mediaText_d` |
+| `animation` | `a` | `--a_fade-in` |
+| `animation-duration` | `a-d` | `--a-d_quick_1` |
+| `z-index` | `z` | `--z_modal` |
+
+### Token categories
+
+| Prefix | Layer | Examples |
+|---|---|---|
+| `--c_` | theme | `--c_bg`, `--c_accent`, `--c_border` |
+| `--c_{name}_{step}` | primitives | `--c_primary_500`, `--c_gray_100` |
+| `--s_` | theme | `--s_1` … `--s_18` |
+| `--b-r` / `--b-r_` | theme (overrides primitives) | `--b-r`, `--b-r_s`, `--b-r_full` |
+| `--f_` | vars | `--f_sans`, `--f_mono` |
+| `--f-s_` | theme | `--f-s_1` … `--f-s_8`, `--f-s` |
+| `--f-w_` | primitives + theme | `--f-w_normal`, `--f-w_md`, `--f-w_semibold`, `--f-w_bold` |
+| `--l-h` | theme | `--l-h` |
+| `--sh_` | theme | `--sh_s`, `--sh_m`, `--sh_l` |
+| `--shadow_` | primitives | `--shadow_1` … `--shadow_6`, `--inner-shadow_*` |
+| `--a_` | primitives | `--a_fade-in`, `--a_slide-in-up` |
+| `--a-d_` | primitives | `--a-d_quick_1`, `--a-d_gentle_2` |
+| `--ease_` | primitives | `--ease_3`, `--ease-out_5`, `--ease-in-out_3` |
+| `--gradient_` | primitives | `--gradient_1` … `--gradient_30` |
+| `--size_` | primitives | `--size_100` … `--size_2000` (px) |
+| `--z_` | theme | `--z_dropdown`, `--z_modal`, `--z_toast` |
+| `--z-i_` | primitives | `--z-i_1` … `--z-i_5`, `--z-i_i` |
+
+## Color tokens
+
+### Semantic layer (`tokens.css`)
+
+```css
+/* Backgrounds */
+--c_bg           /* page background */
+--c_bg_subtle    /* subtle page tint */
+--c_bg_muted     /* muted page tint */
+
+/* Surfaces (cards, panels) */
+--c_surface
+--c_surface_raised
+--c_surface_overlay
+--c_surface_sunken
+--c_surface_muted
+
+/* Text */
+--c_fg
+--c_fg_muted
+--c_fg_subtle
+--c_fg_heading
+--c_fg_code
+
+/* Brand accent */
+--c_accent          /* interactive color */
+--c_accent_fg       /* text on accent bg */
+--c_accent_h        /* hover state */
+--c_accent_a        /* active state */
+--c_accent_subtle   /* subtle tint */
+--c_accent_muted
+--c_accent_border
+
+/* Borders */
+--c_border
+--c_border_muted
+--c_border_strong
+--c_border_disabled
+
+/* Focus */
+--c_focus
+--c_focus_offset
+
+/* Status (each has _h, _a, _subtle, _muted, _border, _fg variants) */
+--c_success
+--c_danger
+--c_warning
+--c_info
+```
+
+### Palette layer (`styleguide/color-palette.css`)
+
+Scale steps: `50 100 200 300 400 500 600 700 800 900 950`
+
+Available palettes: `primary`, `gray`, `success`, `danger`, `warning`, `info`
+
+```css
+--c_primary_50  … --c_primary_950   /* brownish brand */
+--c_gray_50     … --c_gray_950      /* neutral zinc */
+--c_success_50  … --c_success_950   /* green */
+--c_danger_50   … --c_danger_950    /* red */
+--c_warning_50  … --c_warning_950   /* amber */
+--c_info_50     … --c_info_950      /* cyan */
+```
+
+## Component variable pattern
+
+Every component follows a **public → private** pattern:
+
+```css
+.c--card {
+  /* Private computed var, with public override + semantic fallback */
+  --_card_bg:  var(--card_bg,  var(--c_surface));
+  --_card_b-r: var(--card_b-r, var(--b-r));
+  --_card_c:   var(--card_c,   var(--c_fg));
+
+  background:    var(--_card_bg);
+  border-radius: var(--_card_b-r);
+  color:         var(--_card_c);
+}
+```
+
+- `--card_bg` — **public** — override from outside
+- `--_card_bg` — **private** — only used internally
+
+### Hover / active state — `_h` and `_a` suffixes
+
+```css
+.c--btn {
+  --_btn_bg:   var(--c_accent);
+  --_btn_bg_h: var(--c_accent_h);   /* hover */
+  --_btn_bg_a: var(--c_accent_a);   /* active */
+
+  background: var(--_btn_bg);
+
+  &:hover  { background: var(--_btn_bg_h); }
+  &:active { background: var(--_btn_bg_a); }
+}
+```
+
+### Variant / state — reassign private vars
+
+State and variant classes reassign the private var, not the property directly:
+
+```css
+.c--card {
+  --_card_bg: var(--card_bg, var(--c_surface));
+
+  &.has-type_primary { --_card_bg: var(--c_primary_700); }
+  &.is-active        { --_card_bg: var(--c_accent_subtle); }
+}
+```
+
+The consumer can still override via `--card_bg` regardless of which variant is active.
+
+### Sub-elements
+
+Pattern: `--_{comp}-{element}_{prop}` — dash between component and element name, underscore before property.
+
+```css
+--_card_bg               /* card → bg */
+--_card-title_c          /* card → title → color */
+--_card-imageWrapper_p-b /* card → imageWrapper → padding-block */
+--_mediaText-title_f-s   /* mediaText → title → font-size */
+```
+
+## Spacing scale
+
+```css
+--s_1  → 0.25rem    --s_6  → 1.5rem
+--s_2  → 0.5rem     --s_8  → 2rem
+--s_3  → 0.75rem    --s_10 → 2.5rem
+--s_4  → 1rem       --s_12 → 3rem
+--s_5  → 1.25rem    --s_14 → 3.5rem
+                    --s_16 → 4rem
+                    --s_18 → 4.5rem
+```
+
+## Type scale
+
+```css
+--f-s_1  clamp(1.75rem … 2.25rem)   /* h1 */
+--f-s_2  clamp(1.5rem  … 1.875rem)  /* h2 */
+--f-s_3  clamp(1.25rem … 1.5rem)    /* h3 */
+--f-s_4  clamp(1.125rem … 1.25rem)  /* h4 */
+--f-s_5  1.125rem                   /* h5 */
+--f-s_6  1rem                       /* body — also --f-s */
+--f-s_7  0.875rem                   /* small text, labels */
+--f-s_8  0.75rem                    /* captions, badges */
+```
+
+## Shadow scale
+
+```css
+/* Semantic shortcuts (tokens.css) */
+--sh_s   /* 0 1px 2px 0 … */
+--sh_m   /* 0 1px 3px 0 … */
+--sh_l   /* 0 4px 6px -1px … */
+
+/* Full primitive scale (styleguide/shadows.css) */
+--shadow_1  /* subtle */
+--shadow_2
+--shadow_3
+--shadow_4
+--shadow_5
+--shadow_6  /* dramatic */
+
+/* Inner / inset */
+--inner-shadow_0
+--inner-shadow_1
+--inner-shadow_2
+--inner-shadow_3
+--inner-shadow_4
+```

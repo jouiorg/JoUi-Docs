@@ -1,0 +1,90 @@
+/**
+ * joui Containers & Grid
+ *
+ * .grid-container — named-line subgrid (full / container tracks).
+ *   Columns: 6 (default) → 12 (md+)
+ *   Children default to the "container" named column span.
+ *   Add class .full to break out to full bleed.
+ *
+ * .wrapper — centered max-width wrapper with inline padding.
+ *
+ * --container_m-w is set by styleguide/media.css breakpoints.
+ */
+
+@layer components {
+
+  /* ══ GRID CONTAINER ══════════════════════════════════════════════════════ */
+
+  .grid-container {
+    --_cg-columns: 6;
+    --_cg-gap:     var(--gutter, 16px);
+    --_cg-mi:      1.25rem;
+    --_cg-col_default: container;
+
+    /* Derived */
+    --_calc_cg-mi:    calc(var(--_cg-mi) - var(--_cg-gap));
+    --_calc_gap-total: calc(var(--_cg-gap) * (var(--_cg-columns) - 1));
+    --_cg-mw:         calc(
+      (var(--custom_container_m-w, var(--container_m-w, 100%)) - var(--_calc_gap-total))
+      / var(--_cg-columns)
+    );
+
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns:
+      [full-start] minmax(var(--_calc_cg-mi), 1fr)
+      [container-start]
+      repeat(var(--_cg-columns), var(--_cg-mw))
+      [container-end]
+      minmax(var(--_calc_cg-mi), 1fr) [full-end];
+    column-gap: var(--_cg-gap);
+
+    @media (min-width: 36rem) {
+      --_cg-columns: 4;
+    }
+
+    @media (min-width: 48rem) {
+      --_cg-columns: 12;
+      --_cg-gap:     var(--gutter, 30px);
+    }
+
+    /* Container queries for inner max-width adjustments */
+    @container (min-width: 768px)  { --container_m-w: 45rem; }
+    @container (min-width: 992px)  { --container_m-w: 59.375rem; }
+    @container (min-width: 1200px) { --container_m-w: 71.25rem; }
+    @container (min-width: 1400px) { --container_m-w: 82.5rem; }
+    @container (min-width: 1600px) { --container_m-w: 90rem; }
+
+    > * { grid-column: var(--_cg-col_default); }
+
+    > .full { --_cg-col_default: full; }
+  }
+
+  /* Narrow layout variant — centered 4-col span on lg+ */
+  .grid-container_sm > * {
+    --_cg-col_default: var(--_cg-col_sm, container);
+
+    @media (min-width: 62rem)  { --_cg-col_sm: 4 / 12; }
+    @media (min-width: 75rem)  { --_cg-col_sm: 5 / 11; }
+  }
+
+  /* ══ WRAPPER ═════════════════════════════════════════════════════════════ */
+
+  .wrapper {
+    width:          var(--container_m-w, 100%);
+    padding-inline: var(--container-py, var(--s_4));
+    margin-inline:  auto;
+    container-type: inline-size;
+
+    @media (min-width: 48rem) {
+      padding-inline: calc(var(--gutter, 30px) * 0.5);
+    }
+  }
+
+  /* Nested containers reset inline padding */
+  .container .container,
+  .grid-container > .container {
+    padding-inline: 0;
+  }
+
+}

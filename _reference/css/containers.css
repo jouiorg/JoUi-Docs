@@ -1,0 +1,137 @@
+.container .container,
+.layout .container,
+.grid-container > .container,
+.grid-container > .lp-builder > .js-lpb-component-list > .container,
+.slot-content > .container {
+  padding-inline: 0;
+}
+
+.paragraph--t--edw-carousel .grid-container {
+  display: block !important;
+}
+
+.grid-container {
+  --_cg-columns: 6;
+  --_cg-mi: 1.25rem;
+  --_cg-gap: var(--gutter, 16px);
+  --_cg-col_default: container;
+
+  /* Calcul */
+  --_calc_cg-mi: calc(var(--_cg-mi) - var(--_cg-gap));
+  --_calc_gap_total: calc(var(--_cg-gap) * (var(--_cg-columns) - 1));
+  --_cg-mw: calc((var(--custom_container_m-w, var(--container_m-w, 100%)) - var(--_calc_gap_total))/ var(--_cg-columns));
+}
+
+@media (min-width: 36rem) {
+
+.grid-container {
+    --_cg-columns: 4;
+    --_cg-gap: var(--gutter, 16px)
+}
+  }
+
+@media (min-width: 48rem) {
+
+.grid-container {
+    --_cg-columns: 12;
+    --_cg-gap: var(--gutter, 30px)
+}
+  }
+
+.grid-container {
+
+  container-type: inline-size;
+  display: grid;
+  grid-template-columns:
+    [full-start] minmax(var(--_calc_cg-mi), 1fr)
+    [container-start]
+    repeat(var(--_cg-columns), var(--_cg-mw))
+    [container-end]
+    minmax(var(--_calc_cg-mi), 1fr) [full-end];
+  grid-column-gap: var(--_cg-gap);
+}
+
+/* Container queries pentru --container_m-w */
+
+@container (min-width: 768px) {
+
+.grid-container {
+    --container_m-w: 45rem
+}
+  }
+
+@container (min-width: 992px) {
+
+.grid-container {
+    --container_m-w: 59.375rem
+}
+  }
+
+@container (min-width: 1200px) {
+
+.grid-container {
+    --container_m-w: 71.25rem
+}
+  }
+
+@container (min-width: 1400px) {
+
+.grid-container {
+    --container_m-w: 82.5rem
+}
+  }
+
+@container (min-width: 1600px) {
+
+.grid-container {
+    --container_m-w: 90rem
+}
+  }
+
+.grid-container > * {
+    grid-column: var(--_cg-col_default);
+  }
+
+.grid-container > .full,.grid-container > .lp-builder:has(
+      > .js-lpb-component-list > .paragraph--edw-container.full
+    )
+    {
+    --_cg-col_default: full;
+  }
+
+.grid-container.grid-container_sm > * {
+    --_cg-col_default: var(--_cg-col_sm, container);
+  }
+
+@media (min-width: 62rem) {
+
+.grid-container.grid-container_sm > * {
+      --_cg-col_sm: 4 / 12
+  }
+    }
+
+@media (--xlg) {
+
+.grid-container.grid-container_sm > * {
+      --_cg-col_sm: 5 / 11
+  }
+    }
+
+.paragraph--edw-container .edw-container--one-column > .c--container_default {
+    --_cg-col_default: container;
+  }
+
+.wrapper {
+  width: var(--container_m-w, 100%);
+  padding-inline: var(--container-py);
+  margin-inline: auto;
+  container-type: inline-size;
+}
+
+@media (min-width: 48rem) {
+
+.wrapper {
+    padding-right: calc(var(--gutter-x) * 0.5);
+    padding-left: calc(var(--gutter-x) * 0.5)
+}
+  }
