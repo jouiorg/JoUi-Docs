@@ -101,16 +101,16 @@ All components ported:
 ## Phase 4 — joui Design System
 
 ### 4.1 CSS Naming Convention — closes #10
-- [ ] Define joui CSS naming convention (based on oat.ink, adapted)
-- [ ] Document rules in `DESIGN-SYSTEM.md`
-- [ ] Migrate all components from oat.ink naming to joui naming
+- [x] Define joui CSS naming convention (based on oat.ink, adapted)
+- [x] Document rules in `DESIGN-SYSTEM.md`
+- [x] Migrate all components from oat.ink naming to joui naming
 
 ### 4.2 joui Design Tokens — closes #11, #15
-- [ ] Replace oat.ink tokens with joui-specific values
-- [ ] Define token tiers:
-  - **Primitive tokens** — raw values (colors, sizes)
-  - **Semantic tokens** — purpose-based (color-primary, color-surface, etc.)
-- [ ] Theme 1 finalized
+- [x] Replace oat.ink tokens with joui-specific values
+- [x] Define token tiers:
+  - **Primitive tokens** — raw values (colors, sizes) → `styleguide/`
+  - **Semantic tokens** — purpose-based → `tokens.css`
+- [x] Theme 1 finalized
 
 ### 4.3 Claude Skill — Generate Component — closes #12
 - [ ] Create a Claude skill that scaffolds a new joui component

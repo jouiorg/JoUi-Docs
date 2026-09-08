@@ -7,7 +7,14 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "WebFetch(domain:github.com)",
       "Bash(gh api *)",
-      "mcp__plugin_context7_context7__query-docs"
+      "mcp__plugin_context7_context7__query-docs",
+      "Bash(xargs cat *)",
+      "Bash(perl -pi -e 's/--muted\\\\b/--c_surface_muted/g' /Users/josecret/Sites/joui/.joui-oat.ink/src/components/accordion-item/accordion-item.css /Users/josecret/Sites/joui/.joui-oat.ink/src/components/form/form.css /Users/josecret/Sites/joui/.joui-oat.ink/src/components/meter/meter.css /Users/josecret/Sites/joui/.joui-oat.ink/src/components/progress/progress.css /Users/josecret/Sites/joui/.joui-oat.ink/src/components/table/table.css /Users/josecret/Sites/joui/.joui-oat.ink/src/components/tabs/tabs.css /Users/josecret/Sites/joui/.joui-oat.ink/src/primitives/skeleton/skeleton.css /Users/josecret/Sites/joui/.joui-oat.ink/src/primitives/spinner/spinner.css /Users/josecret/Sites/joui/.joui-oat.ink/src/primitives/badge/badge.css /Users/josecret/Sites/joui/.joui-oat.ink/src/primitives/avatar/avatar.css /Users/josecret/Sites/joui/.joui-oat.ink/src/styles/docs.css)",
+      "Bash(perl -pi -e 's/--f-w_semi\\\\b/--f-w_semibold/g' /Users/josecret/Sites/joui/.joui-oat.ink/src/primitives/heading/heading.css /Users/josecret/Sites/joui/.joui-oat.ink/src/styles/typography.css /Users/josecret/Sites/joui/.joui-oat.ink/src/styles/docs.css)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:4321/)",
+      "Bash(git *)",
+      "Bash(python3 *)"
     ]
   }
 }
