@@ -60,7 +60,7 @@ Component library based on oat.ink, documented with Astro.js, compatible with Dr
 ### 2.2 Port Components (simple → complex) — closes #6
 All components ported:
 
-**Primitives:** avatar, badge, button, heading, skeleton, spinner
+**Primitives:** avatar, badge, button, chip, heading, skeleton, spinner
 
 **Components:** accordion, accordion-item, alert, breadcrumb, card, dialog, dropdown, form, grid, meter, pagination, progress, sidebar, switch, table, tabs, taginput, toast, tooltip, upload
 
@@ -113,9 +113,9 @@ All components ported:
 - [x] Theme 1 finalized
 
 ### 4.3 Claude Skill — Generate Component — closes #12
-- [ ] Create a Claude skill that scaffolds a new joui component
-- [ ] Input: component name + variants
-- [ ] Output: full directory with `.astro`, `.css`, `.js`, doc page
+- [x] Create a Claude skill that scaffolds a new joui component
+- [x] Input: component name + variants
+- [x] Output: full directory with `.astro`, `.css`, `.js`, doc page
 
 ---
 

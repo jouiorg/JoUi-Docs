@@ -1,0 +1,69 @@
+@layer components {
+  .chip {
+    /* ── Configurable via public vars ──────────────────────── */
+    --_chip_b-r: var(--chip_b-r, var(--b-r_full));
+    --_chip_bg:  var(--chip_bg,  var(--c_surface_muted));
+    --_chip_c:   var(--chip_c,   var(--c_fg));
+    --_chip_b-c: var(--chip_b-c, var(--c_border));
+
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s_1);
+    padding: var(--s_1) var(--s_3);
+    font-size: var(--f-s_8);
+    font-weight: var(--f-w_md);
+    line-height: 1;
+    white-space: nowrap;
+    border: 1px solid var(--_chip_b-c);
+    border-radius: var(--_chip_b-r);
+    background-color: var(--_chip_bg);
+    color: var(--_chip_c);
+    text-decoration: none;
+    transition:
+      background-color var(--t_fast),
+      border-color var(--t_fast),
+      color var(--t_fast);
+
+    &:where(button, a, [tabindex]) {
+      cursor: pointer;
+      user-select: none;
+
+      &:hover { background-color: var(--_chip_bg_h, var(--c_hover_bg)); }
+
+      &:focus-visible {
+        outline: 2px solid var(--c_accent);
+        outline-offset: 2px;
+      }
+    }
+  }
+
+  /* ── Sizes ─────────────────────────────────────────────── */
+
+  .chip--sm {
+    padding: calc(var(--s_1) * 0.5) var(--s_2);
+    font-size: 0.6875rem;
+    border-radius: var(--b-r);
+  }
+
+  /* ── Outline ────────────────────────────────────────────── */
+
+  .chip--outline {
+    background-color: transparent;
+  }
+
+  /* ── Semantic variants ──────────────────────────────────── */
+
+  .chip[data-variant="secondary"] {
+    --_chip_bg:  var(--c_surface_muted);
+    --_chip_b-c: var(--c_border);
+  }
+
+  .chip:is([data-variant="success"], [data-variant="warning"], [data-variant="danger"]) {
+    --_chip_c:   var(--_variant-color);
+    --_chip_bg:  light-dark(
+      color-mix(in srgb, var(--_variant-color) 10%, transparent),
+      color-mix(in srgb, var(--_variant-color) 30%, transparent)
+    );
+    --_chip_b-c: color-mix(in srgb, var(--_variant-color) 30%, transparent);
+  }
+}
