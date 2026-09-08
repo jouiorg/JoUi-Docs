@@ -1,0 +1,75 @@
+---
+title: Chip
+section: primitives
+order: 7
+---
+
+import Chip from '@primitives/chip/chip.astro';
+
+Compact label element for filters, tags, or categories. Renders as `<span>` or `<a>` when `pHref` is provided.
+
+## Example
+
+<div class="doc-preview">
+  <Chip>Default</Chip>
+  <Chip pVariant="secondary">Secondary</Chip>
+  <Chip pVariant="outline">Outline</Chip>
+</div>
+
+## Sizes
+
+<div class="doc-preview">
+  <Chip pSize="sm">Small</Chip>
+  <Chip pSize="md">Medium</Chip>
+</div>
+
+## Status variants
+
+<div class="doc-preview">
+  <Chip pVariant="success">Success</Chip>
+  <Chip pVariant="warning">Warning</Chip>
+  <Chip pVariant="danger">Danger</Chip>
+</div>
+
+## Usage
+
+```html
+<span class="chip chip--md">Default</span>
+<span class="chip chip--md chip--outline">Outline</span>
+<span class="chip chip--sm" data-variant="success">Success</span>
+```
+
+## Astro
+
+```astro
+import Chip from '@primitives/chip/chip.astro';
+
+<Chip>Default</Chip>
+<Chip pVariant="outline" pSize="sm">Outline</Chip>
+<Chip pVariant="success">Success</Chip>
+<Chip pHref="/category/design">Design</Chip>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `pVariant` | `'default' \| 'secondary' \| 'outline' \| 'success' \| 'warning' \| 'danger'` | `'default'` | Visual style |
+| `pSize` | `'sm' \| 'md'` | `'md'` | Size |
+| `pHref` | `string` | — | Renders as `<a>` with this href |
+| `pClass` | `string` | — | Additional CSS classes |
+
+## CSS Custom Properties
+
+| Property | Default | Description |
+|----------|---------|-------------|
+| `--chip_b-r` | `var(--b-r_full)` | Border radius |
+| `--chip_bg` | `var(--c_surface_muted)` | Background color |
+| `--chip_c` | `var(--c_fg)` | Text color |
+| `--chip_b-c` | `var(--c_border)` | Border color |
+| `--chip_bg_h` | `var(--c_hover_bg)` | Background on hover (interactive chips) |
+
+## Accessibility
+
+- Use `pHref` for navigation links — renders semantic `<a>`
+- Add `tabindex="0"` and `role="button"` for interactive `<span>` chips that trigger actions

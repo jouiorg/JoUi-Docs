@@ -1,0 +1,21 @@
+---
+import './chip.css';
+
+interface Props {
+  pVariant?: 'default' | 'secondary' | 'outline' | 'success' | 'warning' | 'danger';
+  pSize?: 'sm' | 'md';
+  pHref?: string;
+  pClass?: string;
+}
+
+const { pVariant = 'default', pSize = 'md', pHref, pClass, ...attrs } = Astro.props;
+
+const isOutline   = pVariant === 'outline';
+const dataVariant = !['default', 'outline'].includes(pVariant) ? pVariant : undefined;
+const classes     = ['chip', `chip--${pSize}`, isOutline && 'chip--outline', pClass].filter(Boolean).join(' ');
+const Tag         = pHref ? 'a' : 'span';
+---
+
+<Tag class={classes} href={pHref} data-variant={dataVariant} {...attrs}>
+  <slot />
+</Tag>
